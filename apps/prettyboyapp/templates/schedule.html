@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Schedule Ride</h1>
+    <form action ="/submit_ride" method="post">
+        {% csrf_token %}
+        <div>
+            <!-- Pick Up -->
+            <h2>Pick-Up</h2>
+            <div>
+                <p>Date and time</p>
+                <input type="datetime-local" name="pickup_datetime">
+            </div>
+            <div>
+                <p>Address</p>
+                <input type="text" name="pickup_address" >
+            </div>
+            <div>
+                <p>City</p>
+                <input type="text" name="pickup_city">
+            </div>
+            <div>
+                <p>Room Number</p>
+                <input type="text" name="pickup_room">
+            </div>
+        </div>
+        <!-- Drop Off -->
+        <div>
+            <h2>Drop Off</h2>
+            <div>
+               <p>Address</p>
+                <input type="text" name="dropoff_address">
+            </div>
+            <div>
+                <p>City</p>
+                <input type="text" name="dropoff_city">
+            </div>
+            <div>
+                <p>Room Number</p>
+                <input type="text" name="dropoff_room">
+            </div>
+            <div>
+                <p>Facility Contact Number</p>
+                <input type="text" name="dropoff_phone">
+            </div>
+        </div>
+        <!-- Person To Accompany -->
+        <div>
+            <h2>Person to Accompany</h2>
+            <div>
+                <p>Name</p>
+                <input type="text" name="accompany_name">
+            </div>
+            <div>
+                <p>Contact Number</p>
+                <input type="text" name="accompany_number">
+            </div>
+        </div>
+        <!-- Trip Details -->
+        <div>
+            <h2>Trip Details</h2>
+            <div>
+                <input type="checkbox" name="ambulatory" value="Ambulatory">
+                <input type="checkbox" name="wheelchair_bound" value="Wheelchair-Bound">
+                <input type="checkbox" name="round_trip" value="Round-Trip">
+                <input type="checkbox" name="one_way" value="One-Way">
+                <p>Appointment Duation (Hours)</p>
+                <input type="number" name="duration">
+                <p>Additional Notes</p>
+                <textarea name="notes"></textarea>
+            </div>
+        </div>
+        <input type="submit" value="Request Ride">
+    </form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Manage Rides</h1>
+    {% for ride in rides %}
+    <p>{{ride.pickup_datetime}}</p>
+    {% endfor %}
+</body>
+
+</html>

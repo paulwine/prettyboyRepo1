@@ -11,23 +11,17 @@
 </head>
 <body>
     <div>
-        <h1>hello</h1>
-        <p class='bruh'>What'sup familamily </p>
-        <div id="formdiv">
-            <form>
-                <p>Name:<input type="text"></p>
-                <p>Handicap:<input type="text"></p>
-                <p>Shoe Size:<input type="text"></p>
-                <p>Cup Size:<input type="text"></p>
-                <p>Ass Size:<input type="text"></p>
-                <p>Favorite Animal:<input type="text"></p>
-                <p>Least Favorite Animal:<input type="text"></p>
-                <p>Are you a smoker?:<input type="text"></p>
-                <p>If answered "NO" to question above... What are you a pussy?:<input type="text"></p>
-                <p>Nickname:<input type="text"></p>
+        <h1>Login</h1>
+        <div id="logindiv">
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <p>Email: <input type="text" name ="email_log"></p>
+                <p>Password: <input type="text" name ="password_log"></p>
                 <input type="submit">
             </form>
+            <a href="/registerpage">Register</a>
         </div>
+        
     </div>
 </body>
 </html>
