@@ -4,11 +4,32 @@ from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from .models import User, Ride
+import bcrypt
   # the index function is called when root is visited
 def index(request):
   return render(request, 'index.html')
 
 def login(request):
+
+  email = request.POST['email_log']
+  password = request.POST['password_log']
+
+  user_query = User.objects.filter(email=email)
+  
+
+  if len(user_query) < 1:
+    messages.error(request, "Incorrect username or password")
+    return redirect("/")
+  else:
+    hash1 = user_query[0].password
+    if bcrypt.checkpw(password.encode(), hash1.encode()):
+      current_user = user_query[0]
+      request.session['current_user'] = current_user.id
+      return redirect("/welcome")
+    else:
+      messages.error(request, "Incorrect username or password")
+      return redirect("/")
+  
   return render(request, 'login.html')
 
 def registerpage(request):
@@ -26,6 +47,8 @@ def register(request):
   password = request.POST['password']
   confirm_password = request.POST['confirm_password']
 
+  user_query = User.objects.filter(email=email)
+  # Validations
   if len(first) < 1 or len(last) < 1:
     messages.error(request, 'Please input a valid first and last name')
     error = True
@@ -33,16 +56,24 @@ def register(request):
     messages.error(request, 'Email invalid.  Please input a valid email')
     error = True
   if len(password) < 8:
-    messages.error(request, 'Passwords must be longer than 8 characters.')
+    messages.error(request, 'Passwords must be longer than 8 characters')
     error = True
   if len(phone) < 1:
     messages.error(request, 'Please input a valid phone number')
+    error = True
+  if password != confirm_password:
+    messages.error(request, 'Password do no match')
+    error = True
+  if len(user_query) > 0:
+    messages.error(request, 'User already exists with this email address, please input a different email')
     error = True
   
   if error == True:
     print(error)
     return redirect("/registerpage")
   else:
+    password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    print(password)
     new_user = User.objects.create(first_name=first, last_name=last, email=email, password=password, special=info, primary_address=address, phone=phone)
     new_user.save()
     request.session['current_user'] = new_user.id
@@ -51,7 +82,10 @@ def register(request):
 def welcome(request):
   current_user = User.objects.get(id= request.session['current_user'])
   print(current_user.first_name)
-  return render(request, 'welcome.html')
+  context = {
+    "user" : current_user
+  }
+  return render(request, 'welcome.html', context)
 
 def contact(request):
   
@@ -113,7 +147,7 @@ def submit_ride(request):
     round_trip = True
   else:
     round_trip = False
-  one_way = request.POST['one_way']
+    one_way = request.POST['one_way']
 
   duration = request.POST['duration']
   notes = request.POST['notes']
@@ -125,4 +159,8 @@ def submit_ride(request):
     ride.save()
 
   return redirect("/manage_rides")
+
+def delete_all(request):
+  User.objects.all().delete() 
+  return redirect("/")
 # Create your views here.
