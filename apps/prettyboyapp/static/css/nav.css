@@ -53,16 +53,24 @@ ul {
 
 .exit {
   padding-bottom: 70px; }
+  @media (min-width: 575px) {
+    .exit {
+      visibility: hidden;
+      padding-bottom: 10px; } }
 
 .open-nav {
   padding-top: 1rem;
   width: 150px;
   text-align: left;
-  padding-left: 5%; }
+  padding-left: 5%;
+  cursor: pointer; }
 
 .hidden {
   transform: translateX(-100%);
   transition: all 0.2s cubic-bezier(0, 0, 0.2, 1) 0s; }
+  @media (min-width: 575px) {
+    .hidden {
+      transform: none; } }
 
 .topnav {
   margin-bottom: 0; }
@@ -100,6 +108,12 @@ ul {
   margin-left: 10%;
   margin-right: 10%;
   width: 30%; }
+  @media (min-width: 575px) {
+    .parrot {
+      border-bottom: 1px solid #1864a3;
+      padding-bottom: 2rem;
+      margin-left: 25%;
+      display: inline-block; } }
   .parrot img {
     max-height: 130%;
     max-width: 130%; }
@@ -114,5 +128,21 @@ ul {
 .applied-gradient {
   background-color: rgba(80, 80, 80, 0.6);
   transition: all 0.2s linear 0s; }
+
+@media (min-width: 575px) {
+  .logout {
+    position: absolute;
+    right: 0;
+    font-size: 0.8rem; } }
+
+h1.page-title {
+  font-size: 1.5rem; }
+  @media (max-width: 574px) {
+    h1.page-title {
+      display: none; } }
+
+.page-title {
+  display: inline-block;
+  padding: 0 1rem; }
 
 /*# sourceMappingURL=nav.css.map */

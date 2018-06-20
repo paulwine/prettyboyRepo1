@@ -2,11 +2,14 @@ $whiteNavColor: rgba(256, 256, 256, .7)
 $navBlue: rgba(24, 100, 163, 1)
 $backgroundColor: rgba(222, 224, 224, 1)
 $gradientGray: rgba(80,80,80, .6)
+$mediaLarge: '(min-width: 575px)'
+$mediaSmall: '(max-width: 574px)'
 
 
 body
     background-color: $backgroundColor 
     font-family: sans-serif
+    
 
 nav
     width: 100%
@@ -68,16 +71,24 @@ ul
 .exit
     padding-bottom: 70px
     
+    @media #{$mediaLarge}
+        visibility: hidden
+        padding-bottom: 10px
+    
     
 .open-nav
     padding-top: 1rem
     width: 150px
     text-align: left
     padding-left: 5%
+    cursor: pointer
     
 .hidden
     transform: translateX(-100%)
     transition: all .2s cubic-bezier(0.0, 0.0, 0.2, 1) 0s
+    
+    @media #{$mediaLarge}
+        transform: none
     
 .topnav
     margin-bottom: 0
@@ -117,6 +128,14 @@ ul
     margin-right: 10%
     width: 30%
     
+    @media #{$mediaLarge}
+        border-bottom: 1px solid $navBlue
+        padding-bottom: 2rem
+        margin-left: 25%
+        display: inline-block
+        
+        
+    
     img
         max-height: 130%
         max-width: 130%
@@ -131,5 +150,27 @@ ul
 .applied-gradient
     background-color: $gradientGray
     transition: all .2s linear 0s
-
-
+    
+.logout
+    @media #{$mediaLarge}
+        position: absolute  
+        right: 0    
+        font-size: .8rem   
+    
+    
+h1.page-title
+    font-size: 1.5rem 
+    @media #{$mediaSmall}
+        display: none
+    
+.page-title
+    display: inline-block
+    padding: 0 1rem
+    
+    
+    
+    
+    
+    
+    
+    
