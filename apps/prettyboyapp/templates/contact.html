@@ -8,5 +8,12 @@
 </head>
 <body>
     <h1>Contact</h1>
+    <form action="/send_email" method="post">
+        {% csrf_token %}
+        <p>Subject: <input type="text" name="email_subject"></p>
+        <p>Body: <input type="text" name="email_body"></p>
+        <input type="submit" value="Send Email">
+    </form>
+    
 </body>
 </html>

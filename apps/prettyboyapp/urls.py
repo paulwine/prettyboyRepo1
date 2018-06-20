@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^info$', views.info),
     url(r'^all_users$', views.all_users),
     url(r'^submit_ride$', views.submit_ride),
+    url(r'^send_email$', views.send_email),
     
     # temp
     url(r'^delete_all$', views.delete_all)

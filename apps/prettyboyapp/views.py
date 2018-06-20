@@ -3,6 +3,10 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from .models import User, Ride
 import bcrypt
   # the index function is called when root is visited
@@ -13,7 +17,6 @@ def login(request):
 
   email = request.POST['email_log']
   password = request.POST['password_log']
-
   user_query = User.objects.filter(email=email)
   
 
@@ -68,6 +71,13 @@ def register(request):
     messages.error(request, 'User already exists with this email address, please input a different email')
     error = True
   
+  try:
+    validate_email( email )
+  except ValidationError:
+     error = True
+     messages.error(request, 'Email invalid.  Please input a valid email')
+
+
   if error == True:
     print(error)
     return redirect("/registerpage")
@@ -88,8 +98,8 @@ def welcome(request):
   return render(request, 'welcome.html', context)
 
 def contact(request):
-  
   return render(request, "contact.html")
+
 def schedule_ride(request):
   current_user = User.objects.get(id= request.session['current_user'])
   context = {
@@ -97,7 +107,8 @@ def schedule_ride(request):
   }
   return render(request, "schedule.html", context)
 def manage_rides(request):
-  rides = Ride.objects.all()
+  current_user = User.objects.get(id= request.session['current_user'])
+  rides = Ride.objects.filter(user = current_user)
   context = {
     "rides" : rides
   }
@@ -122,10 +133,12 @@ def submit_ride(request):
   current_user = User.objects.get(id= request.session['current_user'])
   
   pickup_datetime = request.POST['pickup_datetime']
+  appointment_time = request.POST['appointment_time']
   pickup_address = request.POST['pickup_address']
   pickup_city = request.POST['pickup_city']
   pickup_full_address = pickup_address + ", " + pickup_city
   pickup_room = request.POST['pickup_room']
+  pickup_phone = request.POST['pickup_number']
 
   dropoff_address = request.POST['dropoff_address']
   dropoff_city = request.POST['dropoff_city']
@@ -138,15 +151,21 @@ def submit_ride(request):
   
   ambulatory = True
   round_trip = True
+
+  amb_txt = "Ambulatory"
+  trip_txt = "Round Trip"
+
   if request.POST['ambulatory'] == True:
     ambulatory = True
   else:
     ambulatory = False
+    amb_txt = "Wheelchair Bound"
   
   if request.POST['round_trip'] == True:
     round_trip = True
   else:
     round_trip = False
+    trip_txt = "One Way"
     one_way = request.POST['one_way']
 
   duration = request.POST['duration']
@@ -155,12 +174,56 @@ def submit_ride(request):
   if error == True:
     return redirect("/schedule_ride")
   else:
-    ride = Ride.objects.create(pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user)
+    ride = Ride.objects.create(pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user)
     ride.save()
+
+  
+  #Email Construction
+  body = "BODY BABY"
+  msg_html = render_to_string('email.html', {
+    'rider_first': current_user.first_name,
+    'rider_last': current_user.last_name,
+    'date': pickup_datetime,
+    'time' : appointment_time,
+    'pickup' : pickup_full_address,
+    'dropoff' : dropoff_full_address,
+    'ambulatory': amb_txt,
+    'round_trip': trip_txt,
+    'acc_name' : accompany_name,
+    'pickup_number': pickup_phone,
+    'dropoff_number': dropoff_phone,
+    'acc_number' : accompany_number
+    })
+    
+  full_name = current_user.first_name + " " + current_user.last_name
+  send_mail(
+    'RIDE REQUEST: {}'.format(full_name),
+    body,
+    'paulwinegard@gmail.com',
+    ['paulwinegard@gmail.com'],
+    fail_silently=False,
+    html_message=msg_html,
+  )
 
   return redirect("/manage_rides")
 
 def delete_all(request):
   User.objects.all().delete() 
   return redirect("/")
+
+def send_email(request):
+  current_user = User.objects.get(id= request.session['current_user'])
+  current_email = current_user.email
+  subject = request.POST['email_subject']
+  body = request.POST['email_body']
+  print(body)
+
+  send_mail(
+    'SUPPORT: {}'.format(subject),
+    body,
+    'paulwinegard@gmail.com',
+    ['paulwinegard@gmail.com'],
+    fail_silently=False,
+  )
+  return redirect("/welcome")
 # Create your views here.
