@@ -1,15 +1,11 @@
 $whiteNavColor: rgba(256, 256, 256, .7)
+$offwhiteNav: rgba( 256, 256, 256, .5)
 $navBlue: rgba(24, 100, 163, 1)
-$backgroundColor: rgba(222, 224, 224, 1)
 $gradientGray: rgba(80,80,80, .6)
-$mediaLarge: '(min-width: 575px)'
-$mediaSmall: '(max-width: 574px)'
+$mediaLarge: '(min-width: 700px)'
+$mediaSmall: '(max-width: 699px)'  
 
 
-body
-    background-color: $backgroundColor 
-    font-family: sans-serif
-    
 
 nav
     width: 100%
@@ -22,18 +18,41 @@ nav
     min-width: 250px
     min-height: 100%
     background-color: $navBlue
-    font-size: 1rem
-    color: $backgroundColor
+    font-size: 1rem  
+    color: $whiteNavColor 
     top: 0
     transition: all .2s cubic-bezier(0.4, 0.0, 1, 1) 0s
+    font-family: sans-serif 
 
+.user
+    position: relative
+    width: 80%   
+    height: 50px      
+    margin: 0 auto 20px auto
+    text-align: center
+    border-bottom: 1px $whiteNavColor solid
+    
+    
+    h2
+        font-size: 1.1rem        
+        padding-top: 10px    
+        color: $whiteNavColor
+        
+    span
+        color: $offwhiteNav  
+    
+    @media #{$mediaLarge}
+        height: 100px
+        h2
+            padding-top: 60px    
 
     
 .navimg
     position: relative
     width: 20%
     text-align: center
-    margin-right: 10% 
+    margin-right: 14% 
+    padding-left: 17%     
     height: 100%
     cursor: pointer
     
@@ -51,29 +70,28 @@ nav
 
 
 ul
-    padding: 1rem 1rem
+    padding: 0 1rem 2rem 1rem   
     
     li
-        margin-bottom: 2.5rem
+        margin-bottom: 1.5rem 
         display: flex
         height: 60px
         
         p
             margin-top: 3%
-            cursor: pointer
-            
-.x
-    width: 40%
-    text-align: center
-    padding-top: 1rem
-    max-height: 100%
+            cursor: pointer 
     
-.exit
-    padding-bottom: 70px
+.exit    
+    width: 30% 
     
     @media #{$mediaLarge}
-        visibility: hidden
-        padding-bottom: 10px
+        display: none  
+
+    img
+        width: 100% 
+        text-align: left 
+        padding-top: 40px  
+        max-height: 100%         
     
     
 .open-nav
@@ -89,85 +107,93 @@ ul
     
     @media #{$mediaLarge}
         transform: none
+
+        
     
-.topnav
-    margin-bottom: 0
-    
-.phone-number
-    position: absolute
-    bottom: 20px
-    left: 0
-    right: 0
-    margin-left: auto
-    margin-right: auto
-    font-size: .7rem
-    text-align: center
-    color: $whiteNavColor
-    opacity: .8
-    
-    
-.navbar-top
-    margin-top: 20px
-    width: 20%
-    height: 2rem
-    display: inline-block
-    text-align: center
-    color: $navBlue
     
 .navbar-img
     height: auto
     width: auto
     max-height: 100%
-    max-width: 150%
-    
+    max-width: 100%
+     
 .lines
     max-width: 50%
     
-.parrot
-    margin-left: 10%
-    margin-right: 10%
-    width: 30%
-    
-    @media #{$mediaLarge}
-        border-bottom: 1px solid $navBlue
-        padding-bottom: 2rem
-        margin-left: 25%
-        display: inline-block
-        
-        
-    
-    img
-        max-height: 130%
-        max-width: 130%
     
 .gradient
-    position: absolute
+    position: absolute  
     height: 100%
-    width: 100%
+    width: 100% 
     pointer-events: none
     transition: all .2s linear 0s
+    @media #{$mediaLarge}
+        display: none 
 
 .applied-gradient
     background-color: $gradientGray
-    transition: all .2s linear 0s
+    transition: all .2s linear 0s 
     
-.logout
+
+.navbar-top
+    width: 15%   
+    color: $navBlue 
+
+  
+
+.navbar-small
     @media #{$mediaLarge}
-        position: absolute  
-        right: 0    
-        font-size: .8rem   
+        display: none    
+     
+    positon: absolute
+    display: flex  
+    justify-content: space-between 
+    width: 100%
+    height: 50px 
+    padding-top: 20px  
+
+.logout-small
+    padding-top: 1rem 
+    padding-right: 15px   
+
+
+        
+footer
+    position: absolute   
+    bottom: 0  
+    height: 60px     
+    width: 100%   
+    text-align: center
+    padding-top: 15px
+    background-color: darkblue
+    color: $whiteNavColor  
+    font-size: .8rem     
     
+.phone-number, .logout 
+    display: inline-block 
+     
+.phone-number
+    padding-left: 15px
+
+.logout
+    padding-right: 15px
+    border-right: $whiteNavColor solid 1px   
     
-h1.page-title
-    font-size: 1.5rem 
     @media #{$mediaSmall}
         display: none
     
-.page-title
-    display: inline-block
-    padding: 0 1rem
+.copyright
+    padding-top: 15px 
+    color: $offwhiteNav  
+
+.logout-small
+    font-family: sans-serif 
+    position: relative
+    text-align: right  
+//    border: black solid 1px 
     
     
+
     
     
     

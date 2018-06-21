@@ -1,7 +1,14 @@
-.bruh{
-    color: blue;
-}
+body {
+  background-color: #dee0e0;
+  position: absolute; }
+  @media (min-width: 575px) {
+    body {
+      right: 0; } }
 
-h1{
-    color: blue;
-}
+.body-content {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  padding-top: 60px; }
+
+/*# sourceMappingURL=style.css.map */
