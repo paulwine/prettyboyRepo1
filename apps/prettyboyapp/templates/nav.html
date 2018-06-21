@@ -1,32 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nav</title>
-    <link rel="stylesheet" href="../static/css/default.css">
-    <link rel="stylesheet" href="../static/css/nav.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
+<!--   {% load static %}-->
+   <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
+    
+    <link rel="stylesheet" href="../static/css/default.css"> 
+    <link rel="stylesheet" href="../static/css/nav.css">
 </head>
-<body>
-   
+  
    <nav>
      
      <div class = 'gradient'></div>
      
-     <div class = 'navbar-top open-nav' onclick="navOut()"><img  class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
-     
-     <div class = 'navbar-top parrot'><img class= 'navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"><h1 class = 'page-title'>Manage Rides</h1></div>
-     
-     <div class = 'navbar-top logout'>Logout</div>
-     
-     
+     <div class = 'navbar-small'>
+         <div class = 'navbar-top open-nav' onclick="navOut()"><img  class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
+
+         <div class = 'navbar-top parrot'><img class= 'navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div> 
+
+         <div class = 'logout-small navbar-top'>Logout</div>    
+     </div>
      
       
       <div class = 'side-nav hidden' id = 'side-nav'>
+          
            <ul>
-               <li class="topnav exit"><div class = 'navimg' onclick="navOut()"><img class = 'x' src="../static/img/Icons/navX.png" alt="exit navigation"></div></li>
-
+               <li class="exit"><div class = 'navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div></li>
+               
+                <div class = 'user'><h2><span>Firstname</span> Lastname</h2></div>
+                
                 <li><div class = 'navimg'><img class = 'icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
                 <p>Schedule Ride</p></li>
 
@@ -44,17 +48,23 @@
 
            </ul>
            
-           <p class = 'phone-number'>Phone: 248.547.7859t</p>
+            <footer>
+               
+               <div class = 'logout'>Logout</div>
+               <div class = 'phone-number'>Phone: <span>248.547.7859</span></div>
+               
+               <div class = 'copyright'>&copy;2018 Papuga Transportation</div>
+                
+            </footer>
+            <script src = '../static/js/nav.js'>
+    
+            </script>
        </div>
    </nav>
    
-   <script src = '../static/js/nav.js'>
+   
+    
 
-    
-    </script>
-    
-</body>
-</html>
 
 
 

@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.gmail.com'  # since you are using a gmail account
-EMAIL_HOST_USER = 'paulwinegard@gmail.com'
-EMAIL_HOST_PASSWORD = 'Onions11'
+EMAIL_HOST_USER = 'wchatterson@gmail.com'
+EMAIL_HOST_PASSWORD = '125Roman!'
 EMAIL_PORT = 587  # Gmail SMTP port for TLS
 EMAIL_USE_TLS = True
 
