@@ -4,6 +4,10 @@ $lightBlue: blue
 $darkBlue: DarkBlue 
 $transWhite: rgba(256, 256, 256, .4) 
 $red: red  
+$boxColor: rgba(35, 31, 32, .3)
+$mediaSmall: '(max-width: 699px)'
+$mediaLarge: '(min-width: 700px)' 
+
 
 
 body
@@ -17,18 +21,23 @@ body
     grid-template-columns: 1fr 1fr
     grid-template-rows: auto 60px        
     font-family: $sans
+    
 
     
 .content-left
     grid-column: 1
     text-align: center  
     
+    @media #{$mediaSmall}
+        display: none  
+    
     img
         position: relative  
         width: 60%      
         max-width: 250px        
         min-width: 100px    
-        padding-top: 15%                     
+        padding-top: 15% 
+   
         
    
     h1
@@ -42,10 +51,20 @@ body
         margin-top: 5rem 
         line-height: 1.2rem 
 
+.img-small   
+    max-width: 30%  
+    margin-left: 35%    
+    margin-top: 10px   
+    
+    @media #{$mediaLarge}
+        display: none  
         
 .register
     grid-column: 2 
     
+    @media #{$mediaSmall}
+        grid-column: 1/span 2 
+     
     
     ul  
         position: relative   
@@ -57,18 +76,42 @@ body
         box-shadow: 2px 0px 10px 2px gray  
         font-size: 1rem   
         
+        @media #{$mediaSmall}
+            box-shadow: none 
+            width: 100%   
+        
         li
             width: 90%
             margin: auto  
-            margin-top: 20px   
+            margin-top: 20px
+            
+            @media #{$mediaSmall}
+                margin-top: 20px    
+    
             
             input
                 width: 100% 
                 border: $lightBlue 1px solid 
                 border-radius: 4px  
                 height: 1.4rem  
-                margin-top: 7px  
+                margin-top: 7px 
+                background-color: $boxColor
+                
+                @media #{$mediaSmall}
+                    height: 2rem   
         
+                
+        .title
+            border-bottom: solid $lightBlue .5px    
+            
+            h1
+                color: $lightBlue   
+                padding-bottom: 1.5rem     
+                font-size: 2rem    
+            @media #{$mediaLarge}
+                display: none 
+            
+                    
         .name
             width: 40% 
             
@@ -77,7 +120,10 @@ body
             width: 30%         
             margin-top: 5px  
             display: flex
-            font-size: .8rem  
+            font-size: .8rem 
+            
+            @media #{$mediaSmall}
+                padding: 2rem 0 
             
             p
                 padding-top: .3rem 
@@ -92,15 +138,20 @@ body
                 color: $background 
                 background-color: $lightBlue 
                 width: 85%  
-                margin-left: 7.5%   
+                margin-left: 7.5%  
+                
+                @media #{$mediaSmall}
+                    height: 3rem  
                 
 .errors    
     color: $red 
-
     
     ul 
         margin-top: 10px    
         box-shadow: none
+        
+        @media #{$mediaSmall}
+                    margin-top: -100px  
         
         li
             text-align: center      

@@ -13,6 +13,9 @@ body {
 .content-left {
   grid-column: 1;
   text-align: center; }
+  @media (max-width: 699px) {
+    .content-left {
+      display: none; } }
   .content-left img {
     position: relative;
     width: 60%;
@@ -29,8 +32,19 @@ body {
     margin-top: 5rem;
     line-height: 1.2rem; }
 
+.img-small {
+  max-width: 30%;
+  margin-left: 35%;
+  margin-top: 10px; }
+  @media (min-width: 700px) {
+    .img-small {
+      display: none; } }
+
 .register {
   grid-column: 2; }
+  @media (max-width: 699px) {
+    .register {
+      grid-column: 1/span 2; } }
   .register ul {
     position: relative;
     width: 60%;
@@ -40,16 +54,36 @@ body {
     flex-wrap: wrap;
     box-shadow: 2px 0px 10px 2px gray;
     font-size: 1rem; }
+    @media (max-width: 699px) {
+      .register ul {
+        box-shadow: none;
+        width: 100%; } }
     .register ul li {
       width: 90%;
       margin: auto;
       margin-top: 20px; }
+      @media (max-width: 699px) {
+        .register ul li {
+          margin-top: 20px; } }
       .register ul li input {
         width: 100%;
         border: blue 1px solid;
         border-radius: 4px;
         height: 1.4rem;
-        margin-top: 7px; }
+        margin-top: 7px;
+        background-color: rgba(35, 31, 32, 0.3); }
+        @media (max-width: 699px) {
+          .register ul li input {
+            height: 2rem; } }
+    .register ul .title {
+      border-bottom: solid blue 0.5px; }
+      .register ul .title h1 {
+        color: blue;
+        padding-bottom: 1.5rem;
+        font-size: 2rem; }
+      @media (min-width: 700px) {
+        .register ul .title {
+          display: none; } }
     .register ul .name {
       width: 40%; }
     .register ul .show-password {
@@ -58,6 +92,9 @@ body {
       margin-top: 5px;
       display: flex;
       font-size: 0.8rem; }
+      @media (max-width: 699px) {
+        .register ul .show-password {
+          padding: 2rem 0; } }
       .register ul .show-password p {
         padding-top: 0.3rem;
         text-align: center; }
@@ -70,12 +107,18 @@ body {
         background-color: blue;
         width: 85%;
         margin-left: 7.5%; }
+        @media (max-width: 699px) {
+          .register ul .submit input {
+            height: 3rem; } }
 
 .errors {
   color: red; }
   .errors ul {
     margin-top: 10px;
     box-shadow: none; }
+    @media (max-width: 699px) {
+      .errors ul {
+        margin-top: -100px; } }
     .errors ul li {
       text-align: center;
       margin-top: 0; }
