@@ -1,10 +1,18 @@
-$sans: calibri
-$background: rgba( 245, 245, 245, 1) 
-$lightBlue: blue  
-$darkBlue: DarkBlue 
-$transWhite: rgba(256, 256, 256, .4) 
-$red: red  
-$boxColor: rgba(35, 31, 32, .3)
+$titleFont: 'Kohinoor Devangari Semibold' 
+$bodyFont: 'Kohinoor Devangari Regular'
+$footerFont: 'Kohinoor Devangari Light'
+$navFont: 'Arial Rounded Bold'
+$formFont: 'Sinhala Sangam MN'
+
+$offWhite: rgba( 222, 224, 224, 1) 
+$white: rgba( 230, 231, 232, 1)
+$gray: rgba(211, 211, 211, 1)
+
+$lightBlue: rgba(25, 99, 162, 1)  
+$blue: rgba(21, 87, 136, 1)
+$darkBlue: rgba(11, 69, 109, 1)
+
+$red: rgba(214, 57, 52, 1) 
 $mediaSmall: '(max-width: 699px)'
 $mediaLarge: '(min-width: 700px)' 
 
@@ -12,7 +20,7 @@ $mediaLarge: '(min-width: 700px)'
 
 body
     height: 100% 
-    background-color: $background  
+    background-color: $offWhite 
     
 .main-content
     position: static
@@ -20,7 +28,7 @@ body
     display: grid                     
     grid-template-columns: 1fr 1fr
     grid-template-rows: auto 60px        
-    font-family: $sans
+    font-family: $titleFont   
     
 
     
@@ -49,7 +57,11 @@ body
         width: 60%   
         margin: auto  
         margin-top: 5rem 
-        line-height: 1.2rem 
+        line-height: 1.2rem
+        
+        p
+            opacity: .5 
+            font-family: $bodyFont
 
 .img-small   
     max-width: 30%  
@@ -83,22 +95,27 @@ body
         li
             width: 90%
             margin: auto  
-            margin-top: 20px
+            margin-top: 20px 
+            
             
             @media #{$mediaSmall}
                 margin-top: 20px    
+            
+            p
+                opacity: .5 
+                font-family: $formFont   
     
             
             input
                 width: 100% 
-                border: $lightBlue 1px solid 
+                border: $lightBlue .5px solid 
                 border-radius: 4px  
                 height: 1.4rem  
                 margin-top: 7px 
-                background-color: $boxColor
+                background-color: $white
                 
                 @media #{$mediaSmall}
-                    height: 2rem   
+                    height: 2rem    
         
                 
         .title
@@ -135,8 +152,8 @@ body
             input
                 font-size: 1.5rem
                 height: 2.5rem   
-                color: $background 
-                background-color: $lightBlue 
+                color: $white  
+                background-color: $blue   
                 width: 85%  
                 margin-left: 7.5%  
                 
@@ -167,8 +184,9 @@ footer
     height: 100%  
     grid-row: 2 
     grid-column: 1 /span 2    
-    color: $transWhite   
-    background-color: $darkBlue 
+    color: $gray   
+    
+    background-color: $blue   
     display: flex  
     justify-content: space-between 
     font-size: .8rem 
@@ -179,6 +197,10 @@ footer
         margin-top: 25px           
         padding-left: 3%     
         margin-right: 3%  
+        
+        p
+            opacity: .5 
+            font-family: $footerFont       
                      
     
     

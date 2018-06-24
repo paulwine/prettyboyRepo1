@@ -1,6 +1,6 @@
 body {
   height: 100%;
-  background-color: whitesmoke; }
+  background-color: #dee0e0; }
 
 .main-content {
   position: static;
@@ -8,7 +8,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 60px;
-  font-family: calibri; }
+  font-family: "Kohinoor Devangari Semibold"; }
 
 .content-left {
   grid-column: 1;
@@ -31,6 +31,9 @@ body {
     margin: auto;
     margin-top: 5rem;
     line-height: 1.2rem; }
+    .content-left .about-text p {
+      opacity: 0.5;
+      font-family: "Kohinoor Devangari Regular"; }
 
 .img-small {
   max-width: 30%;
@@ -65,20 +68,23 @@ body {
       @media (max-width: 699px) {
         .register ul li {
           margin-top: 20px; } }
+      .register ul li p {
+        opacity: 0.5;
+        font-family: "Sinhala Sangam MN"; }
       .register ul li input {
         width: 100%;
-        border: blue 1px solid;
+        border: #1963a2 0.5px solid;
         border-radius: 4px;
         height: 1.4rem;
         margin-top: 7px;
-        background-color: rgba(35, 31, 32, 0.3); }
+        background-color: #e6e7e8; }
         @media (max-width: 699px) {
           .register ul li input {
             height: 2rem; } }
     .register ul .title {
-      border-bottom: solid blue 0.5px; }
+      border-bottom: solid #1963a2 0.5px; }
       .register ul .title h1 {
-        color: blue;
+        color: #1963a2;
         padding-bottom: 1.5rem;
         font-size: 2rem; }
       @media (min-width: 700px) {
@@ -103,8 +109,8 @@ body {
       .register ul .submit input {
         font-size: 1.5rem;
         height: 2.5rem;
-        color: whitesmoke;
-        background-color: blue;
+        color: #e6e7e8;
+        background-color: #155788;
         width: 85%;
         margin-left: 7.5%; }
         @media (max-width: 699px) {
@@ -112,7 +118,7 @@ body {
             height: 3rem; } }
 
 .errors {
-  color: red; }
+  color: #d63934; }
   .errors ul {
     margin-top: 10px;
     box-shadow: none; }
@@ -129,8 +135,8 @@ footer {
   height: 100%;
   grid-row: 2;
   grid-column: 1/span 2;
-  color: rgba(255, 255, 255, 0.4);
-  background-color: DarkBlue;
+  color: lightgray;
+  background-color: #155788;
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem; }
@@ -139,5 +145,8 @@ footer {
     margin-top: 25px;
     padding-left: 3%;
     margin-right: 3%; }
+    footer div p {
+      opacity: 0.5;
+      font-family: "Kohinoor Devangari Light"; }
 
 /*# sourceMappingURL=register.css.map */
