@@ -1,0 +1,136 @@
+body {
+  min-width: 300px;
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 7% 93% 5%;
+  box-sizing: border-box; }
+  @media (max-width: 699px) {
+    body {
+      background-color: #dee0e0; } }
+
+.header-large {
+  grid-row: 1;
+  background-color: #e6e7e8;
+  position: relative; }
+  @media (max-width: 699px) {
+    .header-large {
+      display: none; } }
+  .header-large img {
+    max-height: 90%;
+    top: 5%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+
+.content {
+  display: relative;
+  grid-row: 2;
+  background-color: #155788; }
+  @media (max-width: 699px) {
+    .content {
+      background-color: #dee0e0; } }
+  .content h1 {
+    width: 100%;
+    text-align: center;
+    padding: 8% 0;
+    font-size: 3.5rem;
+    font-family: "Kohinoor Devangari Semibold";
+    color: #e6e7e8; }
+    @media (max-width: 699px) {
+      .content h1 {
+        display: none; } }
+    .content h1 span {
+      font-family: "Kohinoor Devangari Light"; }
+
+@media (max-width: 699px) {
+  .header-small {
+    position: relative;
+    margin-top: 300px;
+    padding-top: 1rem;
+    display: block;
+    grid-row: 1;
+    border-bottom: 0.5px solid #1963a2;
+    width: 85%;
+    margin: auto;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: "Kohinoor Devangari Light";
+    color: #155788; } }
+.header-small h1 {
+  display: inline-block;
+  font-size: 2rem; }
+.header-small h2 {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1rem; }
+  .header-small h2 span {
+    font-family: "Kohinoor Devangari Semibold"; }
+@media (min-width: 700px) {
+  .header-small {
+    display: none; } }
+
+.flex-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5% 5% 5%;
+  box-sizing: border-box;
+  height: 40%; }
+  @media (max-width: 699px) {
+    .flex-box {
+      flex-wrap: wrap;
+      margin-top: 2rem; } }
+  .flex-box div {
+    cursor: pointer;
+    position: relative;
+    width: 20%;
+    height: 100%;
+    background-color: #e6e7e8;
+    font-family: "Arial Rounded Bold";
+    box-shadow: 2px -1px 3px 2px rgba(0, 0, 0, 0.2);
+    min-height: 200px; }
+    @media (max-width: 699px) {
+      .flex-box div {
+        width: 47%;
+        height: 100%;
+        margin-top: 3%;
+        box-shadow: none;
+        background-color: rgba(255, 255, 255, 0.8); } }
+    .flex-box div img {
+      max-height: 25%;
+      position: relative;
+      display: block;
+      top: 30.5%;
+      margin-left: auto;
+      margin-right: auto; }
+    .flex-box div p {
+      position: relative;
+      top: 37%;
+      width: 100%;
+      text-align: center; }
+    .flex-box div a {
+      color: #0b456d;
+      font-size: 1.2rem;
+      text-align: center; }
+
+footer {
+  grid-row: 3;
+  position: relative;
+  height: 50px;
+  background-color: #0b456d; }
+  footer div {
+    display: inline-block;
+    padding: 20px 20px 0 20px;
+    font-family: "Kohinoor Devangari Light";
+    color: lightgray;
+    opacity: 0.4;
+    font-size: 0.8rem; }
+  footer .right {
+    float: right; }
+
+/*# sourceMappingURL=welcome.css.map */
