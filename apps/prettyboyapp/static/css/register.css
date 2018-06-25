@@ -1,6 +1,6 @@
 body {
   height: 100%;
-  background-color: #dee0e0; }
+  background-color: #e6e7e8; }
 
 .main-content {
   position: static;
@@ -49,18 +49,20 @@ body {
     .register {
       grid-column: 1/span 2; } }
   .register ul {
+    background-color: #e6e7e8;
     position: relative;
     width: 60%;
     margin: auto;
     margin-top: 10%;
     display: flex;
     flex-wrap: wrap;
-    box-shadow: 2px 0px 10px 2px gray;
+    box-shadow: 4px 2px 10px 2px rgba(0, 0, 0, 0.2);
     font-size: 1rem; }
     @media (max-width: 699px) {
       .register ul {
         box-shadow: none;
-        width: 100%; } }
+        width: 100%;
+        background-color: #e6e7e8; } }
     .register ul li {
       width: 90%;
       margin: auto;
@@ -77,7 +79,7 @@ body {
         border-radius: 4px;
         height: 1.4rem;
         margin-top: 7px;
-        background-color: #e6e7e8; }
+        background-color: whitesmoke; }
         @media (max-width: 699px) {
           .register ul li input {
             height: 2rem; } }
@@ -120,6 +122,7 @@ body {
 .errors {
   color: #d63934; }
   .errors ul {
+    background-color: #e6e7e8;
     margin-top: 10px;
     box-shadow: none; }
     @media (max-width: 699px) {
@@ -136,7 +139,7 @@ footer {
   grid-row: 2;
   grid-column: 1/span 2;
   color: lightgray;
-  background-color: #155788;
+  background-color: #0b456d;
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem; }
