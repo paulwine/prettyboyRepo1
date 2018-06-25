@@ -3,9 +3,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-<!--   {% load static %}-->
-   <link rel="stylesheet" href="{% static 'css/default.css' %}">
+<!--
+   {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
+-->
     
     <link rel="stylesheet" href="../static/css/default.css"> 
     <link rel="stylesheet" href="../static/css/style.css">
@@ -41,11 +44,11 @@
                 <p>My Information</p></li>
 
                <li>
-               <div class = 'navimg'> <img class = 'icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+               <div class = 'navimg'> <img id = 'contact' class = 'icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
                <p>Contact</p></li>
 
                <li> 
-               <div class = 'navimg'><img class = 'icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
+               <div class = 'navimg'><img id = 'home' class = 'icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
                <p>Home</p></li>
 
            </ul>

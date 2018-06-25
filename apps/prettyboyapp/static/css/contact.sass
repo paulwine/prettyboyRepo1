@@ -1,0 +1,77 @@
+$titleFont: 'Kohinoor Devangari Semibold' 
+$bodyFont: 'Kohinoor Devangari Regular'
+$footerFont: 'Kohinoor Devangari Light'
+$navFont: 'Arial Rounded Bold'
+$formFont: 'Sinhala Sangam MN'
+
+$offWhite: rgba( 222, 224, 224, 1) 
+$white: rgba( 230, 231, 232, 1)
+$brightWhite: rgba(245, 245, 245, 1)
+$gray: rgba(211, 211, 211, 1)
+
+$lightBlue: rgba(25, 99, 162, 1)  
+$blue: rgba(21, 87, 136, 1)
+$darkBlue: rgba(11, 69, 109, 1)
+
+$red: rgba(214, 57, 52, 1) 
+$mediaSmall: '(max-width: 699px)'
+$mediaLarge: '(min-width: 700px)' 
+
+
+.body  
+    
+    form
+        width: 61%     
+        position: relative
+        margin-left: auto
+        margin-right: auto
+        
+        @media #{$mediaSmall}
+            width: 94%   
+        
+        textarea, input  
+            width: 100%
+            height: 100% 
+            border-radius: 2px
+            border: .5px $offWhite solid  
+            background-color: $brightWhite
+            color: rgba(0, 0, 0, .9)    
+            font-style: normal
+            line-height: 1.4rem  
+            font-size: 1.3rem  
+            padding-left: 10px
+            padding-right: 10px  
+            box-sizing: border-box 
+            resize: none  
+            font-family: $bodyFont  
+            
+        textarea:focus
+            outline: none   
+        
+        .subject
+            margin-top: 0px 
+            height: 1.8rem      
+            
+        .message
+            height: 300px 
+            margin-top: 5px 
+            
+        .submit-container 
+            position: relative   
+            width: 50%  
+            height: 30px    
+            margin-left: auto
+            margin-right: auto
+            margin-top: 5px 
+            
+            .submit
+                font-style: normal
+                font-family: $titleFont  
+                color: $white
+                background-color: $blue
+                border-radius: 4px  
+            
+        
+            
+
+                

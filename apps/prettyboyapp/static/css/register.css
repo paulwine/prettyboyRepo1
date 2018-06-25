@@ -29,7 +29,8 @@ body {
   .content-left .about-text {
     width: 60%;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 2rem;
+    font-style: normal;
     line-height: 1.2rem; }
     .content-left .about-text p {
       opacity: 0.5;

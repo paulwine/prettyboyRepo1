@@ -23,10 +23,13 @@ nav
     height: 10%
     font-family: $navFont
     
+    @media #{$mediaLarge}
+        height: 0  
+    
     
 .side-nav
     position: absolute
-    width: 30%
+    width: 30%   
     min-width: 250px
     min-height: 100%
     background-color: $blue          
@@ -35,6 +38,9 @@ nav
     top: 0
     transition: all .2s cubic-bezier(0.4, 0.0, 1, 1) 0s
     font-family: $navFont
+    
+    @media #{$mediaSmall}
+        width: 60%   
 
 .user
     position: relative
