@@ -1,0 +1,91 @@
+body {
+  min-width: 840px;
+  box-sizing: border-box; }
+
+.body header .container h1 {
+  font-size: 1rem;
+  width: 55%;
+  margin-top: 1.3rem; }
+.body .rides {
+  position: static;
+  width: 65%;
+  display: block;
+  margin: auto;
+  font-family: "Kohinoor Devangari Regular"; }
+  .body .rides .approved {
+    height: auto;
+    box-sizing: border-box; }
+    .body .rides .approved h2 {
+      background-color: green; }
+  .body .rides .pending {
+    margin-top: 50px; }
+    .body .rides .pending h2 {
+      background-color: #d5dc48; }
+  .body .rides .declined {
+    margin-top: 50px; }
+    .body .rides .declined h2 {
+      background-color: #d63934; }
+  .body .rides div h2 {
+    color: #e6e7e8;
+    font-family: "Kohinoor Devangari Regular";
+    padding: 0.3rem 0;
+    box-sizing: border-box;
+    font-size: 1.4rem;
+    text-align: center;
+    width: 100%; }
+  .body .rides div ul {
+    background-color: whitesmoke;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    width: 100%;
+    height: auto; }
+    .body .rides div ul li {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 15px;
+      box-sizing: border-box;
+      height: auto;
+      font-size: 1rem; }
+      .body .rides div ul li div {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        box-sizing: border-box; }
+      .body .rides div ul li .visible {
+        position: relative;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        display: flex;
+        justify-content: space-between; }
+      .body .rides div ul li .info-under {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box; }
+        .body .rides div ul li .info-under div {
+          display: block;
+          box-sizing: border-box; }
+          .body .rides div ul li .info-under div h3 {
+            border-bottom: 0.5px solid #1963a2;
+            padding-bottom: 3px;
+            box-sizing: border-box;
+            opacity: 0.8; }
+          .body .rides div ul li .info-under div p {
+            padding-top: 3px;
+            padding-bottom: 8px;
+            box-sizing: border-box; }
+        .body .rides div ul li .info-under .one-way {
+          display: flex;
+          justify-content: space-between;
+          width: 60%; }
+          .body .rides div ul li .info-under .one-way h3 {
+            display: inline-block;
+            border-bottom: none;
+            padding-top: 0.6rem !important; }
+
+/*# sourceMappingURL=manage.css.map */
