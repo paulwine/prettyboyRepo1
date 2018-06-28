@@ -11,6 +11,7 @@ nav {
   top: 0;
   width: 30%;
   min-width: 250px;
+  min-height: 550px;
   height: 100%;
   background-color: #155788;
   font-size: 1rem;
@@ -23,7 +24,7 @@ nav {
   @media (max-width: 699px) {
     .side-nav {
       width: 60%; } }
-  @media (min-height: 600px) {
+  @media (min-height: 550px) {
     .side-nav {
       position: fixed; } }
 

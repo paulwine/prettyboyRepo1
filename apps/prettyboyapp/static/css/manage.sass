@@ -47,6 +47,9 @@ body
         display: block
         margin: auto
         font-family: $bodyFont
+        
+        @media #{$mediaSmall}
+            width: 95%   
 
 
            
@@ -143,7 +146,25 @@ body
                             h3
                                 display: inline-block  
                                 border-bottom: none
-                                padding-top: .6rem !important  
+                                padding-top: .6rem !important 
+                                    
+    form
+        width: 100%   
+        button
+            background-color: $red    
+            color: $white   
+            font-family: $navFont  
+            font-size: 1rem      
+            box-sizing: border-box
+            padding: 5px 15px    
+            position: relative
+            display: block
+            margin-left: auto
+            margin-right: auto
+            border-radius: 8px 
+            cursor: pointer    
+            
+            
                 
 .no-rides
     background-color: $gray  

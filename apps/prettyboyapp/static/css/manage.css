@@ -21,6 +21,9 @@ body {
   display: block;
   margin: auto;
   font-family: "Kohinoor Devangari Regular"; }
+  @media (max-width: 699px) {
+    .body .rides {
+      width: 95%; } }
   .body .rides .approved {
     height: auto;
     box-sizing: border-box; }
@@ -96,6 +99,21 @@ body {
             display: inline-block;
             border-bottom: none;
             padding-top: 0.6rem !important; }
+.body form {
+  width: 100%; }
+  .body form button {
+    background-color: #d63934;
+    color: #e6e7e8;
+    font-family: "Arial Rounded Bold";
+    font-size: 1rem;
+    box-sizing: border-box;
+    padding: 5px 15px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    cursor: pointer; }
 
 .no-rides {
   background-color: lightgray;
