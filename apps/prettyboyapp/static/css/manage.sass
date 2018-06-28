@@ -21,8 +21,11 @@ $mediaSmall: '(max-width: 699px)'
 $mediaLarge: '(min-width: 700px)'
 
 body
-    min-width: 840px  
-    box-sizing: border-box   
+      
+    box-sizing: border-box 
+    
+    @media #{$mediaLarge}
+        min-width: 840px  
 .body   
     header
         .container           
@@ -147,12 +150,15 @@ body
     font-family: $navFont
     color: $lightBlue   
     font-size: 1.3rem  
-    width: 500px     
+    width: 70%        
     height: 100px
     position: relative
     display: block
     margin-left: auto
-    margin-right: auto     
+    margin-right: auto 
+    
+    @media #{$mediaSmall}
+        width: 95%    
 
     
     h2

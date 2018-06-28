@@ -1,6 +1,8 @@
 body {
-  min-width: 840px;
   box-sizing: border-box; }
+  @media (min-width: 700px) {
+    body {
+      min-width: 840px; } }
 
 .body header .container h1 {
   position: relative;
@@ -100,12 +102,15 @@ body {
   font-family: "Arial Rounded Bold";
   color: #1963a2;
   font-size: 1.3rem;
-  width: 500px;
+  width: 70%;
   height: 100px;
   position: relative;
   display: block;
   margin-left: auto;
   margin-right: auto; }
+  @media (max-width: 699px) {
+    .no-rides {
+      width: 95%; } }
   .no-rides h2 {
     border: rgba(0, 0, 0, 0) solid 1px;
     width: 100%;
