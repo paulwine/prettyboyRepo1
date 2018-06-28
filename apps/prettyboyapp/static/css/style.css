@@ -31,6 +31,6 @@ url("fonts/Arial Rounded Bold.ttf") format("truetype"),
 @font-face {
 font-family: "Sinhala Sangam MN";
 src: url("fonts/Sinhala-Sangam-MN.ttc");
-src: 
+src:  
 url("fonts/Sinhala Sangam MN.ttc") format("truetype"), 
 }

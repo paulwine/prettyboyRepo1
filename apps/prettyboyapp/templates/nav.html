@@ -2,74 +2,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-<!--
+
+    <!--
    {% load static %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
 -->
-    
-    <link rel="stylesheet" href="../static/css/default.css"> 
+
+    <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/nav.css">
-    
+
 </head>
-  
-   <nav>
-     
-     <div class = 'gradient'></div>
-     
-     <div class = 'navbar-small'>
-         <div class = 'navbar-top open-nav' onclick="navOut()"><img  class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
 
-         <div class = 'navbar-top parrot'><img class= 'navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div> 
+<nav>
 
-         <div class = 'logout-small navbar-top'>Logout</div>    
-     </div>
-     
-      
-      <div class = 'side-nav hidden' id = 'side-nav'>
-          
-           <ul>
-               <li class="exit"><div class = 'navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div></li>
-               
-                <div class = 'user'><h2><span>Firstname</span> Lastname</h2></div>
-                
-                <li><div class = 'navimg'><img class = 'icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
-                <p>Schedule Ride</p></li>
+    <div class='gradient'></div>
+
+    <div class='navbar-small'>
+        <div class='navbar-top open-nav' onclick="navOut()"><img class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
+
+        <div class='navbar-top parrot'><img class='navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div>
+
+        <div class='logout-small navbar-top'>Logout</div>
+    </div>
 
 
-                <li><div class = 'navimg'><img class = 'icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
-                <p>My Information</p></li>
+    <div class='side-nav hidden' id='side-nav'>
 
-               <li>
-               <div class = 'navimg'> <img id = 'contact' class = 'icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
-               <p>Contact</p></li>
+        <ul>
+            <li class="exit">
+                <div class='navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div>
+            </li>
 
-               <li> 
-               <div class = 'navimg'><img id = 'home' class = 'icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
-               <p>Home</p></li>
+            <div class='user'>
+                <h2><span>Firstname</span> Lastname</h2>
+            </div>
 
-           </ul>
-           
-            <footer>
-               
-               <div class = 'logout'>Logout</div>
-               <div class = 'phone-number'>Phone: <span>248.547.7859</span></div>
-               
-               <div class = 'copyright'>&copy;2018 Papuga Transportation</div>
-                
-            </footer>
-            <script src = '../static/js/nav.js'>
-    
-            </script>
-       </div>
-   </nav>
-   
-   
-    
+            <li>
+                <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
+                <p>Schedule Ride</p>
+            </li>
 
 
+            <li>
+                <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
+                <p>My Information</p>
+            </li>
+
+            <li>
+                <div class='navimg'> <img id='contact' class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+                <p>Contact</p>
+            </li>
+
+            <li>
+                <div class='navimg'><img id='home' class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
+                <p>Home</p>
+            </li>
+
+        </ul>
+
+        <footer>
+
+            <div class='logout'>Logout</div>
+            <div class='phone-number'>Phone: <span>248.547.7859</span></div>
+
+            <div class='copyright'>&copy;2018 Papuga Transportation</div>
+
+        </footer>
+        <script src='../static/js/nav.js'>
 
 
+        </script>
+    </div>
+</nav>

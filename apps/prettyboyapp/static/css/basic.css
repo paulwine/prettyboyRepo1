@@ -12,7 +12,7 @@ body {
   .body header {
     padding-top: 40px;
     position: relative;
-    display: block;
+    display: block; 
     width: 58%;
     margin-left: auto;
     margin-right: auto;
@@ -50,5 +50,3 @@ body {
         @media (max-width: 699px) {
           .body header .container h1 {
             float: left; } }
-
-/*# sourceMappingURL=basic.css.map */

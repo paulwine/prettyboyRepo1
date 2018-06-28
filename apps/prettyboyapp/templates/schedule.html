@@ -1,90 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <!--
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" >
+-->
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/schedule-ride.css">
+
+
+    <title>My Rides</title>
 </head>
+
 <body>
-    <h1>Schedule Ride</h1>
-    <form action ="/submit_ride" method="post">
-        {% csrf_token %}
-        <div>
-            <!-- Pick Up -->
+    <nav>
+
+        <div class='gradient'></div>
+
+        <div class='navbar-small'>
+            <div class='navbar-top open-nav' onclick="navOut()"><img class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
+
+            <div class='navbar-top parrot'><img class='navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div>
+
+            <div class='logout-small navbar-top'>Logout</div>
+        </div>
+
+
+        <div class='side-nav hidden' id='side-nav'>
+
+            <ul>
+                <li tab-index='1' class="exit">
+                    <div class='navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div>
+                </li>
+
+                <div class='user'>
+                    <h2><span>Firstname</span> Lastname</h2>
+                </div>
+
+                <li tabindex="2">
+                    <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
+                    <p>Schedule Ride</p>
+                </li>
+
+
+                <li tabindex="3">
+                    <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
+                    <p>My Information</p>
+                </li>
+
+                <li tabindex="4" id='this-page'>
+                    <div class='navimg'> <img class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+                    <p>Contact</p>
+                </li>
+
+                <li tabindex="5">
+                    <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
+                    <p>Manage Rides</p>
+                </li>
+
+                <li tabindex="6">
+                    <div class='navimg'><img class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
+                    <p>Home</p>
+                </li>
+
+            </ul>
+
+            <footer>
+
+                <div tabindex="7" class='logout'>Logout</div>
+                <div class='phone-number'>Phone: <span>248.547.7859</span></div>
+
+                <div class='copyright'>&copy;2018 Papuga Transportation</div>
+
+            </footer>
+            <script src='../static/js/nav.js'>
+
+
+            </script>
+        </div>
+    </nav>
+
+    <div class='body'>
+        <header>
+            <div class='container'>
+
+                <img src="../static/img/Icons/PapugaLogo.png" alt="">
+                <h1>Manage Rides</h1>
+
+            </div>
+        </header>
+
+        <form action="/submit_ride" method="post">
+            <!--        {% csrf_token %}-->
             <h2>Pick-Up</h2>
             <div>
-                <p>Date</p>
-                <input type="date" name="pickup_datetime">
+                <!-- Pick Up -->
+
+                <div class='half'>
+
+                    <div>
+                        <p>Date</p>
+                        <input type="date" name="pickup_datetime">
+                    </div>
+                    <div>
+                        <p>Appointment Time</p>
+                        <input type="time" name="appointment_time">
+                    </div>
+                </div>
+                <div>
+                    <p>Address</p>
+                    <input type="text" name="pickup_address">
+                </div>
+
+                <div class='half'>
+
+                    <div>
+                        <p>City</p>
+                        <input type="text" name="pickup_city">
+                    </div>
+                    <div>
+                        <p>Room Number</p>
+                        <input type="text" name="pickup_room">
+                    </div>
+
+                </div>
+                <div>
+                    <p>Facility Name</p>
+                    <input type="text" name="pickup_facility">
+                </div>
+                <div>
+                    <p>Facility Contact Number</p>
+                    <input type="text" name="pickup_number">
+                </div>
             </div>
-            <div>
-                <p>Appointment Time</p>
-                <input type="time" name ="appointment_time">
-            </div>
-            <div>
-                <p>Address</p>
-                <input type="text" name="pickup_address" >
-            </div>
-            <div>
-                <p>City</p>
-                <input type="text" name="pickup_city">
-            </div>
-            <div>
-                <p>Room Number</p>
-                <input type="text" name="pickup_room">
-            </div>
-            <div>
-                <p>Phone Number</p>
-                <input type="text" name="pickup_number">
-            </div>
-        </div>
-        <!-- Drop Off -->
-        <div>
+            <!-- Drop Off -->
             <h2>Drop Off</h2>
             <div>
-               <p>Address</p>
-                <input type="text" name="dropoff_address">
+                <div>
+                    <p>Address</p>
+                    <input type="text" name="dropoff_address">
+                </div>
+
+                <div class='half'>
+
+                    <div>
+                        <p>City</p>
+                        <input type="text" name="dropoff_city">
+                    </div>
+                    <div>
+                        <p>Room Number</p>
+                        <input type="text" name="dropoff_room">
+                    </div>
+
+                </div>
+
+                <div>
+                    <p>Facility Contact Number</p>
+                    <input type="text" name="dropoff_phone">
+                </div>
+
+                <div>
+                    <p>Name of Doctor</p>
+                    <input type="text" name="doctor_name">
+                </div>
+
+                <div>
+                    <p>Doctor Suite Number</p>
+                    <input type="text" name="doctor_room">
+                </div>
+
+                <div>
+                    <p>Doctor Office Number</p>
+                    <input type="text" name="doctor_number">
+                </div>
             </div>
-            <div>
-                <p>City</p>
-                <input type="text" name="dropoff_city">
-            </div>
-            <div>
-                <p>Room Number</p>
-                <input type="text" name="dropoff_room">
-            </div>
-            <div>
-                <p>Facility Contact Number</p>
-                <input type="text" name="dropoff_phone">
-            </div>
-        </div>
-        <!-- Person To Accompany -->
-        <div>
+            <!-- Person To Accompany -->
             <h2>Person to Accompany</h2>
             <div>
-                <p>Name</p>
-                <input type="text" name="accompany_name">
+                <div>
+                    <p>Name</p>
+                    <input type="text" name="accompany_name">
+                </div>
+                <div>
+                    <p>Contact Number</p>
+                    <input type="text" name="accompany_number">
+                </div>
             </div>
-            <div>
-                <p>Contact Number</p>
-                <input type="text" name="accompany_number">
-            </div>
-        </div>
-        <!-- Trip Details -->
-        <div>
+            <!-- Trip Details -->
             <h2>Trip Details</h2>
             <div>
-                <input type="checkbox" name="ambulatory" value="Ambulatory">
-                <input type="checkbox" name="wheelchair_bound" value="Wheelchair-Bound">
-                <input type="checkbox" name="round_trip" value="Round-Trip">
-                <input type="checkbox" name="one_way" value="One-Way">
-                <p>Appointment Duation (Hours)</p>
-                <input type="number" name="duration">
-                <p>Additional Notes</p>
-                <textarea name="notes"></textarea>
+                <div>
+                    <div class="checkboxes">
+
+                        <div>
+                            <input type="checkbox" name="ambulatory" value="Ambulatory">
+                            <p>Ambulatory</p>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="wheelchair_bound" value="Wheelchair-Bound">
+                            <p>Wheelchair Bound</p>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="one_way" value="One-Way">
+                            <p>One Way</p>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="round_trip" value="Round-Trip">
+                            <p>Round-Trip</p>
+                        </div>
+
+                    </div>
+                    <div>
+                        <p>Appointment Duation</p>
+                        <input type="number" name="duration">
+                    </div>
+
+                    <div class='notes'>
+                        <p>Additional Notes</p>
+                        <textarea name="notes"></textarea>
+                    </div>
+                </div>
             </div>
-        </div>
-        <input type="submit" value="Request Ride">
-    </form>
+
+            <input id='submit' type="submit" value="Request Ride">
+        </form>
+
+    </div>
 </body>
+
 </html>
