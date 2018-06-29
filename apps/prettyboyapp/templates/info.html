@@ -1,20 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <!--
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" >
+-->
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/schedule-ride.css">
+
 </head>
+
 <body>
-    <h1>Info</h1>
-    <h2>Name</h2>
-    <p>{{user.first_name}}  {{user.last_name}}</p>
-    <h2>Phone</h2>
-    <p>{{user.phone}}</p>
-    <h2>Email</h2>
-    <p>{{user.email}}</p>
-    <h2>Address</h2>
-    <p>{{user.primary_address}}</p>
+    <nav>
+
+        <div class='gradient'></div>
+
+        <div class='navbar-small'>
+            <div class='navbar-top open-nav' onclick="navOut()"><img class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
+
+            <div class='navbar-top parrot'><img class='navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div>
+
+            <div class='logout-small navbar-top'>Logout</div>
+        </div>
+
+
+        <div class='side-nav hidden' id='side-nav'>
+
+            <ul>
+                <li tab-index='1' class="exit">
+                    <div class='navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div>
+                </li>
+
+                <div class='user'>
+                    <h2><span>Firstname</span> Lastname</h2>
+                </div>
+
+                <li tabindex="2">
+                    <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
+                    <p>Schedule Ride</p>
+                </li>
+
+
+                <li id='this-page' tabindex="3">
+                    <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
+                    <p>My Information</p>
+                </li>
+
+                <li tabindex="4">
+                    <div class='navimg'> <img class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+                    <p>Contact</p>
+                </li>
+
+                <li tabindex="5">
+                    <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
+                    <p>Manage Rides</p>
+                </li>
+
+                <li tabindex="6">
+                    <div class='navimg'><img class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
+                    <p>Home</p>
+                </li>
+
+            </ul>
+
+            <footer>
+
+                <div tabindex="7" class='logout'>Logout</div>
+                <div class='phone-number'>Phone: <span>248.547.7859</span></div>
+
+                <div class='copyright'>&copy;2018 Papuga Transportation</div>
+
+            </footer>
+            <script src='../static/js/nav.js'>
+
+
+            </script>
+        </div>
+    </nav>
+    <div class='body'>
+        <header>
+            <div class='container'>
+
+                <img src="../static/img/Icons/PapugaLogo.png" alt="">
+                <h1>My Information</h1>
+
+            </div>
+        </header>
+
+        <form action="/submit_ride" method="post">
+            <!--        {% csrf_token %}-->
+            <div>
+                <div class='half'>
+
+                    <div>
+                        <p>First Name</p>
+                        <input type="date" name="first-name">
+                    </div>
+                    <div>
+                        <p>Last Name</p>
+                        <input type="time" name="last-name">
+                    </div>
+                </div>
+                <div>
+                    <p>Facility Name</p>
+                    <input type="text" name="facility-name">
+                </div>
+
+                <div>
+                    <p>Facility Address</p>
+                    <input type="text" name='pickup-address'>
+                </div>
+                <div class='half'>
+
+                    <div>
+                        <p>City</p>
+                        <input type="text" name="pickup_city">
+                    </div>
+                    <div>
+                        <p>Room Number</p>
+                        <input type="text" name="pickup_room">
+                    </div>
+
+                </div>
+                <div>
+                    <p>Facility Contact Number</p>
+                    <input type="text" name="pickup_number">
+                </div>
+
+                <div class='checkboxes'>
+                    <div>
+                        <input type="checkbox" name='private-pay'>
+                        <p>Private Pay</p>
+                    </div>
+                    <div> <input type="checkbox">
+                        <p>Facility Pay</p>
+                    </div>
+                </div>
+            </div>
+            
+<!--            FIXME link to welcome page-->
+<!--            FIXME should flash a message at the top of welcome and say 'your information has been updated!'-->
+           
+            <a href="welcome page"></a>
+            <input type="submit" id = submit value = 'Save Information'>
+
+        </form>
+
+    </div>
+
+
 </body>
+
 </html>
