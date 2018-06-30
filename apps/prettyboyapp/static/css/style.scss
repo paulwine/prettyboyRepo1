@@ -1,0 +1,22 @@
+$whiteNavColor: rgba(256, 256, 256, .7);
+$navBlue: rgba(24, 100, 163, 1);
+$backgroundColor: rgba(222, 224, 224, 1);
+$gradientGray: rgba(80,80,80, .6);
+$mediaLarge: '(min-width: 575px)';
+$mediaSmall: '(max-width: 574px)';
+
+body{
+    background-color: $backgroundColor;  
+    position: absolute;
+    
+    @media #{$mediaLarge}{
+        right: 0;
+    }
+}
+
+.body-content{
+    position: absolute;
+    width: 50%;
+    right: 0;
+    padding-top: 60px;
+}

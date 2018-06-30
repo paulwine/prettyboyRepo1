@@ -32,5 +32,5 @@ class Ride(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
-    user = models.ForeignKey(User, related_name="rides")
+    user = models.ForeignKey(User, related_name="rides", on_delete=models.CASCADE)
 

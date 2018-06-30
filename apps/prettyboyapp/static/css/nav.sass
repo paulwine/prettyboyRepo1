@@ -1,0 +1,243 @@
+$titleFont: 'Kohinoor Devangari Semibold' 
+$bodyFont: 'Kohinoor Devangari Regular'
+$footerFont: 'Kohinoor Devangari Light'
+$navFont: 'Arial Rounded Bold'
+$formFont: 'Sinhala Sangam MN'
+
+$offWhite: rgba( 222, 224, 224, 1) 
+$white: rgba( 230, 231, 232, 1)
+$gray: rgba(211, 211, 211, 1)
+
+$lightBlue: rgba(25, 99, 162, 1)  
+$blue: rgba(21, 87, 136, 1)
+$darkBlue: rgba(11, 69, 109, 1)
+
+$red: rgba(214, 57, 52, 1) 
+$mediaSmall: '(max-width: 699px)'
+$mediaLarge: '(min-width: 700px)'  
+
+
+
+nav
+    width: 100%
+    height: 10%    
+    
+    font-family: $navFont
+    
+    @media #{$mediaLarge}
+        height: 0  
+    
+    
+.side-nav
+    position: absolute             
+    top: 0  
+    width: 30%   
+    min-width: 250px
+    min-height: 550px   
+    height: 100%        
+    background-color: $blue          
+    font-size: 1rem  
+    color: $white 
+    top: 0
+    transition: all .2s cubic-bezier(0.4, 0.0, 1, 1) 0s
+    font-family: $navFont
+    color: $white 
+    z-index: 100   
+    
+    @media #{$mediaSmall}
+        width: 60% 
+    @media (min-height: 550px)      
+        position: fixed  
+
+.user
+    position: relative
+    width: 80%   
+    height: 50px      
+    margin: 0 auto 20px auto
+    text-align: center
+    border-bottom: 1px $white solid
+    padding-bottom: 1rem  
+    
+    
+    h2
+        font-size: 1.5rem   
+        padding-top: 10px    
+        color: $white
+        font-family: $titleFont
+  
+        
+    span
+        color: $white
+        font-family: $footerFont   
+        
+    
+    @media #{$mediaLarge}
+        height: 100px
+        h2
+            padding-top: 60px    
+
+    
+.navimg
+    position: relative
+    width: 20%
+    text-align: center
+    margin-right: 20px    
+    padding-left: 17%     
+    height: 100%
+    cursor: pointer
+    padding-top: 10px   
+    
+
+.icon 
+    max-width: 100%     
+    max-height: 70%
+
+    
+.scheduleimg
+    margin-left: 7px
+    max-height: 90%
+    margin-top: -10px   
+
+
+
+ul
+    padding: 0 1rem 3rem 1rem   
+    
+    li
+        margin-bottom: 1.5rem 
+        display: flex
+        height: 60px
+        
+        p
+            margin-top: auto
+            margin-bottom: auto 
+            cursor: pointer 
+            font-size: .8rem  
+    
+.exit    
+    width: 30% 
+    
+    @media #{$mediaLarge}
+        display: none  
+
+    img
+        width: 100% 
+        text-align: left 
+        padding-top: 40px  
+        max-height: 100%         
+    
+    
+.open-nav
+    padding-top: 1rem
+    width: 150px
+    text-align: left
+    padding-left: 5%
+    cursor: pointer
+    
+.hidden
+    transform: translateX(-100%)
+    transition: all .2s cubic-bezier(0.0, 0.0, 0.2, 1) 0s
+    
+    @media #{$mediaLarge}
+        transform: none
+
+        
+    
+    
+.navbar-img
+    height: auto
+    width: auto
+    max-height: 100%
+    max-width: 100%
+     
+.lines
+    max-width: 50%
+    
+    
+.gradient
+    position: absolute  
+    height: 150%    
+    width: 100% 
+    pointer-events: none
+    transition: all .2s linear 0s
+    z-index: 99   
+    @media #{$mediaLarge}
+        display: none 
+
+.applied-gradient
+    background-color: rgba(24, 24, 24, .5)
+    transition: all .2s linear 0s 
+    
+
+.navbar-top
+    width: 15%   
+    color: $blue 
+
+  
+
+.navbar-small
+    @media #{$mediaLarge}
+        display: none    
+     
+    positon: absolute
+    display: flex  
+    justify-content: space-between 
+    width: 100%
+    height: 50px 
+    padding-top: 20px  
+
+.logout-small
+    padding-top: 1rem 
+    padding-right: 15px   
+
+     
+        
+footer
+    position: absolute   
+    bottom: 0  
+    height: 60px     
+    width: 100%   
+    text-align: center
+    padding-top: 15px
+    background-color: $darkBlue    
+    color: $white  
+    font-size: .8rem   
+    font-family: $footerFont
+    
+    div
+        opacity: .5  
+    
+.phone-number, .logout 
+    display: inline-block 
+     
+.phone-number
+    padding-left: 15px
+
+.logout
+    padding-right: 15px
+    border-right: $white solid 1px   
+    
+    @media #{$mediaSmall}
+        display: none
+    
+.copyright
+    padding-top: 15px 
+    color: $white     
+
+.logout-small
+    font-family: sans-serif 
+    position: relative
+    text-align: right  
+//    border: black solid 1px 
+
+#this-page
+    display: none
+    
+    
+
+    
+    
+    
+    
+    
+    

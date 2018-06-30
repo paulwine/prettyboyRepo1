@@ -1,38 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">  
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+    <!--
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <div>
-        <h1>Login</h1>
-        <div id="logindiv">
-            <form action="/login" method="post">
-                {% csrf_token %}
-                <p>Email: <input type="text" name ="email_log"></p>
-                <p>Password: <input type="password" name ="password_log" id="myInput"></p>
-                <p><input type="checkbox" onclick="myFunction()">Show Password</p>
-                <input type="submit">
-            </form>
-            <a href="/registerpage">Register</a>
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/register.css' %}" >
+-->
+
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link rel="stylesheet" href="../static/css/landing.css">
+
+    <title>Papuga Transportation</title>
+
+
+    <body>
+        <div class='view-one'>
+            <div class="container">
+
+                <img src="../static/img/Icons/PapugaLogo.png" alt="Papuga Logo">
+                <h1>Papuga Transportation</h1>
+                <div>
+                    <div>Sign-Up</div>
+                    <div>Login</div>
+                </div>
+                <div>Scroll</div>
+            </div>
+
         </div>
-        
-    </div>
-</body>
-<script>
-    function myFunction() {
-    var x = document.getElementById("myInput");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
-    }
-}
-</script>
+
+        <div class="view-two">
+            <h2></h2>
+            <p></p>
+        </div>
+
+        <div class="view-three">
+
+            <div class='main-content'>
+                <div class='main content-left'>
+                    <img src="../static/img/Icons/PapugaLogo.png" alt="papuga logo">
+                    <h1>Papuga transportation</h1>
+
+                    <div class='about-text'>
+                        <p>From here to there, with pride and care</p>
+                    </div>
+                </div>
+
+
+
+                <!-- login  -->
+                <div class="main register">
+                    <form action="/login" method="post">
+                        <!--                        {% csrf_token %}-->
+                        <ul class="register-form">
+
+                            <li><input type="text" name="email_log" value="Email"></li>
+                            <li><input type="password" name="password_log" id="myInput"></li>
+                            <li class='show-password'><input type="checkbox" onclick="myFunction()">Show Password
+                            </li>
+                            <li class="submit">
+                                <input type="submit" value="Sign In">
+                            </li>
+                        </ul>
+                    </form>
+                    <a href="/registerpage">Register</a>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
 </html>

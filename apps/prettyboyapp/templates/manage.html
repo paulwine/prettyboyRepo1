@@ -1,16 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>   
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+<!--
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/manage.css' %}" >
+-->
+    <link rel="stylesheet" href="../static/css/default.css">  
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/manage.css">
+    
+
+    <title>My Rides</title>
 </head>
 <body>
-    <h1>Manage Rides</h1>
-    {% for ride in rides %}
-    <p>{{ride.pickup_datetime}}</p>
-    {% endfor %}
-</body>
+<nav>
+     
+     <div class = 'gradient'></div>
+     
+     <div class = 'navbar-small'>
+         <div class = 'navbar-top open-nav' onclick="navOut()"><img  class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
 
+         <div class = 'navbar-top parrot'><img class= 'navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div> 
+
+         <div class = 'logout-small navbar-top'>Logout</div>    
+     </div>
+     
+      
+      <div class = 'side-nav hidden' id = 'side-nav'>
+          
+           <ul>
+               <li tab-index='1' class="exit"><div class = 'navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div></li>
+               
+                <div class = 'user'><h2><span>Firstname</span> Lastname</h2></div>
+                
+                <li tabindex="2"><div class = 'navimg'><img class = 'icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
+                <p>Schedule Ride</p></li>
+
+
+                <li tabindex="3"><div class = 'navimg'><img class = 'icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
+                <p>My Information</p></li>
+
+               <li tabindex="4" id = 'this-page'>
+               <div  class = 'navimg'> <img class = 'icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+               <p>Contact</p></li>
+               
+               <li tabindex="5"> <div class = 'navimg'><img id = 'manage-rides' class = 'icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
+               <p>Manage Rides</p></li>
+
+               <li tabindex="6"> 
+               <div class = 'navimg'><img class = 'icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
+               <p>Home</p></li>
+
+           </ul>
+           
+            <footer>
+               
+               <div tabindex="7" class = 'logout'>Logout</div>
+               <div class = 'phone-number'>Phone: <span>248.547.7859</span></div>
+               
+               <div class = 'copyright'>&copy;2018 Papuga Transportation</div>
+                
+            </footer>
+            <script src = '../static/js/nav.js'>
+    
+            </script>
+       </div>
+   </nav>
+    
+<div  class = 'body'>
+    <header>
+       <div class = 'container'>
+           
+        <img src="../static/img/Icons/PapugaLogo.png" alt="">        
+        <h1>Manage Rides</h1>
+        
+       </div>
+    </header>  
+    
+<!-- {% if length of rides > 0 display this div %} -->
+    <div style = 'display: visible' class = 'rides'>
+      
+        <div class = 'approved'>
+            <h2>Approved</h2>
+
+        <ul>
+
+    <!--
+                {% for ride in rides %}
+                       {% if ride is approved %}
+    -->
+
+               <li>        
+                <div class = 'visible'>
+                    <p>{{date, time}}</p>
+                    <p>{{pickup address}}</p>
+                    <p tabindex="8" class = 'details'>Details <span class = 'arrow'>&and;</span></p>
+                </div>
+                <div class = 'info-under'>
+                   <div>
+
+                    <h3>Appointment Time</h3>
+                    <p>{{appointment_time}}</p>
+
+                   </div>
+
+                   <div>
+
+                       <h3>Scheduled Pick-up Time</h3>
+                       <p>{{pickup_time}}</p>
+                   </div>
+
+                   <div>
+                       <h3>Pick-up Address</h3> 
+                       <p>{{pickup_address}}</p>
+                   </div>
+                   <div class = 'one-way'>  
+                       <h3>{{one way?}}</h3>
+                       <h3>{{ambulatory?}}</h3>
+                   </div>  
+                </div>
+
+                <form  action="">
+                    <button tabindex="9" type = submit value = "Cancel_Ride">Cancel Ride</button>
+                </form>
+
+            </li> 
+
+        <!--        {% endfor %}-->
+
+        </ul>
+
+        </div>
+
+        <div class = 'pending'>
+            <h2>Pending</h2>
+        <ul>
+
+        <!--        {% for ride in rides %}-->
+    <!--       {% if ride is pending %} -->
+            <li>
+                <div class = 'visible'>
+                    <p>{{date, time}}</p>
+                    <p>{{pickup address}}</p>
+                    <p tabindex="10" class = 'details'>Details <span class = 'arrow'>&and;</span></p>
+                </div>
+
+                <div class = 'info-under'>
+                   <div>
+
+                    <h3>Appointment Time</h3>
+                    <p>{{appointment_time}}</p>
+
+                   </div>
+
+                   <div>
+
+                       <h3>Scheduled Pick-up Time</h3>
+                       <p>{{pickup_time}}</p>
+                   </div>
+
+                   <div>
+                       <h3>Pick-up Address</h3>
+                       <p>{{pickup_address</p>
+                   </div>
+                    <div class = 'one-way'>
+                        
+                       <h3>{{one way?}}</h3>
+                       <h3>{{ambulatory?}}</h3>
+                    </div>
+                </div>
+
+                <form action="">
+                    <button tabindex="11" type = submit value = "Cancel_Ride">Cancel Ride</button>
+                </form>
+
+            </li> 
+
+        <!--        {% endfor %}-->
+
+        </ul>
+
+        </div>
+
+        <div class = 'declined'>
+            <h2>Declined</h2>
+        <ul>
+
+        <!--        {% for ride in rides %}-->
+    <!--       {% if ride is declined %}}-->
+            <li>
+                <div class = 'visible'>
+                    <p>{{date, time}}</p>
+                    <p>{{pickup address}}</p>
+                    <p tabindex="12" class = 'details'>Details <span class = 'arrow'>&and;</span></p>
+                </div>
+
+                <div class = 'info-under'>
+                   <div>
+
+                    <h3>Appointment Time</h3>
+                    <p>{{appointment_time}}</p>
+
+                   </div>
+
+                   <div>
+
+                       <h3>Scheduled Pick-up Time</h3>
+                       <p>{{pickup_time}}</p>
+                   </div>
+
+                   <div>
+                       <h3>Pick-up Address</h3>
+                       <p>{{pickup_address</p>
+                   </div>
+
+                    <div class = 'one-way'>
+                        
+                       <h3>{{one way?}}</h3>
+                       <h3>{{ambulatory?}}</h3>
+                    </div>
+                </div>
+
+                <form action="">
+                    <button tabindex="12" type = submit value = "Cancel_Ride">Cancel Ride</button>
+                </form>
+
+            </li> 
+
+        <!--        {% endfor %}-->
+
+        </ul>
+
+        </div>
+
+
+    
+    </div>
+<!--
+ 
+{% endif %}
+   
+{% if length of rides == 0 display this div %}
+-->
+    <div class = 'no-rides'>
+            <h2>You have no upcoming rides</h2>
+    </div>
+<!--{% endif %}-->
+
+</div>
+    
+    
+    
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

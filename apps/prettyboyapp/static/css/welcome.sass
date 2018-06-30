@@ -1,0 +1,180 @@
+$titleFont: 'Kohinoor Devangari Semibold' 
+$bodyFont: 'Kohinoor Devangari Regular'
+$footerFont: 'Kohinoor Devangari Light'
+$navFont: 'Arial Rounded Bold'
+$formFont: 'Sinhala Sangam MN'
+
+$offWhite: rgba( 222, 224, 224, 1) 
+$white: rgba( 230, 231, 232, 1)
+$gray: rgba(211, 211, 211, 1)
+
+$lightBlue: rgba(25, 99, 162, 1)  
+$blue: rgba(21, 87, 136, 1)
+$darkBlue: rgba(11, 69, 109, 1)
+
+$red: rgba(214, 57, 52, 1) 
+$mediaSmall: '(max-width: 699px)'
+$mediaLarge: '(min-width: 700px)' 
+
+body
+    min-width: 300px   
+    min-height: 520px      
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: 7% 93% 5% 
+    box-sizing: border-box 
+    
+    @media #{$mediaSmall}
+        background-color: $offWhite  
+    
+.header-large 
+    grid-row: 1
+    background-color: $white 
+    position: relative  
+    @media #{$mediaSmall}
+        display: none  
+    
+    img
+        max-height: 90%
+        top: 5%  
+        position: absolute
+        left: 0
+        right: 0    
+        margin-left: auto
+        margin-right: auto     
+    
+    
+.content
+    display: relative
+    grid-row: 2
+    background-color: $blue  
+    
+    @media #{$mediaSmall}
+        background-color: $offWhite    
+    
+    h1
+        width: 100%
+        text-align: center 
+        padding: 8% 0   
+        font-size: 3.5rem   
+        font-family: $titleFont  
+        color: $white 
+        @media #{$mediaSmall}
+            display: none 
+        
+        span
+            font-family: $footerFont 
+
+.header-small  
+    @media #{$mediaSmall}
+        position: relative   
+        margin-top: 300px  
+        padding-top: 1rem  
+        display: block
+        grid-row: 1 
+        border-bottom: .5px solid $lightBlue  
+        width: 85%    
+        margin: auto  
+        padding-bottom: .5rem
+        display: flex
+        justify-content: space-between 
+        padding-left: 5px
+        padding-right: 5px 
+        font-family: $footerFont 
+        color: $blue  
+            
+         
+        
+    h1
+        display: inline-block
+        font-size: 2rem 
+        
+
+        
+    h2
+        display: inline-block 
+        margin-top: 1rem 
+        font-size: 1rem  
+        
+        span
+            font-family: $titleFont
+        
+        
+    
+    @media #{$mediaLarge}
+        display: none
+    
+.flex-box
+    display: flex
+    justify-content: space-between   
+    padding: 0 5% 5% 5%  
+    box-sizing: border-box
+    height: 40%  
+    
+    @media #{$mediaSmall}
+        flex-wrap: wrap 
+        margin-top: 2rem    
+  
+ 
+    
+    div
+        cursor: pointer 
+        position: relative
+        width: 20%  
+        height: 100%   
+        background-color: $white  
+        font-family: $navFont 
+        box-shadow: 2px -1px 3px 2px rgba( 0, 0, 0, .2)
+        min-height: 200px   
+        
+        @media #{$mediaSmall}
+            width: 47%  
+            height: 100%  
+            margin-top: 3%  
+            box-shadow: none  
+            background-color: rgba(256, 256, 256, .8)      
+            
+        
+        img
+            max-height: 25%  
+            position: relative  
+            display: block  
+            top: 30.5%    
+            margin-left: auto
+            margin-right: auto 
+        
+        p
+            position: relative 
+            top: 37%   
+            width: 100%
+            text-align: center  
+        a
+            color: $darkBlue  
+            font-size: 1.2rem
+            text-align: center
+    
+    
+  
+    
+footer 
+    grid-row: 3   
+    position: relative  
+    height: 50px        
+    background-color: $darkBlue 
+    
+    div
+        display: inline-block  
+        padding: 20px 20px 0 20px    
+        font-family: $footerFont
+        color: $gray  
+        opacity: .4  
+        font-size: .8rem  
+
+        
+    .right
+        float: right  
+
+
+    
+    
+    
