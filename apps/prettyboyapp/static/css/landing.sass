@@ -8,6 +8,7 @@ $offWhite: rgba( 222, 224, 224, 1)
 $white: rgba( 230, 231, 232, 1)
 $brightWhite: rgba(245, 245, 245, 1)
 $gray: rgba(211, 211, 211, 1)
+$fadeBlack: rgba(0, 0, 0, .6)
 
 $lightBlue: rgba(25, 99, 162, 1)  
 $blue: rgba(21, 87, 136, 1)
@@ -28,6 +29,10 @@ $mediaLarge: '(min-width: 700px)'
     
 body
     background-color: $white
+
+    & > div
+        min-height: 90%
+        box-sizing: border-box
     
 .view-one
     height: 90%
@@ -36,12 +41,14 @@ body
     .container
         width: 90%
         height: 90%
-        border: solid 1px red
-        @inclde center
+        @include center
         top: 10%
+        color: $fadeBlack
+        font-family: $footerFont
         img
             max-width: 30%
             @include center
+            
                 
         h1
             width: 100%
@@ -56,21 +63,120 @@ body
             width: auto
             position: relative
             box-sizing: border-box
-            border: solid black 1px
             @include center
             text-align: center
             
             &:nth-of-type(1)
-                
                 div
                     display: inline-block
-                    font-size: 1.3rem
+                    font-size: 1rem
                     box-sizing: border-box
-                    padding: 
+                    padding-left: .3rem
+                    padding-right: .5rem
+
                 
                     &:nth-of-type(1)
                         border-right: $gray 1px solid
+                    
+            &:nth-of-type(2)
+                top: 40%
+                font-family: $bodyFont 
+                
+                div
+                    margin-bottom: 20px
                 
                 
+.view-two
+    background-color: $lightBlue
+    padding: 30% 7%
+    box-sizing: border-box
+    
+    h2
+        font-size: 3rem
+        font-family: $titleFont
+        color: $brightWhite
+        width: 100%
+        text-align: center
+        margin-bottom: 40px
+
+        
+    p
+        font-family: $bodyFont
+        font-size: 1rem
+        color: $brightWhite
+        line-height: 1.2rem
+        
+    h3
+        font-size: 3rem
+        color: $brightWhite
+        font-family: $titleFont
+        width: 100%
+        text-align: center
+        margin: 100px 0 40px 0
+        
+    .grid-box
+        margin-top: 100px
+        display: grid
+        grid-template-rows: 1fr 3fr
+        grid-template-columns: 49.9% 1px 49.9%
+        
+        .border
+            grid-row: 1 /span 2
+            grid-column: 2
+            box-sizing: border-box
+            background-color: $brightWhite
+        h4
+            font-size: 1.5rem
+            font-family: $footerFont
+            color: $brightWhite
+            width: 100%
+            text-align: center
+        
+            &:nth-of-type(1)
+                grid-row: 1
+                grid-column: 1
             
+            &:nth-of-type(2)
+                grid-row: 1
+                grid-column: 3
+
+
+
+        ul
+            width: 80%
+            @include center
+            &:nth-of-type(1)
+                grid-row: 2
+                grid-column: 1
+
+
+                li
+                    margin-top: 0
+                    span
+                        width: 9rem
+            
+            &:nth-of-type(2)
+                grid-row: 2
+                grid-column: 3
+
+            li
+                width: 100%
+                text-align: left
+                margin: 20px 0
+                font-family: $footerFont
+                color: $brightWhite
+                
+                span
+                    position: relative
+                    float: right
+                    width: 5.5rem
+                    
+        
+        
+            
+
+            
+        
+    
+   
         

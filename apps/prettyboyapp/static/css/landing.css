@@ -1,77 +1,125 @@
-/*
-Error: Invalid property: "padding:" (no value).
-        on line 69 of landing.sass
+body {
+  background-color: #e6e7e8; }
+  body > div {
+    min-height: 90%;
+    box-sizing: border-box; }
 
-64:                 
-65:                 div
-66:                     display: inline-block
-67:                     font-size: 1.3rem
-68:                     box-sizing: border-box
-69:                     padding: 
-70:                 
-71:                     &:nth-of-type(1)
-72:                         border-right: $gray 1px solid
+.view-one {
+  height: 90%;
+  width: 100%; }
+  .view-one .container {
+    width: 90%;
+    height: 90%;
+    display: block;
+    position: relative;
+    margin: auto;
+    top: 10%;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: "Kohinoor Devangari Light"; }
+    .view-one .container img {
+      max-width: 30%;
+      display: block;
+      position: relative;
+      margin: auto; }
+    .view-one .container h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      position: relative;
+      top: 40px;
+      font-family: "Kohinoor Devangari Semibold"; }
+    .view-one .container > div {
+      top: 60px;
+      width: auto;
+      position: relative;
+      box-sizing: border-box;
+      display: block;
+      position: relative;
+      margin: auto;
+      text-align: center; }
+      .view-one .container > div:nth-of-type(1) div {
+        display: inline-block;
+        font-size: 1rem;
+        box-sizing: border-box;
+        padding-left: 0.3rem;
+        padding-right: 0.5rem; }
+        .view-one .container > div:nth-of-type(1) div:nth-of-type(1) {
+          border-right: lightgray 1px solid; }
+      .view-one .container > div:nth-of-type(2) {
+        top: 40%;
+        font-family: "Kohinoor Devangari Regular"; }
+        .view-one .container > div:nth-of-type(2) div {
+          margin-bottom: 20px; }
 
-Backtrace:
-landing.sass:69
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:759:in `parse_property'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:708:in `parse_property_or_rule'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:667:in `parse_line'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:540:in `build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:559:in `block in append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:549:in `block in build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:559:in `block in append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:549:in `block in build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:559:in `block in append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:549:in `block in build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:559:in `block in append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:549:in `block in build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:559:in `block in append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:549:in `block in build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:542:in `build_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:559:in `block in append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:558:in `append_children'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:417:in `_to_tree'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/engine.rb:307:in `render_with_sourcemap'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:320:in `block in watch'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `call'
-C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid property: \"padding:\" (no value).\A         on line 69 of landing.sass\A \A 64:                 \A 65:                 div\A 66:                     display: inline-block\A 67:                     font-size: 1.3rem\A 68:                     box-sizing: border-box\A 69:                     padding: \A 70:                 \A 71:                     &:nth-of-type(1)\A 72:                         border-right: $gray 1px solid"; }
+.view-two {
+  background-color: #1963a2;
+  padding: 30% 7%;
+  box-sizing: border-box; }
+  .view-two h2 {
+    font-size: 3rem;
+    font-family: "Kohinoor Devangari Semibold";
+    color: whitesmoke;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px; }
+  .view-two p {
+    font-family: "Kohinoor Devangari Regular";
+    font-size: 1rem;
+    color: whitesmoke;
+    line-height: 1.2rem; }
+  .view-two h3 {
+    font-size: 3rem;
+    color: whitesmoke;
+    font-family: "Kohinoor Devangari Semibold";
+    width: 100%;
+    text-align: center;
+    margin: 100px 0 40px 0; }
+  .view-two .grid-box {
+    margin-top: 100px;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 49.9% 1px 49.9%; }
+    .view-two .grid-box .border {
+      grid-row: 1/span 2;
+      grid-column: 2;
+      box-sizing: border-box;
+      background-color: whitesmoke; }
+    .view-two .grid-box h4 {
+      font-size: 1.5rem;
+      font-family: "Kohinoor Devangari Light";
+      color: whitesmoke;
+      width: 100%;
+      text-align: center; }
+      .view-two .grid-box h4:nth-of-type(1) {
+        grid-row: 1;
+        grid-column: 1; }
+      .view-two .grid-box h4:nth-of-type(2) {
+        grid-row: 1;
+        grid-column: 3; }
+    .view-two .grid-box ul {
+      width: 80%;
+      display: block;
+      position: relative;
+      margin: auto; }
+      .view-two .grid-box ul:nth-of-type(1) {
+        grid-row: 2;
+        grid-column: 1; }
+        .view-two .grid-box ul:nth-of-type(1) li {
+          margin-top: 0; }
+          .view-two .grid-box ul:nth-of-type(1) li span {
+            width: 9rem; }
+      .view-two .grid-box ul:nth-of-type(2) {
+        grid-row: 2;
+        grid-column: 3; }
+      .view-two .grid-box ul li {
+        width: 100%;
+        text-align: left;
+        margin: 20px 0;
+        font-family: "Kohinoor Devangari Light";
+        color: whitesmoke; }
+        .view-two .grid-box ul li span {
+          position: relative;
+          float: right;
+          width: 5.5rem; }
+
+/*# sourceMappingURL=landing.css.map */
