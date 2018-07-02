@@ -46,16 +46,16 @@
                 </li>
 
                 <div class='user'>
-                    <h2><span>Firstname</span> Lastname</h2>
+                    <h2><span>{{user.first_name}}</span> {{user.last_name}}</h2>
                 </div>
 
-                <li tabindex="2">
+                <li tabindex="2" onclick="location.href='/schedule_ride';">
                     <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
                     <p>Schedule Ride</p>
                 </li>
 
 
-                <li tabindex="3">
+                <li tabindex="3" onclick="location.href='/info';">
                     <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
                     <p>My Information</p>
                 </li>
@@ -65,12 +65,12 @@
                     <p>Contact</p>
                 </li>
 
-                <li tabindex="5">
+                <li tabindex="5" onclick="location.href='/manage_rides';">
                     <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
                     <p>Manage Rides</p>
                 </li>
 
-                <li tabindex="6">
+                <li tabindex="6" onclick="location.href='/welcome';">
                     <div class='navimg'><img class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
                     <p>Home</p>
                 </li>

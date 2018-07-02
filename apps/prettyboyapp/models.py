@@ -11,8 +11,19 @@ class User(models.Model):
     primary_address = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     special = models.CharField(max_length=255)
+    primary_facility_name = models.CharField(max_length=255)
+    primary_facility_address = models.CharField(max_length=255)
+    primary_facility_number = models.CharField(max_length=255)
+    primary_city = models.CharField(max_length=255)
+    primary_room_number = models.CharField(max_length=255)
+    private_pay = models.NullBooleanField(null=True)
+    facility_pay = models.NullBooleanField(null=True)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
+    
+
+    def __unicode__(self):
+       return self.first_name + " " + self.last_name
 
 class Ride(models.Model):
     pickup_address = models.CharField(max_length=255)
@@ -20,17 +31,22 @@ class Ride(models.Model):
     pickup_room = models.IntegerField()
     dropoff_room = models.IntegerField()
     pickup_datetime = models.DateField()
+    pickup_time = models.TimeField()
     appointment_time = models.TimeField()
-    duration = models.IntegerField()
+    duration = models.DecimalField(max_digits=4, decimal_places=2)
     round_trip = models.BooleanField()
     ambulatory = models.BooleanField()
+    doctor_name = models.CharField(max_length=255)
+    doctor_suite_number = models.CharField(max_length=255)
+    doctor_office_number = models.CharField(max_length=255)
     comments = models.TextField()
     facility_number = models.CharField(max_length=255)
     accompany_number = models.CharField(max_length=255)
     accompany_name = models.CharField(max_length=255)
-    approved = models.BooleanField(default = False)
+    approved = models.NullBooleanField(null=True)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
-    user = models.ForeignKey(User, related_name="rides", on_delete=models.CASCADE)
 
+    user = models.ForeignKey(User, related_name="rides", on_delete=models.CASCADE)
+   

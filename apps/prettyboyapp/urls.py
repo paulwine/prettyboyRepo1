@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'^all_users$', views.all_users),
     url(r'^submit_ride$', views.submit_ride),
     url(r'^send_email$', views.send_email),
-    
+    url(r'^save_information$', views.save_information),
+    url(r'^delete_ride/(?P<rideid>\d+)/$', views.delete_ride),
     # temp
     url(r'^delete_all$', views.delete_all)
 
