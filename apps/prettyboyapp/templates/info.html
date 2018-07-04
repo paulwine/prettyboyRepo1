@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
-    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" 
-    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" >
--->
+
     <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/basic.css">
@@ -43,10 +43,10 @@
                 </li>
 
                 <div class='user'>
-                    <h2><span>Firstname</span> Lastname</h2>
+                    <h2><span>{{user.first_name}}</span> {{user.last_name}}</h2>
                 </div>
 
-                <li tabindex="2">
+                <li tabindex="2" onclick="location.href='/schedule_ride';">
                     <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
                     <p>Schedule Ride</p>
                 </li>
@@ -57,17 +57,17 @@
                     <p>My Information</p>
                 </li>
 
-                <li tabindex="4">
+                <li tabindex="4" onclick="location.href='/contact';">
                     <div class='navimg'> <img class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
                     <p>Contact</p>
                 </li>
 
-                <li tabindex="5">
+                <li tabindex="5" onclick="location.href='/manage_rides';">
                     <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
                     <p>Manage Rides</p>
                 </li>
 
-                <li tabindex="6">
+                <li tabindex="6" onclick="location.href='/welcome';">
                     <div class='navimg'><img class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
                     <p>Home</p>
                 </li>
@@ -98,53 +98,64 @@
             </div>
         </header>
 
-        <form action="/submit_ride" method="post">
-            <!--        {% csrf_token %}-->
+        <form action="/save_information" method="post">
+            {% csrf_token %}
             <div>
                 <div class='half'>
 
                     <div>
                         <p>First Name</p>
-                        <input type="date" name="first-name">
+                        <input type="text" name="first_name" value = {{user.first_name}}>
                     </div>
                     <div>
                         <p>Last Name</p>
-                        <input type="time" name="last-name">
+                        <input type="text" name="last_name" value = {{user.last_name}}>
                     </div>
                 </div>
                 <div>
                     <p>Facility Name</p>
-                    <input type="text" name="facility-name">
+                    <input type="text" name="facility_name" value = {{user.primary_facility_name}}>
                 </div>
 
                 <div>
                     <p>Facility Address</p>
-                    <input type="text" name='pickup-address'>
+                    <input type="text" name='facility_address' value = {{user.primary_facility_address}}>
                 </div>
                 <div class='half'>
 
                     <div>
                         <p>City</p>
-                        <input type="text" name="pickup_city">
+                        <input type="text" name="primary_city" value = {{user.primary_city}}>
                     </div>
                     <div>
                         <p>Room Number</p>
-                        <input type="text" name="pickup_room">
+                        <input type="text" name="primary_room" value = {{user.primary_room_number}}>
                     </div>
 
                 </div>
                 <div>
                     <p>Facility Contact Number</p>
-                    <input type="text" name="pickup_number">
+                    <input type="text" name="facility_number" value = {{user.primary_facility_number}}>
                 </div>
 
                 <div class='checkboxes'>
                     <div>
-                        <input type="checkbox" name='private-pay'>
+                        {% if user.private_pay %}
+                        <input type="checkbox" name='private_pay' checked>
+                        {% else %}
+                        <input type="checkbox" name='private_pay'>
+                        {% endif %}
                         <p>Private Pay</p>
+                        
                     </div>
-                    <div> <input type="checkbox">
+                    <div> 
+                        {% if user.facility_pay %}
+                        <input type="checkbox" name = 'facility_pay' checked>
+                        {% else %}
+                        <input type="checkbox" name = 'facility_pay'>
+                        {% endif %}
                         <p>Facility Pay</p>
+
                     </div>
                 </div>
             </div>

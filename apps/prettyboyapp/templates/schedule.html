@@ -46,7 +46,7 @@
                 </li>
 
                 <div class='user'>
-                    <h2><span>Firstname</span> Lastname</h2>
+                    <h2><span>{{user.first_name}}</span> {{user.last_name}}</h2>
                 </div>
 
                 <li tabindex="2">
@@ -54,23 +54,24 @@
                     <p>Schedule Ride</p>
                 </li>
 
-
-                <li tabindex="3">
+                <li tabindex="3" onclick="location.href='/info';" >
+                    
                     <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
                     <p>My Information</p>
+                    
                 </li>
 
-                <li tabindex="4" id='this-page'>
+                <li tabindex="4" id='this-page' onclick="location.href='/contact';">
                     <div class='navimg'> <img class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
                     <p>Contact</p>
                 </li>
 
-                <li tabindex="5">
+                <li tabindex="5" onclick="location.href='/manage_rides';">
                     <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
                     <p>Manage Rides</p>
                 </li>
 
-                <li tabindex="6">
+                <li tabindex="6" onclick="location.href='/welcome';">
                     <div class='navimg'><img class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
                     <p>Home</p>
                 </li>
@@ -97,13 +98,13 @@
             <div class='container'>
 
                 <img src="../static/img/Icons/PapugaLogo.png" alt="">
-                <h1>Manage Rides</h1>
+                <h1>Schedule Ride</h1>
 
             </div>
         </header>
 
         <form action="/submit_ride" method="post">
-            <!--        {% csrf_token %}-->
+            {% csrf_token %}
             <h2>Pick-Up</h2>
             <div>
                 <!-- Pick Up -->

@@ -113,12 +113,38 @@ def manage_rides(request):
     "rides" : rides
   }
   return render(request, "manage.html", context)
+
+def delete_ride(request, rideid):
+  ride_to_delete = Ride.objects.get(id=rideid)
+  ride_to_delete.delete()
+  return redirect("/manage_rides")
 def info(request):
   current_user = User.objects.get(id= request.session['current_user'])
   context = {
     "user" : current_user
   }
   return render(request, "info.html", context)
+def save_information(request):
+  current_user = User.objects.get(id= request.session['current_user'])
+  current_user.first_name = request.POST['first_name']
+  current_user.last_name = request.POST['last_name']
+  current_user.primary_facility_name = request.POST['facility_name']
+  current_user.primary_facility_address = request.POST['facility_address']
+  current_user.primary_facility_number = request.POST['facility_number']
+  current_user.primary_city = request.POST['primary_city']
+  current_user.primary_room_number = request.POST['primary_room']
+
+  if 'private_pay' in request.POST:
+    current_user.private_pay = True
+  else:
+    current_user.private_pay = False
+  if 'facility_pay' in request.POST:
+    current_user.facility_pay = True
+  else:
+    current_user.facility_pay = False
+  
+  current_user.save()
+  return redirect('/info')
 
 def all_users(request):
   users = User.objects.all()

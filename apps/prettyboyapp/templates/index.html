@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!--
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/register.css' %}" >
--->
+
 
     <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
@@ -84,7 +84,7 @@
                 <!-- login  -->
                 <div class="main register">
                     <form action="/login" method="post">
-                        <!--                        {% csrf_token %}-->
+                        {% csrf_token %}
                         <ul class="register-form">
 
                             <li><input type="text" name="email_log" placeholder="Email"></li>
