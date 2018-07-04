@@ -28,12 +28,12 @@
                 <img src="../static/img/Icons/PapugaLogo.png" alt="Papuga Logo">
                 <h1>Papuga Transportation</h1>
                 <div>
-                    <div>Sign-Up</div>
-                    <div>Login</div>
+                    <div><a href="/registerpage">Sign-Up</a></div>
+                    <div class = 'pointer' onclick="goToBottom()">Login</div>
                 </div>
                 <div>
-                    <div>Scroll</div>
-                    <div> Down Arrow </div>
+
+                    <div> <img class = 'pointer' src="../static/img/Icons/Down%20Arrow.png" alt="down-arrow" onclick="goToAbout()"> </div>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                     <li>Office: <span>Monday through Friday 9am – 5pm</span></li>
                     <li>Drivers: <span>Monday thru Saturday 6am-6pm</span></li>
                 </ul>
-                
+
                 <div class="border"></div>
 
                 <h4>Call us</h4>
@@ -87,19 +87,38 @@
                         <!--                        {% csrf_token %}-->
                         <ul class="register-form">
 
-                            <li><input type="text" name="email_log" value="Email"></li>
-                            <li><input type="password" name="password_log" id="myInput"></li>
+                            <li><input type="text" name="email_log" placeholder="Email"></li>
+                            <li><input type="password" name="password_log" id="myInput" placeholder="Password">
+                            </li>
+
                             <li class='show-password'><input type="checkbox" onclick="myFunction()">Show Password
+
                             </li>
+                            <li class='forgot-password'><a class='forgot-password' href="/forgotpassword">Forgot Password?</a></li>
                             <li class="submit">
-                                <input type="submit" value="Sign In">
+                                <input type="submit" value="Login">
+
                             </li>
+                            <li><a class='register' href="/registerpage">Sign Up</a></li>
+
+                            <li class="yelp"><a href="https://www.yelp.com/biz/papuga-transportation-white-lake"><img src="../static/img/Icons/yelp.png" alt="yelp icon"></a></li>
                         </ul>
                     </form>
-                    <a href="/registerpage">Register</a>
+
+
 
                 </div>
             </div>
+            <footer>
+
+                <div>
+                    <p>Phone: xxx.xxx.xxxx</p>
+                </div>
+
+                <div>
+                    <p>&copy;2018 Papuga Transportation</p>
+                </div>
+            </footer>
         </div>
 
     </body>
@@ -113,5 +132,7 @@
             }
         }
     </script>
+
+    <script src="../static/js/landing.js"></script>
 
 </html>
