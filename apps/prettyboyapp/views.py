@@ -111,7 +111,7 @@ def manage_rides(request):
   rides = Ride.objects.filter(user = current_user)
   context = {
     "rides" : rides
-  }
+  } 
   return render(request, "manage.html", context)
 
 def delete_ride(request, rideid):

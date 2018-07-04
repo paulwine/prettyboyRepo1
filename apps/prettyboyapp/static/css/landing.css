@@ -169,7 +169,8 @@ body {
       font-family: "Kohinoor Devangari Light"; }
     .view-three .register-form .show-password {
       height: 30px;
-      margin-top: 30px; }
+      margin-top: 30px;
+      font-family: "Kohinoor Devangari Light"; }
       .view-three .register-form .show-password input {
         height: 30px;
         width: 30px;
