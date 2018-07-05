@@ -6,6 +6,7 @@ body {
 
 .view-one {
   height: 90%;
+  min-height: 480px;
   width: 100%; }
   .view-one .container {
     width: 90%;
@@ -37,18 +38,20 @@ body {
       position: relative;
       margin: auto;
       text-align: center; }
-      .view-one .container > div:nth-of-type(1) div {
+      .view-one .container > div:nth-of-type(2) div {
+        position: relative;
+        margin-top: 5%;
         display: inline-block;
         font-size: 1rem;
         box-sizing: border-box;
         padding-left: 0.3rem;
         padding-right: 0.5rem; }
-        .view-one .container > div:nth-of-type(1) div:nth-of-type(1) {
+        .view-one .container > div:nth-of-type(2) div:nth-of-type(1) {
           border-right: lightgray 1px solid; }
-      .view-one .container > div:nth-of-type(2) {
-        top: 40%;
+      .view-one .container > div:nth-of-type(3) {
+        top: 20%;
         font-family: "Kohinoor Devangari Regular"; }
-        .view-one .container > div:nth-of-type(2) div {
+        .view-one .container > div:nth-of-type(3) div {
           margin-bottom: 20px; }
 
 .view-two {

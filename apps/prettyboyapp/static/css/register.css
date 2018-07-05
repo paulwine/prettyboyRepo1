@@ -121,7 +121,8 @@ body {
             height: 3rem; } }
 
 .errors {
-  color: #d63934; }
+  color: #d63934;
+  font-family: "Kohinoor Devangari Regular"; }
   .errors ul {
     background-color: #e6e7e8;
     margin-top: 10px;

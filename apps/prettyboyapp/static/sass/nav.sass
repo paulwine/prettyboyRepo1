@@ -6,16 +6,20 @@ $formFont: 'Sinhala Sangam MN'
 
 $offWhite: rgba( 222, 224, 224, 1) 
 $white: rgba( 230, 231, 232, 1)
+$brightWhite: rgba(245, 245, 245, 1)
 $gray: rgba(211, 211, 211, 1)
+$fadeBlack: rgba(0, 0, 0, .6)
 
 $lightBlue: rgba(25, 99, 162, 1)  
 $blue: rgba(21, 87, 136, 1)
 $darkBlue: rgba(11, 69, 109, 1)
 
 $red: rgba(214, 57, 52, 1) 
+$yellow: rgba(213, 220, 72, 1)
+$green: green
+ 
 $mediaSmall: '(max-width: 699px)'
-$mediaLarge: '(min-width: 700px)'  
-
+$mediaLarge: '(min-width: 700px)'
 
 
 nav
@@ -107,6 +111,9 @@ ul
         margin-bottom: 1.5rem 
         display: flex
         height: 60px
+        
+        &:focus
+            text-decoration: underline
         
         p
             margin-top: auto
@@ -212,17 +219,26 @@ footer
      
 .phone-number
     padding-left: 15px
+    color: $brightWhite
+    opacity: .8
 
 .logout
     padding-right: 15px
-    border-right: $white solid 1px   
+    border-right: $white solid 1px  
+    color: $brightWhite
+    opacity: .8
+    cursor: pointer
+    
+    
+    &:hover, &:focus
+        text-decoration: underline
     
     @media #{$mediaSmall}
         display: none
     
 .copyright
     padding-top: 15px 
-    color: $white     
+    color: $offWhite   
 
 .logout-small
     font-family: sans-serif 
@@ -231,7 +247,10 @@ footer
 //    border: black solid 1px 
 
 #this-page
-    display: none
+    background-color: $darkBlue
+    width: 100% 
+    border-radius: 10px
+    
     
     
 

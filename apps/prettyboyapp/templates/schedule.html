@@ -49,7 +49,7 @@
                     <h2><span>{{user.first_name}}</span> {{user.last_name}}</h2>
                 </div>
 
-                <li tabindex="2">
+                <li tabindex="2" id = 'this-page'>
                     <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
                     <p>Schedule Ride</p>
                 </li>
@@ -61,7 +61,7 @@
                     
                 </li>
 
-                <li tabindex="4" id='this-page' onclick="location.href='/contact';">
+                <li tabindex="4" onclick="location.href='/contact';">
                     <div class='navimg'> <img class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
                     <p>Contact</p>
                 </li>
@@ -69,11 +69,6 @@
                 <li tabindex="5" onclick="location.href='/manage_rides';">
                     <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
                     <p>Manage Rides</p>
-                </li>
-
-                <li tabindex="6" onclick="location.href='/welcome';">
-                    <div class='navimg'><img class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
-                    <p>Home</p>
                 </li>
 
             </ul>
@@ -226,10 +221,13 @@
                         </div>
 
                         <div>
-                            <input type="checkbox" name='private-pay'>
+                            <input id = 'private-pay' type="checkbox" name='private-pay' onclick="privatePay()">
                             <p>Private Pay</p>
+                            <div id = 'private-pay-text'>
+                                <p>Private Pay is due at the time of pickup.</p>
+                            </div>
                         </div>
-                        <div><input type="checkbox">
+                        <div><input type="checkbox" onclick="privatePay()">
                             <p>Facility Pay</p>
                         </div>
 
@@ -250,6 +248,22 @@
         </form>
 
     </div>
+    
+    <script>
+        let pay = document.querySelector('#private-pay');
+        let payText = document.querySelector('#private-pay-text');
+        
+        function privatePay(){
+
+            if(pay.checked === true ){
+                payText.style.display = 'block';                
+            }
+            
+            else{
+                payText.style.display = 'none';
+            }
+        };
+    </script>
 </body>
 
 </html>

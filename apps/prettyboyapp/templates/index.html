@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    
-    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
-    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
-    <link rel="stylesheet" href= "{% static 'css/register.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
 
 
     <link rel="stylesheet" href="../static/css/default.css">
@@ -27,13 +24,16 @@
 
                 <img src="../static/img/Icons/PapugaLogo.png" alt="Papuga Logo">
                 <h1>Papuga Transportation</h1>
+                <div class='about-text'>
+                    <p>From here to there, with pride and care</p>
+                </div>
                 <div>
                     <div><a href="/registerpage">Sign-Up</a></div>
-                    <div class = 'pointer' onclick="goToBottom()">Login</div>
+                    <div class='pointer' onclick="goToBottom()">Login</div>
                 </div>
                 <div>
 
-                    <div> <img class = 'pointer' src="../static/img/Icons/Down%20Arrow.png" alt="down-arrow" onclick="goToAbout()"> </div>
+                    <div> <img class='pointer' src="../static/img/Icons/Down%20Arrow.png" alt="down-arrow" onclick="goToAbout()"> </div>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@
             <div class='main-content'>
                 <div class='main content-left'>
                     <img src="../static/img/Icons/PapugaLogo.png" alt="papuga logo">
-                    <h1>Papuga transportation</h1>
+                    <h1>Papuga Transportation</h1>
 
                     <div class='about-text'>
                         <p>From here to there, with pride and care</p>
@@ -96,7 +96,7 @@
                             </li>
                             <li class='forgot-password'><a class='forgot-password' href="/forgotpassword">Forgot Password?</a></li>
                             <li class="submit">
-                                <input class = 'pointer' type="submit" value="Login">
+                                <input class='pointer' type="submit" value="Login">
 
                             </li>
                             <li><a class='register' href="/registerpage">Sign Up</a></li>
@@ -104,6 +104,17 @@
                             <li class="yelp"><a href="https://www.yelp.com/biz/papuga-transportation-white-lake"><img src="../static/img/Icons/yelp.png" alt="yelp icon"></a></li>
                         </ul>
                     </form>
+                    <div class='errors'>
+                        <!-- Validation Errors -->
+                        <!--        {% if messages %}-->
+                        <ul class="messages">
+                            <!--            {% for message in messages %}-->
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            <!--            {% endfor %}-->
+                        </ul>
+                        <!--                        {% endif %}-->
+
+                    </div>
 
 
 
