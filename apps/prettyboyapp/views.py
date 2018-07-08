@@ -10,6 +10,7 @@ from django.core.exceptions import ValidationError
 from celery.schedules import crontab
 from celery.task import periodic_task
 from .models import User, Ride
+import datetime
 import bcrypt
   # the index function is called when root is visited
 def index(request):
@@ -221,6 +222,7 @@ def submit_ride(request):
   duration = request.POST['duration']
   notes = request.POST['notes']
 
+  day_array = []
   if 'repeat' in request.POST:
     repeat = True
   else:
@@ -228,35 +230,42 @@ def submit_ride(request):
 
   if 'monday' in request.POST:
     monday = True
+    day_array.append(0)
   else:
     monday = False
 
   if 'tuesday' in request.POST:
     tuesday = True
+    day_array.append(1)
   else:
     tuesday = False
 
   if 'wednesday' in request.POST:
     wednesday = True
+    day_array.append(2)
   else:
     wednesday = False
 
   if 'thursday' in request.POST:
+    day_array.append(3)
     thursday = True
   else:
     thursday = False
 
   if 'friday' in request.POST:
+    day_array.append(4)
     friday = True
   else:
     friday = False
 
   if 'saturday' in request.POST:
+    day_array.append(5)
     saturday = True
   else:
     saturday = False
 
   if 'sunday' in request.POST:
+    day_array.append(6)
     sunday = True
   else:
     sunday = False
@@ -266,7 +275,8 @@ def submit_ride(request):
     return redirect("/schedule_ride")
   else:
     ride = Ride.objects.create(doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday)
-    ride.save()
+    
+    current_weekday = datetime.datetime.today().weekday()
 
   
   #Email Construction

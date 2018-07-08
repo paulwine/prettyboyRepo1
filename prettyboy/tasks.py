@@ -20,11 +20,19 @@ def task_number_two():
     dateswitch = False
     for ride in rides:
         if ride.pickup_datetime < now:
-            new_ride = ride.clone()
+            
             if ride.repeat_ride:
-                new_ride.pickup_datetime = (now + datetime.timedelta(days=7))
-
-            ride.delete()
+                new_date = (now + datetime.timedelta(days=7))
+                old_id = ride.id
+                ride.pk = None
+                ride.save()
+                new_ride = Ride.objects.last()
+                new_ride.pickup_datetime = new_date
+                new_ride.save()
+                old_ride = Ride.objects.get(id=old_id)
+                old_ride.delete()
+            else:
+                ride.delete()
             print("RIDE DELETED")
     print(now)
   
