@@ -1,0 +1,57 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #1963a2; }
+  body p {
+    position: relative;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    min-width: 500px;
+    top: 30%;
+    font-family: "Kohinoor Devangari Regular";
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6rem;
+    font-size: 1.5rem;
+    text-align: center; }
+  body h3 {
+    font-size: 2.5rem;
+    font-family: "Kohinoor Devangari Semibold";
+    color: whitesmoke;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    text-align: center;
+    top: 30%; }
+  body form {
+    position: relative;
+    top: 40%; }
+  body button {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0b456d;
+    border: none;
+    font-size: 1.5rem;
+    font-family: "Arial Rounded Bold";
+    color: whitesmoke;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 5px; }
+  body a {
+    position: relative;
+    top: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-decoration: underline;
+    font-family: "Arial Rounded Bold";
+    font-size: 1.5rem;
+    text-align: center; }
+
+/*# sourceMappingURL=reset.css.map */
