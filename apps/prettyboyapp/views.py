@@ -7,10 +7,14 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from celery.schedules import crontab
+from celery.task import periodic_task
 from .models import User, Ride
 import bcrypt
   # the index function is called when root is visited
 def index(request):
+  if 'current_user' in request.session:
+    return redirect('/welcome')
   return render(request, 'index.html')
 
 def login(request):
@@ -44,9 +48,11 @@ def register(request):
   first = request.POST['first_name']
   last = request.POST['last_name']
   email = request.POST['email']
-  phone = request.POST['phone']
-  address = request.POST['address']
-  info = request.POST['info']
+
+  # phone = request.POST['phone']
+  # address = request.POST['address']
+  # info = request.POST['info']
+
   password = request.POST['password']
   confirm_password = request.POST['confirm_password']
 
@@ -61,9 +67,9 @@ def register(request):
   if len(password) < 8:
     messages.error(request, 'Passwords must be longer than 8 characters')
     error = True
-  if len(phone) < 1:
-    messages.error(request, 'Please input a valid phone number')
-    error = True
+  # if len(phone) < 1:
+  #   messages.error(request, 'Please input a valid phone number')
+  #   error = True
   if password != confirm_password:
     messages.error(request, 'Password do no match')
     error = True
@@ -84,7 +90,7 @@ def register(request):
   else:
     password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     print(password)
-    new_user = User.objects.create(first_name=first, last_name=last, email=email, password=password, special=info, primary_address=address, phone=phone)
+    new_user = User.objects.create(first_name=first, last_name=last, email=email, password=password)
     new_user.save()
     request.session['current_user'] = new_user.id
     return redirect("/welcome")
@@ -154,6 +160,7 @@ def all_users(request):
   return redirect("/welcome")
 
 def submit_ride(request):
+  
   error = False
 
   current_user = User.objects.get(id= request.session['current_user'])
@@ -172,6 +179,10 @@ def submit_ride(request):
   dropoff_room = request.POST['dropoff_room']
   dropoff_phone = request.POST['dropoff_phone']
 
+  doctor_name =  request.POST['doctor_name']
+  doctor_office_number =  request.POST['doctor_number']
+  doctor_suite_number =  request.POST['doctor_room']
+
   accompany_name = request.POST['accompany_name']
   accompany_number = request.POST['accompany_number']
   
@@ -181,26 +192,80 @@ def submit_ride(request):
   amb_txt = "Ambulatory"
   trip_txt = "Round Trip"
 
-  if request.POST['ambulatory'] == True:
+  if 'ambulatory' in request.POST:
     ambulatory = True
   else:
     ambulatory = False
     amb_txt = "Wheelchair Bound"
+
+  if 'wheelchair_bound' in request.POST:
+    ambulatory = False
+  else:
+    ambulatory = True
+    amb_txt = "Ambulatory"
   
-  if request.POST['round_trip'] == True:
+  if 'round_trip' in request.POST:
     round_trip = True
   else:
     round_trip = False
     trip_txt = "One Way"
-    one_way = request.POST['one_way']
+    one_way = True
+
+  if 'one_way' in request.POST:
+    one_way = True
+  else:
+    one_way = False
+    trip_txt = "One Way"
+    round_trip = True
 
   duration = request.POST['duration']
   notes = request.POST['notes']
 
+  if 'repeat' in request.POST:
+    repeat = True
+  else:
+    repeat = False
+
+  if 'monday' in request.POST:
+    monday = True
+  else:
+    monday = False
+
+  if 'tuesday' in request.POST:
+    tuesday = True
+  else:
+    tuesday = False
+
+  if 'wednesday' in request.POST:
+    wednesday = True
+  else:
+    wednesday = False
+
+  if 'thursday' in request.POST:
+    thursday = True
+  else:
+    thursday = False
+
+  if 'friday' in request.POST:
+    friday = True
+  else:
+    friday = False
+
+  if 'saturday' in request.POST:
+    saturday = True
+  else:
+    saturday = False
+
+  if 'sunday' in request.POST:
+    sunday = True
+  else:
+    sunday = False
+
+
   if error == True:
     return redirect("/schedule_ride")
   else:
-    ride = Ride.objects.create(pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user)
+    ride = Ride.objects.create(doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday)
     ride.save()
 
   
@@ -236,6 +301,9 @@ def submit_ride(request):
 def delete_all(request):
   User.objects.all().delete() 
   return redirect("/")
+def delete_all_rides(request):
+  Ride.objects.all().delete() 
+  return redirect("/")
 
 def send_email(request):
   current_user = User.objects.get(id= request.session['current_user'])
@@ -252,4 +320,32 @@ def send_email(request):
     fail_silently=False,
   )
   return redirect("/welcome")
-# Create your views here.
+
+def logout(request):
+  del request.session['current_user']
+  return redirect('/')
+
+# Password rest
+def password_reset(request):
+  return render(request, 'registration/password_reset_form.html')
+def password_reset_done(request):
+  print('wassup mutha fucka')
+  email = request.POST['email']
+  msg_html = render_to_string('registration/password_reset_email.html')
+  subject = "Papuga Password Reset"
+  body = "Password Reset"
+  print(body)
+
+  send_mail(
+    'SUPPORT: {}'.format(subject),
+    body,
+    'paulwinegard@gmail.com',
+    [email],
+    fail_silently=False,
+    html_message = msg_html,
+  )
+  return render(request, 'registration/password_reset_done.html')
+def password_reset_confirm(request):
+  return render(request, 'registration/password_reset_confirm.html')
+def password_reset_complete(request):
+  return render(request, 'registration/password_reset_complete.html')

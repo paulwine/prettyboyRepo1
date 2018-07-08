@@ -76,7 +76,7 @@
 
             <footer>
 
-                <div tabindex="7" class='logout'>Logout</div>
+                    <a href="/logout"><div tabindex="7" class='logout'>Logout</div></a>
                 <div class='phone-number'>Phone: <span>248.547.7859</span></div>
 
                 <div class='copyright'>&copy;2018 Papuga Transportation</div>
@@ -105,37 +105,37 @@
 
                     <div>
                         <p>First Name</p>
-                        <input type="text" name="first_name" value = {{user.first_name}}>
+                        <input type="text" name="first_name" value = '{{user.first_name}}'>
                     </div>
                     <div>
                         <p>Last Name</p>
-                        <input type="text" name="last_name" value = {{user.last_name}}>
+                        <input type="text" name="last_name" value = '{{user.last_name}}'>
                     </div>
                 </div>
                 <div>
                     <p>Facility Name</p>
-                    <input type="text" name="facility_name" value = {{user.primary_facility_name}}>
+                    <input type="text" name="facility_name" value = '{{user.primary_facility_name}}'>
                 </div>
 
                 <div>
                     <p>Facility Address</p>
-                    <input type="text" name='facility_address' value = {{user.primary_facility_address}}>
+                    <input type="text" name='facility_address' value = '{{user.primary_facility_address}}'>
                 </div>
                 <div class='half'>
 
                     <div>
                         <p>City</p>
-                        <input type="text" name="primary_city" value = {{user.primary_city}}>
+                        <input type="text" name="primary_city" value = '{{user.primary_city}}'>
                     </div>
                     <div>
                         <p>Room Number</p>
-                        <input type="text" name="primary_room" value = {{user.primary_room_number}}>
+                        <input type="text" name="primary_room" value = '{{user.primary_room_number}}'>
                     </div>
 
                 </div>
                 <div>
                     <p>Facility Contact Number</p>
-                    <input type="text" name="facility_number" value = {{user.primary_facility_number}}>
+                    <input type="text" name="facility_number" value = '{{user.primary_facility_number}}'>
                 </div>
 
                 <div class='checkboxes'>
