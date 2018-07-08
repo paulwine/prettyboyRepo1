@@ -117,28 +117,28 @@
                 </div>
                 <div>
                     <p>Address</p>
-                    <input type="text" name="pickup_address">
+                    <input type="text" name="pickup_address" value = '{{user.primary_address}}'>
                 </div>
 
                 <div class='half'>
 
                     <div>
                         <p>City</p>
-                        <input type="text" name="pickup_city">
+                        <input type="text" name="pickup_city" value = '{{user.primary_city}}'>
                     </div>
                     <div>
                         <p>Room Number</p>
-                        <input type="text" name="pickup_room">
+                        <input type="text" name="pickup_room" value = '{{user.primary_room_number}}'>
                     </div>
 
                 </div>
                 <div>
                     <p>Facility Name</p>
-                    <input type="text" name="pickup_facility">
+                    <input type="text" name="pickup_facility" value = '{{user.primary_facility_name}}'>
                 </div>
                 <div>
                     <p>Facility Contact Number</p>
-                    <input type="text" name="pickup_number">
+                    <input type="text" name="pickup_number" value = '{{user.primary_facility_number}}'>
                 </div>
             </div>
             <!-- Drop Off -->
@@ -234,8 +234,30 @@
                     </div>
                     <div>
                         <p>Appointment Duation</p>
-                        <input type="number" name="duration">
+                        <input type="text" name="duration">
                     </div>
+                    <div>
+                        <p>Repeat Ride?</p>
+                        <input type="checkbox" name="repeat" id="repeat" value="0" onclick='showDays()'/>
+                    </div>
+                    <div id="days" style="display:none">
+                        <p>Mondays</p>
+                        <input type="checkbox" name="monday">
+                        <p>Tuesdays</p>
+                        <input type="checkbox" name="tuesday">
+                        <p>Wednesdays</p>
+                        <input type="checkbox" name="wednesday">
+                        <p>Thursdays</p>
+                        <input type="checkbox" name="thursday">
+                        <p>Fridays</p>
+                        <input type="checkbox" name="friday">
+                        <p>Saturdays</p>
+                        <input type="checkbox" name="saturday">
+                        <p>Sundays</p>
+                        <input type="checkbox" name="sunday">
+                    </div>
+                    
+                    
 
                     <div class='notes'>
                         <p>Additional Notes</p>
@@ -265,5 +287,19 @@
         };
     </script>
 </body>
-
+<script>
+function showDays() {
+    // Get the checkbox
+    var checkBox = document.getElementById("repeat");
+    // Get the output text
+    var days = document.getElementById("days");
+  
+    // If the checkbox is checked, display the output days
+    if (checkBox.checked == true){
+      days.style.display = "block";
+    } else {
+      days.style.display = "none";
+    }
+  }
+</script>
 </html>

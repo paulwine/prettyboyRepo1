@@ -75,11 +75,12 @@
 
             <footer>
 
-                <div tabindex="7" class='logout'>Logout</div>
-                <div class='phone-number'>Phone: <span>248.547.7859</span></div>
-
-                <div class='copyright'>&copy;2018 Papuga Transportation</div>
-
+               
+               <a href="/logout"><div tabindex = '7'class='logout'>Logout</div></a>
+               <div class = 'phone-number'>Phone: <span>248.547.7859</span></div>
+               
+               <div class = 'copyright'>&copy;2018 Papuga Transportation</div>
+                
             </footer>
             <script src='../static/js/nav.js'>
             </script>
@@ -236,10 +237,13 @@
                                 <h3>{{ride.ambulatory}}</h3>
                             </div>
 
+
                             <form action="/delete_ride/{{ride.id}}">
                                 <button name="delete_button" tabindex="12" type=submit value="Cancel_Ride"> Delete Ride</button>
                             </form>
                         </div>
+
+                
 
 
                     </li>
