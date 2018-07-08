@@ -120,7 +120,9 @@ body
                         flex-wrap: wrap
                         justify-content: space-between
                         width: 100%
-                        box-sizing: border-box   
+                        box-sizing: border-box 
+                        height: auto
+                        overflow: hidden
                     
                         div
                             display: block
@@ -148,21 +150,27 @@ body
                                 border-bottom: none
                                 padding-top: .6rem !important 
                                     
-    form
-        width: 100%   
-        button
-            background-color: $red    
-            color: $white   
-            font-family: $navFont  
-            font-size: 1rem      
-            box-sizing: border-box
-            padding: 5px 15px    
-            position: relative
-            display: block
-            margin-left: auto
-            margin-right: auto
-            border-radius: 8px 
-            cursor: pointer    
+                        form
+                            width: 100%  
+                            height: auto
+                            border: solid 1px black
+                            position: relative
+                            bottom: 0
+                            
+                            button
+                                background-color: $red    
+                                color: $white   
+                                font-family: $navFont  
+                                font-size: 1rem      
+                                box-sizing: border-box
+                                padding: 5px 15px    
+                                position: relative
+                                display: block
+                                margin-left: auto
+                                margin-right: auto
+                                border-radius: 8px 
+                                cursor: pointer
+                                
             
             
                 

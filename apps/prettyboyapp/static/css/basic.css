@@ -12,7 +12,7 @@ body {
   .body header {
     padding-top: 40px;
     position: relative;
-    display: block; 
+    display: block;
     width: 58%;
     margin-left: auto;
     margin-right: auto;
@@ -44,9 +44,11 @@ body {
         width: 40%;
         font-size: 1.5rem;
         font-family: "Kohinoor Devangari Regular";
-        color: #155788;
+        color: #1963a2;
         float: right;
         margin-top: 13px; }
         @media (max-width: 699px) {
           .body header .container h1 {
             float: left; } }
+
+/*# sourceMappingURL=basic.css.map */

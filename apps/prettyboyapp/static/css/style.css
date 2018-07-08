@@ -1,36 +1,14 @@
-@font-face {
-font-family: "Kohinoor Devangari Semibold";
-src: url("fonts/KohinoorDevanagari-Semibold-03.otf");
-src: 
-url("fonts/KohinoorDevanagari-Semibold-03.otf") format("opentype"),
-}
+body {
+  background-color: #dee0e0;
+  position: absolute; }
+  @media (min-width: 575px) {
+    body {
+      right: 0; } }
 
-@font-face {
-font-family: "Kohinoor Devangari Regular";
-src: url("fonts/KohinoorDevanagari-Regular-01.otf");
-src: 
-url("fonts/KohinoorDevanagari-Regular-01.otf") format("opentype"),
-}
+.body-content {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  padding-top: 60px; }
 
-
-@font-face {
-font-family: "Kohinoor Devangari Light";
-src: url("fonts/KohinoorDevanagari-Light-05.otf");
-src: 
-url("fonts/KohinoorDevanagari-Light-05.otf") format("opentype"),
-}
-
-
-@font-face {
-font-family: "Arial Rounded Bold";
-src: url("fonts/Arial-Rounded-Bold.ttf"); 
-src: 
-url("fonts/Arial Rounded Bold.ttf") format("truetype"),
-}
-
-@font-face {
-font-family: "Sinhala Sangam MN";
-src: url("fonts/Sinhala-Sangam-MN.ttc");
-src:  
-url("fonts/Sinhala Sangam MN.ttc") format("truetype"), 
-}
+/*# sourceMappingURL=style.css.map */
