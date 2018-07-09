@@ -44,7 +44,7 @@ def task_number_one():
                     send_mail(
                         'Papuga: Ride Approved!',
                         body,
-                        'paulwinegard@gmail.com',
+                        'papugatransportation@gmail.com',
                         [current_user.email],
                         fail_silently=False,
                         html_message=msg_html,
@@ -74,7 +74,7 @@ def task_number_one():
                     send_mail(
                         'Papuga: Ride Denied',
                         body,
-                        'paulwinegard@gmail.com',
+                        'papugatransportation@gmail.com',
                         [current_user.email],
                         fail_silently=False,
                         html_message=msg_html,
@@ -104,10 +104,5 @@ def task_number_two():
                 print("RIDE DELETED")
     print(now)
   
-@task()
-def task_number_three():
-    past_rides = PastRide.objects.all()
 
-    if len(past_rides) > 30:
-        PastRide.objects.first.delete()
         

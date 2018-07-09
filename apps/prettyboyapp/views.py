@@ -45,7 +45,8 @@ def login(request):
 def registerpage(request):
   return render(request, 'register.html')
  
-def register(request):
+def register(request) :
+  
   error = False
   
   first = request.POST['first_name']
@@ -188,8 +189,8 @@ def submit_past_ride(request):
   send_mail(
     'RIDE REQUEST: {}'.format(full_name),
     body,
-    'paulwinegard@gmail.com',
-    ['paulwinegard@gmail.com'],
+    'papugatransportation@gmail.com',
+    ['papugatransportation@gmail.com'],
     fail_silently=False,
     html_message=msg_html,
   )
@@ -239,8 +240,8 @@ def submit_denied_ride(request):
   send_mail(
     'RIDE REQUEST: {}'.format(full_name),
     body,
-    'paulwinegard@gmail.com',
-    ['paulwinegard@gmail.com'],
+    'papugatransportation@gmail.com',
+    ['papugatransportation@gmail.com'],
     fail_silently=False,
     html_message=msg_html,
   )
@@ -251,6 +252,7 @@ def manage_rides(request):
   current_user = User.objects.get(id= request.session['current_user'])
   rides = Ride.objects.filter(user = current_user)
   context = {
+    'user' : current_user,
     "rides" : rides
   } 
   return render(request, "manage.html", context)
@@ -303,9 +305,9 @@ def submit_ride(request):
   pickup_datetime = request.POST['pickup_datetime']
   parsed_date = parser.parse(pickup_datetime)
   print(type(pickup_datetime))
-  if parsed_date < (datetime.datetime.now() + datetime.timedelta(days=1) ):
-    error = True
-    messages.error(request, "Rides Must Be scheduled at least 24 hours in advance")
+  # if parsed_date < (datetime.datetime.now() + datetime.timedelta(days=1) ):
+  #   error = True
+  #   messages.error(request, "Rides Must Be scheduled at least 24 hours in advance")
 
   appointment_time = request.POST['appointment_time']
   pickup_address = request.POST['pickup_address']
@@ -416,7 +418,7 @@ def submit_ride(request):
   if error == True:
     return redirect("/schedule_ride")
   else:
-    ride = Ride.objects.create(dropoff_number = dropoff_number,doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday)
+    ride = Ride.objects.create(dropoff_number = dropoff_number,doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_number, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday)
     
     current_weekday = datetime.datetime.today().weekday()
     day_delta = 0
@@ -439,7 +441,7 @@ def submit_ride(request):
     'round_trip': trip_txt,
     'acc_name' : accompany_name,
     'pickup_number': pickup_phone,
-    'dropoff_number': dropoff_phone,
+    'dropoff_number': dropoff_number,
     'acc_number' : accompany_number
     })
     
@@ -447,8 +449,8 @@ def submit_ride(request):
   send_mail(
     'RIDE REQUEST: {}'.format(full_name),
     body,
-    'paulwinegard@gmail.com',
-    ['paulwinegard@gmail.com'],
+    'papugatransportation@gmail.com',
+    ['papugatransportation@gmail.com'],
     fail_silently=False,
     html_message=msg_html,
   )
@@ -482,8 +484,8 @@ def send_email(request):
   send_mail(
     'SUPPORT: {}'.format(subject),
     body,
-    'paulwinegard@gmail.com',
-    ['paulwinegard@gmail.com'],
+    'papugatransportation@gmail.com',
+    ['papugatransportation@gmail.com'],
     fail_silently=False,
     html_message = msg_html
   )
@@ -507,7 +509,7 @@ def password_reset_done(request):
   send_mail(
     'SUPPORT: {}'.format(subject),
     body,
-    'paulwinegard@gmail.com',
+    'papugatransportation@gmail.com',
     [email],
     fail_silently=False,
     html_message = msg_html,
