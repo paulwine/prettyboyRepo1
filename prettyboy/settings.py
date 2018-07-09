@@ -42,6 +42,7 @@ EMAIL_USE_TLS = True
 
 INSTALLED_APPS = [
     "django_cron",
+    'django_model_changes',
     'apps.prettyboyapp',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -145,12 +146,12 @@ CELERY_TIMEZONE = 'America/Detroit'
 CELERY_BEAT_SCHEDULE = {
     'task-number-one': {
         'task': 'apps.prettyboyapp.tasks.task_number_one',
-        'schedule': timedelta(seconds=5),
+        'schedule': timedelta(seconds=60),
         'args': ()
     },
     'task-number-two': {
         'task': 'apps.prettyboyapp.tasks.task_number_two',
-        'schedule': timedelta(seconds=10),
+        'schedule': timedelta(seconds=60),
         'args': ()
     }
 }

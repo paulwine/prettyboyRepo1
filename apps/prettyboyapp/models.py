@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django_model_changes import ChangesMixin
 
 
 
@@ -27,9 +28,10 @@ class User(models.Model):
     def __unicode__(self):
        return self.first_name + " " + self.last_name
 
-class Ride(models.Model):
+class Ride(ChangesMixin, models.Model):
     pickup_address = models.CharField(max_length=255)
     dropoff_address = models.CharField(max_length=255)
+    dropoff_number = models.CharField(max_length=255)
     pickup_room = models.IntegerField()
     dropoff_room = models.IntegerField()
     pickup_datetime = models.DateField()
@@ -59,7 +61,7 @@ class Ride(models.Model):
     saturday = models.BooleanField()
     sunday = models.BooleanField()
 
-
+    pending = models.BooleanField(default=True)
 
     user = models.ForeignKey(User, related_name="rides", on_delete=models.CASCADE)
 
@@ -68,6 +70,7 @@ class PastRide(models.Model):
     dropoff_address = models.CharField(max_length=255)
     pickup_room = models.IntegerField()
     dropoff_room = models.IntegerField()
+    dropoff_number = models.CharField(max_length=255)
     pickup_datetime = models.DateField()
     pickup_time = models.TimeField(null=True)
     appointment_time = models.TimeField()

@@ -97,9 +97,27 @@
 
             </div>
         </header>
+        <div class='errors'>
+                <!-- Validation Errors -->
+                       {% if messages %}
+                <ul class="messages">
+                               {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                               {% endfor %}
+                </ul>
+                       {% endif %}
+
+            </div>
+        <form action="/submit_past_ride" method="post">
+            {% csrf_token %}
+            <a href="/select_past_ride"><h2>Select From Past Rides</h2></a>
+            
+         </form>
+            
 
         <form action="/submit_ride" method="post">
             {% csrf_token %}
+
             <h2>Pick-Up</h2>
             <div>
                 <!-- Pick Up -->
@@ -237,8 +255,8 @@
                         <input type="text" name="duration">
                     </div>
                     <div>
-                        <p>Repeat Ride?</p>
-                        <input type="checkbox" name="repeat" id="repeat" value="0" onclick='showDays()'/>
+                        <p>Is this a weekly appointment? <small>(If so, we will automatically reschedule it for you)</small></p>
+                        <input type="checkbox" name="repeat" id="repeat" value="0">
                     </div>
                     <div id="days" style="display:none">
                         <p>Mondays</p>
