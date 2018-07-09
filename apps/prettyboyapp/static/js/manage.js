@@ -4,8 +4,16 @@ let buttons = document.getElementsByTagName('button');
 
 function showDetails(detail) {
     let container = detail.closest('li');
-    console.log(container);
     let info = container.querySelector('.info-under');
+    let arrow = detail.querySelector('.arrow');
+    
+    if (info.style.height === "200px") {
+        info.style.height = "0px";
+        
+    } else {
+
+        info.style.height = "200px";
+    }
 }
 
 
@@ -18,6 +26,22 @@ function clicked(button) {
     }
 
 }
+
+let flexBox = document.querySelectorAll(' .flex-box > div');
+
+function underline() {
+
+    for (var i = 0; i < flexBox.length; i++) {
+        flexBox[i].addEventListener('mouseover', function () {
+            this.querySelector('.bottom-border').classList.add('extend');
+        })
+
+        flexBox[i].addEventListener('mouseout', function () {
+            this.querySelector('.bottom-border').classList.remove('extend');
+        })
+    }
+
+};
 
 for (i = 0; i < details.length; i++) {
     let current = details[i];
@@ -35,3 +59,4 @@ for (i = 0; i < buttons.length; i++) {
     }
 }
 
+underline();

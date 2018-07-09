@@ -87,9 +87,7 @@ body
                 padding: 0  
                 width: 100%
                 height: auto     
-
-                    
-                   
+   
                 
                 li
                     position: relative
@@ -113,6 +111,10 @@ body
                         width: 100%    
                         display: flex 
                         justify-content: space-between 
+                        
+                        .details
+                            color: $darkBlue
+                            text-decoration: underline
                             
                     .info-under  
                         position: relative  
@@ -123,6 +125,8 @@ body
                         box-sizing: border-box 
                         height: auto
                         overflow: hidden
+                        height: 0
+                        transition: all .2s ease-in-out 0s
                     
                         div
                             display: block
@@ -137,8 +141,8 @@ body
                             p
                                 padding-top: 3px
                                 padding-bottom: 8px   
-                                box-sizing: border-box  
-                    
+                                box-sizing: border-box
+                                                    
                         .one-way
                             display: flex
                             justify-content: space-between 
@@ -153,7 +157,6 @@ body
                         form
                             width: 100%  
                             height: auto
-                            border: solid 1px black
                             position: relative
                             bottom: 0
                             
@@ -170,10 +173,8 @@ body
                                 margin-right: auto
                                 border-radius: 8px 
                                 cursor: pointer
+
                                 
-            
-            
-                
 .no-rides
     background-color: $gray  
     font-family: $navFont
@@ -199,7 +200,18 @@ body
         margin: auto
         top: 40%    
         box-sizing: border-box    
-    
+
+div.arrow
+    transform: rotate(180deg)
+    position: absolute
+    right: 10px
+    top: -4px
+    color: $lightBlue
+    font-size: 1.3rem
+    transition: .2s all ease-in-out 0s
+
+
+
     
                 
                 

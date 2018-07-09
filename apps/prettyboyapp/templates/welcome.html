@@ -17,7 +17,7 @@
     <title>Document</title>
 </head>
 
-<body onload="underline()">
+<body>
 
     <header class='header-large'><img src="../static/img/Icons/PapugaLogo.png" alt="Papuga Logo"></header>
 
@@ -43,7 +43,7 @@
             </div>
 
             <div onclick="location.href = '/schedule_ride'">
-                <img src="../static/img/Icons/ScheduleIcon.png" alt="Schedule a ride"><br> 
+                <img src="../static/img/Icons/ScheduleIcon.png" alt="Schedule a ride"><br>
 
                 <p>
                     <a href="/schedule_ride">Schedule Ride</a>
@@ -73,36 +73,20 @@
         </div>
 
     </div>
-    <script>
-        let flexBox = document.querySelectorAll(' .flex-box > div');
-        
-        function underline(){
-            
-            for (var i = 0; i < flexBox.length; i++) {
-                flexBox[i].addEventListener('mouseover', function(){
-                    this.querySelector('.bottom-border').classList.add('extend');
-                })
-                
-                flexBox[i].addEventListener('mouseout', function(){
-                    this.querySelector('.bottom-border')                        .classList.remove('extend');
-                })
-            }
-                
-        };
-    </script>
+    <footer>
+
+        <div class='left'>
+            <p><a href="/logout">Logout</a>| Phone: 248-547-7859</p>
+        </div>
+
+        <div class='right'>
+            <p>&copy; 2018 Papuga Transport</p>
+        </div>
+    </footer>
+
+
+    <script src = '../static/js/manage.js'></script>
 </body>
 
-
-<footer>
-
-    <div class = 'left'>
-        <p><a href="/logout">Logout</a>| Phone: 248-547-7859</p>
-    </div>
-
-    <div class='right'>
-        <p>&copy; 2018 Papuga Transport</p>
-    </div>
-</footer>
-    
 
 </html>
