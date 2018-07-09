@@ -102,9 +102,27 @@
 
             </div>
         </header>
+        <div class='errors'>
+                <!-- Validation Errors -->
+                       {% if messages %}
+                <ul class="messages">
+                               {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                               {% endfor %}
+                </ul>
+                       {% endif %}
+
+            </div>
+        <form action="/submit_past_ride" method="post">
+            {% csrf_token %}
+            <a href="/select_past_ride"><h2>Select From Past Rides</h2></a>
+            
+         </form>
+            
 
         <form action="/submit_ride" method="post">
             {% csrf_token %}
+
             <h2>Pick-Up</h2>
             <div>
                 <!-- Pick Up -->

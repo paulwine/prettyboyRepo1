@@ -127,8 +127,19 @@
                        <p>{{ride.pickup_address}}</p>
                    </div>
                    <div class = 'one-way'>  
-                       <h3>{{ride.round_trip}}</h3>
-                       <h3>{{ride.ambulatory}}</h3>
+                        {% if ride.round_trip %} 
+                        <h3>Round Trip</h3>
+                        {% else%}
+                        <h3>One Way</h3>
+                        {% endif %}
+                        
+                        
+ 
+                        {% if ride.ambulatory %} 
+                        <h3>Ambulatory</h3>
+                        {% else%}
+                        <h3>Wheelchair Bound</h3>
+                        {% endif %}
                    </div>  
                 </div>
 
@@ -137,7 +148,9 @@
                 </form>
 
             </li> 
+            <hr>
             {% endif %}
+            
                {% endfor %}
 
         </ul>
@@ -177,9 +190,22 @@
                        <p>{{ride.pickup_address}}</p>
                    </div>
                     <div class = 'one-way'>
-                        
-                       <h3>{{ride.round_trip}}</h3>
-                       <h3>{{ride.ambulatory}}</h3>
+                       {% if ride.round_trip %} 
+                       <h3>Round Trip</h3>
+                       {% else%}
+                       <h3>One Way</h3>
+                       {% endif %}
+                       
+                       
+
+                       {% if ride.ambulatory %} 
+                       <h3>Ambulatory</h3>
+                       {% else%}
+                       <h3>Wheelchair Bound</h3>
+                       {% endif %}
+                       
+                       
+                       
                     </div>
                 </div>
 
@@ -189,6 +215,7 @@
 
             </li> 
             {% endif %}
+            <hr>
             {% endif %}
                {% endfor %}
               
@@ -231,8 +258,19 @@
 
                     <div class = 'one-way'>
                         
-                       <h3>{{ride.round_trip}}</h3>
-                       <h3>{{ride.ambulatory}}</h3>
+                            {% if ride.round_trip %} 
+                            <h3>Round Trip</h3>
+                            {% else%}
+                            <h3>One Way</h3>
+                            {% endif %}
+                            
+                            
+     
+                            {% if ride.ambulatory %} 
+                            <h3>Ambulatory</h3>
+                            {% else%}
+                            <h3>Wheelchair Bound</h3>
+                            {% endif %}
                     </div>
                 </div>
 
@@ -264,7 +302,9 @@
                 </script>
 
             </li> 
+            <hr>
             {% endif %}
+            
             {% endfor %}
                
 

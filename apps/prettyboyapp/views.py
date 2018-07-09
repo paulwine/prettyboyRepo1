@@ -9,9 +9,11 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from celery.schedules import crontab
 from celery.task import periodic_task
-from .models import User, Ride
+from .models import User, Ride, PastRide
 import datetime
 import bcrypt
+from dateutil import parser
+
   # the index function is called when root is visited
 def index(request):
   if 'current_user' in request.session:
@@ -107,12 +109,85 @@ def welcome(request):
 def contact(request):
   return render(request, "contact.html")
 
+
+
 def schedule_ride(request):
   current_user = User.objects.get(id= request.session['current_user'])
+  past_rides = PastRide.objects.filter(user=current_user)
   context = {
-    "user" : current_user
+    "user" : current_user,
+    'past_rides' : past_rides
   }
   return render(request, "schedule.html", context)
+
+def select_past_ride(request):
+  current_user = User.objects.get(id= request.session['current_user'])
+  past_rides = PastRide.objects.filter(user=current_user)
+  context = {
+    "user" : current_user,
+    'past_rides' : past_rides
+  }
+  return render(request, "select_past_ride.html", context)
+
+def schedule_ride_from_past_ride(request, rideid):
+  current_user = User.objects.get(id= request.session['current_user'])
+  past_ride = PastRide.objects.get(id=rideid)
+  context = {
+    "user" : current_user,
+    'ride' : past_ride
+  }
+  return render(request, 'schedule_ride_from_past_ride.html', context)
+def submit_past_ride(request):
+  past_id = request.POST['ride_id']
+  date = request.POST['date']
+  time = request.POST['time']
+
+  current_user = User.objects.get(id= request.session['current_user'])
+
+  ride = PastRide.objects.get(id=past_id)
+  new_ride = Ride.objects.create(dropoff_number = ride.dropoff_number,doctor_name = ride.doctor_name, doctor_suite_number = ride.doctor_suite_number, doctor_office_number = ride.doctor_office_number, pickup_address= ride.pickup_address, pickup_datetime= date, appointment_time= time, pickup_room= ride.pickup_room, dropoff_address= ride.dropoff_address, facility_number= ride.facility_number, dropoff_room= ride.dropoff_room, duration= ride.duration, accompany_name= ride.accompany_name, accompany_number= ride.accompany_number, ambulatory= ride.ambulatory, round_trip= ride.round_trip, comments= ride.comments, user=ride.user, repeat_ride=ride.repeat_ride, monday=ride.monday, tuesday=ride.tuesday, wednesday=ride.wednesday, thursday=ride.thursday, friday=ride.friday, saturday=ride.saturday, sunday=ride.sunday)
+  
+  trip_txt = ""
+  amb_txt = ""
+  if new_ride.round_trip:
+    trip_txt = "Round Trip"
+  else:
+    trip_txt = "One Way"
+
+  if new_ride.ambulatory:
+    amb_txt = "Ambulatory"
+  else:
+    amb_txt = "Wheelchair Bound"  
+  
+  
+  body = "Ride Request:"
+  msg_html = render_to_string('email.html', {
+    'rider_first': current_user.first_name,
+    'rider_last': current_user.last_name,
+    'date': new_ride.pickup_datetime,
+    'time' : new_ride.appointment_time,
+    'pickup' : new_ride.pickup_address,
+    'dropoff' : new_ride.dropoff_address,
+    'ambulatory': amb_txt,
+    'round_trip': trip_txt,
+    'acc_name' : new_ride.accompany_name,
+    'pickup_number': new_ride.facility_number,
+    'dropoff_number': new_ride.dropoff_number,
+    'acc_number' : new_ride.accompany_number
+    })
+    
+  full_name = current_user.first_name + " " + current_user.last_name
+  send_mail(
+    'RIDE REQUEST: {}'.format(full_name),
+    body,
+    'paulwinegard@gmail.com',
+    ['paulwinegard@gmail.com'],
+    fail_silently=False,
+    html_message=msg_html,
+  )
+
+  return redirect("/schedule_ride")
+
 def manage_rides(request):
   current_user = User.objects.get(id= request.session['current_user'])
   rides = Ride.objects.filter(user = current_user)
@@ -167,6 +242,12 @@ def submit_ride(request):
   current_user = User.objects.get(id= request.session['current_user'])
   
   pickup_datetime = request.POST['pickup_datetime']
+  parsed_date = parser.parse(pickup_datetime)
+  print(type(pickup_datetime))
+  if parsed_date < (datetime.datetime.now() + datetime.timedelta(days=1) ):
+    error = True
+    messages.error(request, "Rides Must Be scheduled at least 24 hours in advance")
+
   appointment_time = request.POST['appointment_time']
   pickup_address = request.POST['pickup_address']
   pickup_city = request.POST['pickup_city']
@@ -178,7 +259,9 @@ def submit_ride(request):
   dropoff_city = request.POST['dropoff_city']
   dropoff_full_address = dropoff_address + ", " + dropoff_city
   dropoff_room = request.POST['dropoff_room']
-  dropoff_phone = request.POST['dropoff_phone']
+  dropoff_number = request.POST['dropoff_phone']
+
+  
 
   doctor_name =  request.POST['doctor_name']
   doctor_office_number =  request.POST['doctor_number']
@@ -274,13 +357,18 @@ def submit_ride(request):
   if error == True:
     return redirect("/schedule_ride")
   else:
-    ride = Ride.objects.create(doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday)
+    ride = Ride.objects.create(dropoff_number = dropoff_number,doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_phone, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday)
     
     current_weekday = datetime.datetime.today().weekday()
+    day_delta = 0
+
+    for day in day_array:
+      if day < current_weekday:
+        day_delta = current_weekday + 7
 
   
   #Email Construction
-  body = "BODY BABY"
+  body = "Ride Request:"
   msg_html = render_to_string('email.html', {
     'rider_first': current_user.first_name,
     'rider_last': current_user.last_name,
@@ -313,14 +401,24 @@ def delete_all(request):
   return redirect("/")
 def delete_all_rides(request):
   Ride.objects.all().delete() 
+  PastRide.objects.all().delete() 
+
+  
   return redirect("/")
 
 def send_email(request):
   current_user = User.objects.get(id= request.session['current_user'])
   current_email = current_user.email
+  current_name = current_user.first_name + " " + current_user.last_name
   subject = request.POST['email_subject']
-  body = request.POST['email_body']
+  body = request.POST['email_body'] 
   print(body)
+
+  msg_html = render_to_string('support_email.html', {
+      'name' : current_name,
+      'email' : current_email,
+      'body' : body
+  })
 
   send_mail(
     'SUPPORT: {}'.format(subject),
@@ -328,6 +426,7 @@ def send_email(request):
     'paulwinegard@gmail.com',
     ['paulwinegard@gmail.com'],
     fail_silently=False,
+    html_message = msg_html
   )
   return redirect("/welcome")
 
