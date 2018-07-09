@@ -137,6 +137,14 @@ def schedule_ride_from_past_ride(request, rideid):
     'ride' : past_ride
   }
   return render(request, 'schedule_ride_from_past_ride.html', context)
+def schedule_ride_from_denied_ride(request, rideid):
+  current_user = User.objects.get(id= request.session['current_user'])
+  denied_ride = Ride.objects.get(id=rideid)
+  context = {
+    "user" : current_user,
+    'ride' : denied_ride
+  }
+  return render(request, 'schedule_ride_from_denied_ride.html', context)
 def submit_past_ride(request):
   past_id = request.POST['ride_id']
   date = request.POST['date']
@@ -186,7 +194,58 @@ def submit_past_ride(request):
     html_message=msg_html,
   )
 
-  return redirect("/schedule_ride")
+  return redirect("/manage_rides")
+
+def submit_denied_ride(request):
+  past_id = request.POST['ride_id']
+  date = request.POST['date']
+  time = request.POST['time']
+
+  current_user = User.objects.get(id= request.session['current_user'])
+
+  ride = Ride.objects.get(id=past_id)
+  new_ride = Ride.objects.create(dropoff_number = ride.dropoff_number,doctor_name = ride.doctor_name, doctor_suite_number = ride.doctor_suite_number, doctor_office_number = ride.doctor_office_number, pickup_address= ride.pickup_address, pickup_datetime= date, appointment_time= time, pickup_room= ride.pickup_room, dropoff_address= ride.dropoff_address, facility_number= ride.facility_number, dropoff_room= ride.dropoff_room, duration= ride.duration, accompany_name= ride.accompany_name, accompany_number= ride.accompany_number, ambulatory= ride.ambulatory, round_trip= ride.round_trip, comments= ride.comments, user=ride.user, repeat_ride=ride.repeat_ride, monday=ride.monday, tuesday=ride.tuesday, wednesday=ride.wednesday, thursday=ride.thursday, friday=ride.friday, saturday=ride.saturday, sunday=ride.sunday)
+  
+  trip_txt = ""
+  amb_txt = ""
+  if new_ride.round_trip:
+    trip_txt = "Round Trip"
+  else:
+    trip_txt = "One Way"
+
+  if new_ride.ambulatory:
+    amb_txt = "Ambulatory"
+  else:
+    amb_txt = "Wheelchair Bound"  
+  
+  
+  body = "Ride Request:"
+  msg_html = render_to_string('email.html', {
+    'rider_first': current_user.first_name,
+    'rider_last': current_user.last_name,
+    'date': new_ride.pickup_datetime,
+    'time' : new_ride.appointment_time,
+    'pickup' : new_ride.pickup_address,
+    'dropoff' : new_ride.dropoff_address,
+    'ambulatory': amb_txt,
+    'round_trip': trip_txt,
+    'acc_name' : new_ride.accompany_name,
+    'pickup_number': new_ride.facility_number,
+    'dropoff_number': new_ride.dropoff_number,
+    'acc_number' : new_ride.accompany_number
+    })
+    
+  full_name = current_user.first_name + " " + current_user.last_name
+  send_mail(
+    'RIDE REQUEST: {}'.format(full_name),
+    body,
+    'paulwinegard@gmail.com',
+    ['paulwinegard@gmail.com'],
+    fail_silently=False,
+    html_message=msg_html,
+  )
+  ride.delete()
+  return redirect("/manage_rides")
 
 def manage_rides(request):
   current_user = User.objects.get(id= request.session['current_user'])

@@ -275,7 +275,10 @@
                 </div>
 
                 <form action="/delete_ride/{{ride.id}}">
-                    <button name = "delete_button3" tabindex="12" type = submit value = "Cancel_Ride" onclick="clicked3();">Cancel Ride</button>
+                    <button name = "delete_button3" tabindex="12" type = submit value = "Cancel_Ride" onclick="clicked3();">Delete Ride</button>
+                </form>
+                <form action="/schedule_ride_from_denied_ride/{{ride.id}}">
+                    <button name = "reschedule_button" tabindex="12" type = submit value = "Cancel_Ride" onclick="reschedule();">Reschedule Ride</button>
                 </form>
                 <script type="text/javascript">
                     function clicked() {
@@ -295,6 +298,13 @@
                     function clicked3() {
                        if (confirm('Do you want to cancel this ride?')) {
                            delete_button3.submit();
+                       } else {
+                           return false;
+                       }
+                    }
+                    function reschedule() {
+                       if (confirm('Do you want to reschedule this ride?')) {
+                           reschedule_button.submit();
                        } else {
                            return false;
                        }
