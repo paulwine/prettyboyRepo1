@@ -122,7 +122,7 @@ def schedule_ride(request):
 
 def select_past_ride(request):
   current_user = User.objects.get(id= request.session['current_user'])
-  past_rides = PastRide.objects.filter(user=current_user)
+  past_rides = PastRide.objects.filter(user=current_user).order_by("-pickup_datetime")[:20]
   context = {
     "user" : current_user,
     'past_rides' : past_rides

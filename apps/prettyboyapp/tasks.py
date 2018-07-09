@@ -104,3 +104,10 @@ def task_number_two():
                 print("RIDE DELETED")
     print(now)
   
+@task()
+def task_number_three():
+    past_rides = PastRide.objects.all()
+
+    if len(past_rides) > 30:
+        PastRide.objects.first.delete()
+        
