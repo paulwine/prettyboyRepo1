@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/manage.css' %}" > 
+    
+    
+</head>
+<body>
+        <nav>
+                
+                <div class = 'gradient'></div>
+                
+                <div class = 'navbar-small'>
+                    <div class = 'navbar-top open-nav' onclick="navOut()"><img  class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
+           
+                    <div class = 'navbar-top parrot'><img class= 'navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div> 
+           
+                    <div class = 'logout-small navbar-top'>Logout</div>    
+                </div>
+                
+                 
+                 <div class = 'side-nav hidden' id = 'side-nav'>
+                     
+                      <ul>
+                          <li tab-index='1' class="exit"><div class = 'navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div></li>
+                          
+                           <div class = 'user'><h2><span>{{user.first_name}}</span> {{user.last_name}}</h2></div>
+                           
+                           <li tabindex="2" onclick="location.href='/schedule_ride';">
+                           <div class = 'navimg'><img class = 'icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
+                           <p>Schedule Ride</p>
+                           </li>
+           
+           
+                           <li tabindex="3" onclick="location.href='/info';"><div class = 'navimg'><img class = 'icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
+                           <p>My Information</p></li>
+           
+                          <li tabindex="4" id = 'this-page' onclick="location.href='/contact';">
+                          <div  class = 'navimg'> <img class = 'icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+                          <p>Contact</p></li>
+                          
+                          <li tabindex="5" onclick="location.href='/manage_rides';"> <div class = 'navimg'><img id = 'manage-rides' class = 'icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
+                          <p>Manage Rides</p></li>
+           
+                          <li tabindex="6" onclick="location.href='/welcome';"> 
+                          <div class = 'navimg'><img class = 'icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
+                          <p>Home</p></li>
+           
+                      </ul>
+                      
+                       <footer>
+                          
+                          <a href="/logout"><div tabindex = '7'class='logout'>Logout</div></a>
+                          <div class = 'phone-number'>Phone: <span>248.547.7859</span></div>
+                          
+                          <div class = 'copyright'>&copy;2018 Papuga Transportation</div>
+                           
+                       </footer>
+                       <script src = '../static/js/nav.js'>
+               
+                       </script>
+                  </div>
+              </nav>
+               
+           <div  class = 'body'>
+               <header>
+                  <div class = 'container'>
+                      
+                   <img src="../static/img/Icons/PapugaLogo.png" alt="">        
+                   
+                   
+                  </div>
+               </header>  
+               
+           
+               <div style = 'display: visible' class = 'rides'>
+                 
+                   <div class = 'approved'>
+                       <h2>Ride</h2>
+           
+        <ul>
+        
+       <li>        
+        <div class = 'visible' >
+            
+            <p>{{ride.pickup_address}}</p>
+            <p tabindex="8" class = 'details'> <span class = 'arrow'>&and;</span></p>
+        </div>
+        <div class = 'info-under'>
+           <div>
+
+            
+           </div>
+
+           <div>
+
+               
+           </div>
+
+           <div>
+               <h3>Pick-up Address</h3> 
+               <p>{{ride.pickup_address}}</p>
+           </div>
+           <div class = 'one-way'>  
+                {% if ride.round_trip %} 
+                <h3>Round Trip</h3>
+                {% else%}
+                <h3>One Way</h3>
+                {% endif %}
+                
+                
+
+                {% if ride.ambulatory %} 
+                <h3>Ambulatory</h3>
+                {% else%}
+                <h3>Wheelchair Bound</h3>
+                {% endif %}
+           </div>  
+        </div>
+
+       
+    </li> 
+    <hr>
+   
+
+</ul>
+<form action="/submit_past_ride" id="submit_ride_form" method="post">
+    {% csrf_token%}
+    <input type="text" value="{{ride.id}}" name="ride_id">
+    <p>New Date: <input type ="date" name="date"></p>
+    <p>New Time: <input type = "time" name = "time"></p>
+    <input type="submit" value="Submit" id = "submit_ride" >
+</form>
+</body>
+</html>

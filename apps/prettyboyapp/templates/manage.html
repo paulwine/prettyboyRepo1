@@ -127,8 +127,19 @@
                        <p>{{ride.pickup_address}}</p>
                    </div>
                    <div class = 'one-way'>  
-                       <h3>{{ride.round_trip}}</h3>
-                       <h3>{{ride.ambulatory}}</h3>
+                        {% if ride.round_trip %} 
+                        <h3>Round Trip</h3>
+                        {% else%}
+                        <h3>One Way</h3>
+                        {% endif %}
+                        
+                        
+ 
+                        {% if ride.ambulatory %} 
+                        <h3>Ambulatory</h3>
+                        {% else%}
+                        <h3>Wheelchair Bound</h3>
+                        {% endif %}
                    </div>  
                 </div>
 
@@ -137,7 +148,9 @@
                 </form>
 
             </li> 
+            <hr>
             {% endif %}
+            
                {% endfor %}
 
         </ul>
@@ -177,9 +190,22 @@
                        <p>{{ride.pickup_address}}</p>
                    </div>
                     <div class = 'one-way'>
-                        
-                       <h3>{{ride.round_trip}}</h3>
-                       <h3>{{ride.ambulatory}}</h3>
+                       {% if ride.round_trip %} 
+                       <h3>Round Trip</h3>
+                       {% else%}
+                       <h3>One Way</h3>
+                       {% endif %}
+                       
+                       
+
+                       {% if ride.ambulatory %} 
+                       <h3>Ambulatory</h3>
+                       {% else%}
+                       <h3>Wheelchair Bound</h3>
+                       {% endif %}
+                       
+                       
+                       
                     </div>
                 </div>
 
@@ -189,6 +215,7 @@
 
             </li> 
             {% endif %}
+            <hr>
             {% endif %}
                {% endfor %}
               
@@ -231,13 +258,27 @@
 
                     <div class = 'one-way'>
                         
-                       <h3>{{ride.round_trip}}</h3>
-                       <h3>{{ride.ambulatory}}</h3>
+                            {% if ride.round_trip %} 
+                            <h3>Round Trip</h3>
+                            {% else%}
+                            <h3>One Way</h3>
+                            {% endif %}
+                            
+                            
+     
+                            {% if ride.ambulatory %} 
+                            <h3>Ambulatory</h3>
+                            {% else%}
+                            <h3>Wheelchair Bound</h3>
+                            {% endif %}
                     </div>
                 </div>
 
                 <form action="/delete_ride/{{ride.id}}">
-                    <button name = "delete_button3" tabindex="12" type = submit value = "Cancel_Ride" onclick="clicked3();">Cancel Ride</button>
+                    <button name = "delete_button3" tabindex="12" type = submit value = "Cancel_Ride" onclick="clicked3();">Delete Ride</button>
+                </form>
+                <form action="/schedule_ride_from_denied_ride/{{ride.id}}">
+                    <button name = "reschedule_button" tabindex="12" type = submit value = "Cancel_Ride" onclick="reschedule();">Reschedule Ride</button>
                 </form>
                 <script type="text/javascript">
                     function clicked() {
@@ -261,10 +302,19 @@
                            return false;
                        }
                     }
+                    function reschedule() {
+                       if (confirm('Do you want to reschedule this ride?')) {
+                           reschedule_button.submit();
+                       } else {
+                           return false;
+                       }
+                    }
                 </script>
 
             </li> 
+            <hr>
             {% endif %}
+            
             {% endfor %}
                
 
