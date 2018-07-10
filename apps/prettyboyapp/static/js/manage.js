@@ -6,23 +6,28 @@ function showDetails(detail) {
     let container = detail.closest('li');
     let info = container.querySelector('.info-under');
     let arrow = detail.querySelector('.arrow');
-    
+
     if (info.style.height === "200px") {
         info.style.height = "0px";
-        
+
     } else {
 
-        info.style.height = "200px"; 
+        info.style.height = "200px";
     }
 }
 
-
 function clicked(button) {
-    console.log(button);
-    if (confirm('Do you want to cancel this ride?')) {
-        button.submit();
+
+    if (button.name === 'delete_button') {
+
+        if (confirm('Are you sure you want to delete this ride?')) {
+            button.parentElement.submit();
+        } else {
+            return false;
+        }
+
     } else {
-        return false;
+        button.parentElement.submit();
     }
 
 }

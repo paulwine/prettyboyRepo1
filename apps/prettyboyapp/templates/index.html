@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 
 
     <link rel="stylesheet" href="../static/css/default.css">
@@ -31,7 +32,7 @@
                     <div><a href="/registerpage">Sign-Up</a></div>
                     <div class='pointer' onclick="goToBottom()">Login</div>
                 </div>
-                <div>
+                <div> 
 
                     <div> <img class='pointer' src="../static/img/Icons/Down%20Arrow.png" alt="down-arrow" onclick="goToAbout()"> </div>
                 </div>
@@ -87,8 +88,8 @@
                         {% csrf_token %}
                         <ul class="register-form">
 
-                            <li><input type="text" name="email_log" placeholder="Email"></li>
-                            <li><input type="password" name="password_log" id="myInput" placeholder="Password">
+                            <li><img class = 'login-icon' src="../static/img/Icons/Loginman.png" alt=""><input type="text" name="email_log" placeholder="Email"></li>
+                            <li><img class = 'login-icon' src="../static/img/Icons/PasswordIcon.png" alt=""><input type="password" name="password_log" id="myInput" placeholder="Password">
                             </li>
 
                             <li class='show-password'><input type="checkbox" onclick="myFunction()">Show Password

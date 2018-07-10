@@ -5,26 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../static/css/default.css">  
+        {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}"> 
+    <link rel="stylesheet" href= "{% static 'css/email.css' %}"> 
+    
+    <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/basic.css">
-    <link rel="stylesheet" href="../static/css/nav.css">
-    <link rel="stylesheet" href="../static/css/manage.css">
+    <link rel="stylesheet" href="../static/css/email.css">
 </head>
+
 <body>
-        <body>
-                <h2>Hey, {{rider_first}}</h2>
-                <h1>Your Ride Has Been Approved!</h1>
-                
-                <p><strong>Date: </strong>{{date}}</p>
-                <p><strong>Pickup Time: </strong>{{time}}</p>
-                <p><strong>Pick-Up Location:</strong> {{pickup}}</p>
-                <p><strong>Drop-Off Location: </strong>{{dropoff}}</p>
-               
-                <p><strong>Round-Trip/One-Way: </strong>{{round_trip}}</p>
-                
-                <p>See you soon, and thank you for riding with Papuga!</p>
-            </body>
-            </html>
+
+    <body>
+       <img src="../static/img/Icons/PapugaLogo.png" alt="">
+        <h2>Hey, {{rider_first}}</h2>
+        <h1>Your Ride Has Been Approved!</h1>
+
+       <div>
+        <p><strong>Date: </strong>{{date}}</p>
+        <p><strong>Pickup Time: </strong>{{time}}</p>
+        <p><strong>Pick-Up Location:</strong> {{pickup}}</p>
+        <p><strong>Drop-Off Location: </strong>{{dropoff}}</p>
+
+        <p><strong>Round-Trip/One-Way: </strong>{{round_trip}}</p>
+        </div>
+
+        <p>See you soon, and thank you for riding with Papuga!</p>
+    </body>
 </body>
 </html>

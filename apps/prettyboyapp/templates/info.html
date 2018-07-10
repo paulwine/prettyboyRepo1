@@ -135,12 +135,13 @@
                 </div>
 
                 <div class='checkboxes'>
+                   <span class = 'together'>
                     <div>
                         {% if user.private_pay %}
                         <input type="checkbox" name='private_pay' checked>
                         {% else %}
                         <input type="checkbox" name='private_pay'>
-                        {% endif %}
+                        {% endif %} 
                         <p>Private Pay</p>
                         
                     </div>
@@ -153,6 +154,7 @@
                         <p>Facility Pay</p>
 
                     </div>
+                    </span>
                 </div>
             </div>
             
@@ -166,7 +168,7 @@
 
     </div>
 
-
+<script src="../static/js/schedule.js"></script>
 </body>
 
 </html>

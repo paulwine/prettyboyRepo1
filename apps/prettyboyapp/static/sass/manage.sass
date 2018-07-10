@@ -2,7 +2,7 @@ $titleFont: 'Kohinoor Devangari Semibold'
 $bodyFont: 'Kohinoor Devangari Regular'
 $footerFont: 'Kohinoor Devangari Light'
 $navFont: 'Arial Rounded Bold'
-$formFont: 'Sinhala Sangam MN'
+$formFont: 'Sinhala Sangam MN' 
 
 $offWhite: rgba( 222, 224, 224, 1) 
 $white: rgba( 230, 231, 232, 1)
@@ -154,27 +154,30 @@ body
                                 border-bottom: none
                                 padding-top: .6rem !important 
                                     
-                        form
-                            width: 100%  
-                            height: auto
-                            position: relative
-                            bottom: 0
-                            
-                            button
-                                background-color: $red    
-                                color: $white   
-                                font-family: $navFont  
-                                font-size: 1rem      
-                                box-sizing: border-box
-                                padding: 5px 15px    
-                                position: relative
-                                display: block
-                                margin-left: auto
-                                margin-right: auto
-                                border-radius: 8px 
-                                cursor: pointer
+                    form
+                        width: 100%  
+                        height: auto
+                        position: relative
+                        bottom: 0
 
-                                
+                        button
+                            background-color: $red    
+                            color: $white   
+                            font-family: $titleFont  
+                            font-size: 1rem      
+                            box-sizing: border-box
+                            padding: 5px 15px    
+                            position: relative
+                            display: block
+                            margin-left: auto
+                            margin-right: auto
+                            border-radius: 5px 
+                            cursor: pointer
+                            border: none
+
+#reschedule
+    margin-top: 2px
+    background-color: $green
 .no-rides
     background-color: $gray  
     font-family: $navFont
@@ -209,6 +212,21 @@ div.arrow
     color: $lightBlue
     font-size: 1.3rem
     transition: .2s all ease-in-out 0s
+        
+a#ride-spacing
+    display: block
+    position: relative
+    margin-left: auto
+    margin-right: auto
+    top: 10px
+    
+h2#select-past-ride
+    padding-left: 5px
+    padding-right: 5px
+    background-color: $green
+    border-radius: 5px
+    display: block
+    position: relative
 
 
 

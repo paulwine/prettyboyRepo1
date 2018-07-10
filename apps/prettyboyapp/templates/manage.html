@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/basic.css' %}" 
     <link rel="stylesheet" href= "{% static 'css/nav.css' %}" 
     <link rel="stylesheet" href= "{% static 'css/manage.css' %}" >
--->
+
     <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/basic.css">
@@ -112,7 +112,7 @@
 
                     {% for ride in rides %} {% if ride.approved == True %}
 
-
+ 
                     <li>
                         <div class='visible'>
                             <p>{{ride.pickup_datetime}}</p>
@@ -148,12 +148,12 @@
                                 <h3>Wheelchair Bound</h3>
                                 {% endif %}
                             </div>
-                        </div>
 
                         <form action="/delete_ride/{{ride.id}}">
-                            <button name="delete_button" tabindex="9" type=submit value="Cancel_Ride">Delete Ride</button>
+                            <button name="delete_button" tabindex="9" type=button value="Cancel_Ride">Delete Ride</button>
                         </form>
 
+                        </div>
                     </li>
                     <hr> {% endif %} {% endfor %}
 
@@ -205,11 +205,11 @@
 
 
                             </div>
-                        </div>
 
                         <form action="/delete_ride/{{ride.id}}">
-                            <button name="delete_button" tabindex="11" type=submit value="Cancel_Ride">Delete Ride</button>
+                            <button name="delete_button" tabindex="11" type=button value="Cancel_Ride">Delete Ride</button>
                         </form>
+                        </div>
 
                     </li>
                     {% endif %}
@@ -263,14 +263,14 @@
                                 <h3>Wheelchair Bound</h3>
                                 {% endif %}
                             </div>
-                        </div>
 
                         <form action="/delete_ride/{{ride.id}}">
-                            <button name="delete_button" tabindex="12" type=submit value="Cancel_Ride">Delete Ride</button>
+                            <button name="delete_button" tabindex="12" type=button value="Cancel_Ride">Delete Ride</button>
                         </form>
                         <form action="/schedule_ride_from_denied_ride/{{ride.id}}">
-                            <button name="reschedule_button" tabindex="12" type=submit value="Cancel_Ride">Reschedule Ride</button>
+                            <button id = 'reschedule' name="reschedule_button" tabindex="12" type=button value="Cancel_Ride">Reschedule Ride</button>
                         </form>
+                        </div>
 
                     </li>
                     <hr> {% endif %} {% endfor %}

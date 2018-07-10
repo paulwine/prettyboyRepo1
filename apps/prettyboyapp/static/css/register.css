@@ -122,7 +122,8 @@ body {
 
 .errors {
   color: #d63934;
-  font-family: "Kohinoor Devangari Regular"; }
+  font-family: "Kohinoor Devangari Regular";
+  margin-top: 50px; }
   .errors ul {
     background-color: #e6e7e8;
     margin-top: 10px;

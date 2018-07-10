@@ -1,3 +1,5 @@
+"use strict"; 
+
 let sideNav = document.getElementById('side-nav');
 let gradient = document.querySelector('.gradient')
 
@@ -6,6 +8,5 @@ function navOut() {
 
     sideNav.classList.toggle('hidden');    
     gradient.classList.toggle('applied-gradient');
-
 
 }

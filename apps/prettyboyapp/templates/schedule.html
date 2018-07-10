@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/basic.css' %}" 
     <link rel="stylesheet" href= "{% static 'css/nav.css' %}" 
     <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" > 
--->
+
     <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/basic.css">
@@ -49,16 +49,16 @@
                     <h2><span>{{user.first_name}}</span> {{user.last_name}}</h2>
                 </div>
 
-                <li tabindex="2" id = 'this-page'>
+                <li tabindex="2" id='this-page'>
                     <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
                     <p>Schedule Ride</p>
                 </li>
 
-                <li tabindex="3" onclick="location.href='/info';" >
-                    
+                <li tabindex="3" onclick="location.href='/info';">
+
                     <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
                     <p>My Information</p>
-                    
+
                 </li>
 
                 <li tabindex="4" onclick="location.href='/contact';">
@@ -82,8 +82,6 @@
 
             </footer>
             <script src='../static/js/nav.js'>
-
-
             </script>
         </div>
     </nav>
@@ -98,26 +96,27 @@
             </div>
         </header>
         <div class='errors'>
-                <!-- Validation Errors -->
-                       {% if messages %}
-                <ul class="messages">
-                               {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                               {% endfor %}
-                </ul>
-                       {% endif %}
+            <!-- Validation Errors -->
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
-            </div>
+        </div>
         <form action="/submit_past_ride" method="post">
             {% csrf_token %}
-            <a href="/select_past_ride"><h2>Select From Past Rides</h2></a>
-            
-         </form>
-            
+            <a href="/select_past_ride">
+                <h2 class='past-ride'>- Select From Past Rides</h2>
+            </a>
 
-        <form action="/submit_ride" method="post">
+        </form>
+
+
+        <form action="/submit_ride" method="post" id="form1">
             {% csrf_token %}
-
             <h2>Pick-Up</h2>
             <div>
                 <!-- Pick Up -->
@@ -125,78 +124,78 @@
                 <div class='half'>
 
                     <div>
-                        <p>Date</p>
+                        <p>Date*</p>
                         <input type="date" name="pickup_datetime">
                     </div>
                     <div>
-                        <p>Appointment Time</p>
+                        <p>Appointment Time*</p>
                         <input type="time" name="appointment_time">
                     </div>
                 </div>
                 <div>
-                    <p>Address</p>
-                    <input type="text" name="pickup_address" value = '{{user.primary_address}}'>
+                    <p>Address*</p>
+                    <input type="text" name="pickup_address" value='{{user.primary_address}}'>
                 </div>
 
                 <div class='half'>
 
                     <div>
-                        <p>City</p>
-                        <input type="text" name="pickup_city" value = '{{user.primary_city}}'>
+                        <p>City*</p>
+                        <input type="text" name="pickup_city" value='{{user.primary_city}}'>
                     </div>
                     <div>
-                        <p>Room Number</p>
-                        <input type="text" name="pickup_room" value = '{{user.primary_room_number}}'>
+                        <p>Room Number*</p>
+                        <input type="text" name="pickup_room" value='{{user.primary_room_number}}'>
                     </div>
 
                 </div>
                 <div>
-                    <p>Facility Name</p>
-                    <input type="text" name="pickup_facility" value = '{{user.primary_facility_name}}'>
+                    <p>Facility Name*</p>
+                    <input type="text" name="pickup_facility" value='{{user.primary_facility_name}}'>
                 </div>
                 <div>
-                    <p>Facility Contact Number</p>
-                    <input type="text" name="pickup_number" value = '{{user.primary_facility_number}}'>
+                    <p>Facility Contact Number*</p>
+                    <input type="text" name="pickup_number" value='{{user.primary_facility_number}}'>
                 </div>
             </div>
             <!-- Drop Off -->
-            <h2>Drop Off</h2>
+            <h2>Drop Off*</h2>
             <div>
                 <div>
-                    <p>Address</p>
+                    <p>Address*</p>
                     <input type="text" name="dropoff_address">
                 </div>
 
                 <div class='half'>
 
                     <div>
-                        <p>City</p>
+                        <p>City*</p>
                         <input type="text" name="dropoff_city">
                     </div>
                     <div>
-                        <p>Room Number</p>
+                        <p>Room Number*</p>
                         <input type="text" name="dropoff_room">
                     </div>
 
                 </div>
 
                 <div>
-                    <p>Facility Contact Number</p>
+                    <p>Facility Contact Number*</p>
                     <input type="text" name="dropoff_phone">
                 </div>
 
                 <div>
-                    <p>Name of Doctor</p>
+                    <p>Name of Doctor*</p>
                     <input type="text" name="doctor_name">
                 </div>
 
                 <div>
-                    <p>Doctor Suite Number</p>
+                    <p>Doctor Suite Number*</p>
                     <input type="text" name="doctor_room">
                 </div>
 
                 <div>
-                    <p>Doctor Office Number</p>
+                    <p>Doctor Office Number*</p>
                     <input type="text" name="doctor_number">
                 </div>
             </div>
@@ -204,20 +203,22 @@
             <h2>Person to Accompany</h2>
             <div>
                 <div>
-                    <p>Name</p>
+                    <p>Name*</p>
                     <input type="text" name="accompany_name">
                 </div>
                 <div>
-                    <p>Contact Number</p>
+                    <p>Contact Number*</p>
                     <input type="text" name="accompany_number">
                 </div>
             </div>
             <!-- Trip Details -->
-            <h2>Trip Details</h2>
+            <h2>Trip Details*</h2>
             <div>
                 <div>
                     <div class="checkboxes">
 
+                        <span class='together'>
+                            
                         <div>
                             <input type="checkbox" name="ambulatory" value="Ambulatory">
                             <p>Ambulatory</p>
@@ -227,7 +228,9 @@
                             <input type="checkbox" name="wheelchair_bound" value="Wheelchair-Bound">
                             <p>Wheelchair Bound</p>
                         </div>
+                        </span>
 
+                        <span class='together'>
                         <div>
                             <input type="checkbox" name="one_way" value="One-Way">
                             <p>One Way</p>
@@ -237,9 +240,10 @@
                             <input type="checkbox" name="round_trip" value="Round-Trip">
                             <p>Round-Trip</p>
                         </div>
-
+</span>
+                        <span class='together'>
                         <div>
-                            <input id = 'private-pay' type="checkbox" name='private-pay' onclick="privatePay()">
+                            <input id = 'private-pay' type="checkbox" name='private-pay'>
                             <p>Private Pay</p>
                             <div id = 'private-pay-text'>
                                 <p>Private Pay is due at the time of pickup.</p>
@@ -248,76 +252,51 @@
                         <div><input type="checkbox" onclick="privatePay()">
                             <p>Facility Pay</p>
                         </div>
-
+</span>
                     </div>
                     <div>
-                        <p>Appointment Duation</p>
+                        <p>Appointment Duation*</p>
                         <input type="text" name="duration">
                     </div>
                     <div>
-                        <p>Is this a weekly appointment? <small>(If so, we will automatically reschedule it for you)</small></p>
+                        <p>Is this a weekly appointment? <small>(If so, we will automatically reschedule it for you every week.)</small></p>
+                        <div class='weekly'>Yes, make this appointment weekly.</div>
                         <input type="checkbox" name="repeat" id="repeat" value="0">
-                    </div>
-                    <div id="days" style="display:none">
-                        <p>Mondays</p>
-                        <input type="checkbox" name="monday">
-                        <p>Tuesdays</p>
-                        <input type="checkbox" name="tuesday">
-                        <p>Wednesdays</p>
-                        <input type="checkbox" name="wednesday">
-                        <p>Thursdays</p>
-                        <input type="checkbox" name="thursday">
-                        <p>Fridays</p>
-                        <input type="checkbox" name="friday">
-                        <p>Saturdays</p>
-                        <input type="checkbox" name="saturday">
-                        <p>Sundays</p>
-                        <input type="checkbox" name="sunday">
-                    </div>
-                    
-                    
 
-                    <div class='notes'>
-                        <p>Additional Notes</p>
-                        <textarea name="notes"></textarea>
+                        <div id="days">
+                            <div>What day(s) is this appointment on?</div>
+                            <p>Mondays</p>
+                            <input type="checkbox" name="monday">
+                            <p>Tuesdays</p>
+                            <input type="checkbox" name="tuesday">
+                            <p>Wednesdays</p>
+                            <input type="checkbox" name="wednesday">
+                            <p>Thursdays</p>
+                            <input type="checkbox" name="thursday">
+                            <p>Fridays</p>
+                            <input type="checkbox" name="friday">
+                            <p>Saturdays</p>
+                            <input type="checkbox" name="saturday">
+                            <p>Sundays</p>
+                            <input type="checkbox" name="sunday">
+                        </div>
+
+
+
+                        <div class='notes'>
+                            <p>Additional Notes</p>
+                            <textarea name="notes"></textarea>
+                        </div>
                     </div>
                 </div>
+
+                <button id='submit' type=button name='submit' value="Request Ride">Request Ride</button>
+                <button id = 'submit2' type = submit style="display: none"></button>
+
             </div>
-
-            <input id='submit' type="submit" value="Request Ride">
         </form>
-
     </div>
-    
-    <script>
-        let pay = document.querySelector('#private-pay');
-        let payText = document.querySelector('#private-pay-text');
-        
-        function privatePay(){
-
-            if(pay.checked === true ){
-                payText.style.display = 'block';                
-            }
-            
-            else{
-                payText.style.display = 'none';
-            }
-        };
-    </script>
+    <script src = "../static/js/schedule.js"></script>
+    <script src="../static/js/form.js"></script>
 </body>
-<script>
-function showDays() {
-    // Get the checkbox
-    var checkBox = document.getElementById("repeat");
-    // Get the output text
-    var days = document.getElementById("days");
-  
-    // If the checkbox is checked, display the output days
-    if (checkBox.checked == true){
-      days.style.display = "block";
-    } else {
-      days.style.display = "none";
-    }
-  }
-</script>
 </html>

@@ -78,6 +78,9 @@ $mediaLarge: '(min-width: 700px)'
             padding-top: 10px   
             padding-left: 20px  
             border-radius: 5px 
+        
+        .past-ride
+            margin-bottom: 10px
             
                 
             
@@ -108,27 +111,32 @@ $mediaLarge: '(min-width: 700px)'
             
 
 .checkboxes
-    display: flex
-    justify-content: space-between
-    box-sizing: border-box
-    padding: 20px 10px
-    flex-wrap: wrap  
+  
     
-    div
-        width: 40%  
+    span
         display: flex
-        text-align: left
-        position: relative
-        margin: 10px 0  
+        justify-content: space-between
+        box-sizing: border-box
+        padding: 20px 10px
+        flex-wrap: wrap
         
-        
-        input
-            padding: 0
-            margin: 0
+    
+        div
+            width: 40%  
+            display: flex
+            text-align: left
             position: relative
-            display: block
-            width: 30%  
-            background-color: $brightWhite
+            margin: 10px 0  
+            
+
+
+            input
+                padding: 0
+                margin: 0
+                position: relative
+                display: block
+                width: 30% 
+                background-color: $brightWhite
             
 .notes
     margin-top: 30px 
@@ -138,26 +146,31 @@ $mediaLarge: '(min-width: 700px)'
         background-color: $brightWhite    
         width: 100%   
         border-radius: 5px  
-        border: .5px solid $lightBlue 
+        border: .5px solid $lightBlue
             
             
-#submit
+button#submit
     width: 45%  
     position: relative
     display: block
     margin-left: auto
     margin-right: auto
-    top: -30px 
-    font-family: $navFont
+    top: 10px 
+    font-family: $bodyFont
     color: $white
     background-color: $lightBlue      
     height: 30px 
     margin-bottom: 50px  
     cursor: pointer
+    border: none
+    border-radius: 5px
     
     &:focus 
         text-decoration: underline
     
+.weekly
+    text-align: center
+    padding-top: 10px
     
 #private-pay-text
     display: none
@@ -167,6 +180,23 @@ $mediaLarge: '(min-width: 700px)'
     top: 20px
     text-align: left
     font-style: italic
-            
-   
+
+#days
+    display: none
+    div
+        text-align: center
+        margin-top: 20px
+    
+    p
+        position: relative 
+        text-align: left
+        margin-left: 35%
+    input
+        height: 20px
+        width: 20px
+        position: relative
+        bottom: 20px 
+        display: block
+        margin-bottom: 20px
+        left: 57%
     

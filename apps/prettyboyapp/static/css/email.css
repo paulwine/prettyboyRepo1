@@ -1,0 +1,45 @@
+body {
+  background-color: #1963a2;
+  color: #dee0e0;
+  box-sizing: border-box;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%; }
+  body img {
+    margin-top: 2%;
+    margin-bottom: 4%;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+    height: auto; }
+  body h2 {
+    font-family: "Kohinoor Devangari Regular";
+    font-size: 1.5rem;
+    margin-bottom: 30px; }
+  body h1 {
+    font-family: "Kohinoor Devangari Semibold";
+    font-size: 2rem;
+    margin-bottom: 40px; }
+  body p {
+    font-family: "Kohinoor Devangari Light"; }
+  body div {
+    display: block;
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 100px; }
+    body div p {
+      line-height: 1.5rem;
+      width: 50%;
+      text-align: left; }
+  body .longer {
+    width: 90%;
+    padding-left: 10%; }
+
+/*# sourceMappingURL=email.css.map */
