@@ -12,7 +12,7 @@ function showDetails(detail) {
         
     } else {
 
-        info.style.height = "200px";
+        info.style.height = "200px"; 
     }
 }
 
