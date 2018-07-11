@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, HttpResponse, redirect
+from django.template import RequestContext
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -20,7 +21,15 @@ def index(request):
     return redirect('/welcome')
   return render(request, 'index.html')
 
+def handler404(request):
+  response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+  response.status_code = 404
+  return response
+
 def login(request):
+  if 'current_user' in request.session:
+    return redirect('/welcome')
 
   email = request.POST['email_log']
   password = request.POST['password_log']
@@ -43,10 +52,13 @@ def login(request):
   return render(request, 'login.html')
 
 def registerpage(request):
+  if 'current_user' in request.session:
+    return redirect('/welcome')
   return render(request, 'register.html')
  
 def register(request) :
-  
+  if 'current_user' in request.session:
+    return redirect('/welcome')
   error = False
   
   first = request.POST['first_name']
@@ -100,6 +112,8 @@ def register(request) :
     return redirect("/welcome")
    
 def welcome(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   print(current_user.first_name)
   context = {
@@ -108,11 +122,19 @@ def welcome(request):
   return render(request, 'welcome.html', context)
 
 def contact(request):
-  return render(request, "contact.html")
+  if 'current_user' not in request.session:
+    return redirect('/')
+  current_user = User.objects.get(id= request.session['current_user'])
+  context = {
+    'user' : current_user
+  }
+  return render(request, "contact.html", context)
 
 
 
 def schedule_ride(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   past_rides = PastRide.objects.filter(user=current_user)
   context = {
@@ -122,6 +144,8 @@ def schedule_ride(request):
   return render(request, "schedule.html", context)
 
 def select_past_ride(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   past_rides = PastRide.objects.filter(user=current_user).order_by("-pickup_datetime")[:20]
   context = {
@@ -131,6 +155,8 @@ def select_past_ride(request):
   return render(request, "select_past_ride.html", context)
 
 def schedule_ride_from_past_ride(request, rideid):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   past_ride = PastRide.objects.get(id=rideid)
   context = {
@@ -139,6 +165,8 @@ def schedule_ride_from_past_ride(request, rideid):
   }
   return render(request, 'schedule_ride_from_past_ride.html', context)
 def schedule_ride_from_denied_ride(request, rideid):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   denied_ride = Ride.objects.get(id=rideid)
   context = {
@@ -147,6 +175,8 @@ def schedule_ride_from_denied_ride(request, rideid):
   }
   return render(request, 'schedule_ride_from_denied_ride.html', context)
 def submit_past_ride(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   past_id = request.POST['ride_id']
   date = request.POST['date']
   time = request.POST['time']
@@ -198,6 +228,8 @@ def submit_past_ride(request):
   return redirect("/manage_rides")
 
 def submit_denied_ride(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   past_id = request.POST['ride_id']
   date = request.POST['date']
   time = request.POST['time']
@@ -249,6 +281,8 @@ def submit_denied_ride(request):
   return redirect("/manage_rides")
 
 def manage_rides(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   rides = Ride.objects.filter(user = current_user)
   context = {
@@ -258,16 +292,22 @@ def manage_rides(request):
   return render(request, "manage.html", context)
 
 def delete_ride(request, rideid):
+  if 'current_user' not in request.session:
+    return redirect('/')
   ride_to_delete = Ride.objects.get(id=rideid)
   ride_to_delete.delete()
   return redirect("/manage_rides")
 def info(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   context = {
     "user" : current_user
   }
   return render(request, "info.html", context)
 def save_information(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   current_user.first_name = request.POST['first_name']
   current_user.last_name = request.POST['last_name']
@@ -290,6 +330,8 @@ def save_information(request):
   return redirect('/info')
 
 def all_users(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   users = User.objects.all()
   print(users)
   for user in users:
@@ -297,7 +339,8 @@ def all_users(request):
   return redirect("/welcome")
 
 def submit_ride(request):
-  
+  if 'current_user' not in request.session:
+    return redirect('/')
   error = False
 
   current_user = User.objects.get(id= request.session['current_user'])
@@ -458,9 +501,13 @@ def submit_ride(request):
   return redirect("/manage_rides")
 
 def delete_all(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   User.objects.all().delete() 
   return redirect("/")
 def delete_all_rides(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   Ride.objects.all().delete() 
   PastRide.objects.all().delete() 
 
@@ -468,6 +515,8 @@ def delete_all_rides(request):
   return redirect("/")
 
 def send_email(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   current_user = User.objects.get(id= request.session['current_user'])
   current_email = current_user.email
   current_name = current_user.first_name + " " + current_user.last_name
@@ -492,14 +541,22 @@ def send_email(request):
   return redirect("/welcome")
 
 def logout(request):
+  if 'current_user' not in request.session:
+    return redirect('/')
   del request.session['current_user']
   return redirect('/')
 
 # Password rest
 def password_reset(request):
+  if 'current_user' in request.session:
+    print("yep")
+    return redirect('/')
+
   return render(request, 'registration/password_reset_form.html')
 def password_reset_done(request):
-  print('wassup mutha fucka')
+  if 'current_user' in request.session:
+    return redirect('/')
+
   email = request.POST['email']
   msg_html = render_to_string('registration/password_reset_email.html')
   subject = "Papuga Password Reset"
@@ -516,6 +573,11 @@ def password_reset_done(request):
   )
   return render(request, 'registration/password_reset_done.html')
 def password_reset_confirm(request):
+  if 'current_user'  in request.session:
+    return redirect('/')
+
   return render(request, 'registration/password_reset_confirm.html')
 def password_reset_complete(request):
+  if 'current_user'  in request.session:
+    return redirect('/')
   return render(request, 'registration/password_reset_complete.html')

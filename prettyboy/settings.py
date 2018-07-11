@@ -41,6 +41,7 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = [
+    'django_celery_beat',
     "django_cron",
     'django_model_changes',
     'apps.prettyboyapp',
@@ -146,14 +147,14 @@ CELERY_TIMEZONE = 'America/Detroit'
 CELERY_BEAT_SCHEDULE = {
     'task-number-one': {
         'task': 'apps.prettyboyapp.tasks.task_number_one',
-        'schedule': timedelta(seconds=60),
+        'schedule': timedelta(seconds=180),
         'args': ()
     },
     'task-number-two': {
         'task': 'apps.prettyboyapp.tasks.task_number_two',
-        'schedule': timedelta(seconds=60),
+        'schedule': timedelta(seconds= 180),
         'args': ()
-    }
+    },
 
 }
 

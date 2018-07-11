@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import datetime 
 from datetime import timedelta  
 from celery import task
+from django_celery_beat.models import PeriodicTask
 from .models import User, Ride, PastRide
 from django.shortcuts import render, HttpResponse, redirect
 from django.core.mail import send_mail
@@ -103,6 +104,7 @@ def task_number_two():
                 ride.delete()
                 print("RIDE DELETED")
     print(now)
-  
+
+
 
         

@@ -5,16 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page not found!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/404.css' %}" >
+  
+<!-- 
     <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/404.css">
+    <link rel="stylesheet" href="../static/css/404.css"> -->
 </head>
 
 <body>
     <img src="../static/img/Icons/PapugaLogo.png" alt="Logo">
     <div>
         <h1>Hmm.. this page doesn't exist </h1>
-        <p><a href="welcome.html">Return home</a></p>
+        <p><a href="/welcome">Return home</a></p>
     </div>
     <script src=""></script>
 </body>
