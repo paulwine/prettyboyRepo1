@@ -12,12 +12,7 @@
     <link rel="stylesheet" href= "{% static 'css/basic.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" >
-<!-- 
-    <link rel="stylesheet" href="../static/css/default.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/basic.css">
-    <link rel="stylesheet" href="../static/css/nav.css">
-    <link rel="stylesheet" href="../static/css/schedule-ride.css"> -->
+
 
 </head>
 
@@ -67,10 +62,6 @@
                     <p>Manage Rides</p>
                 </li>
 
-                <li tabindex="6" onclick="location.href='/welcome';">
-                    <div class='navimg'><img class='icon' src="../static/img/Icons/HomeIcon.png" alt="home icon"></div>
-                    <p>Home</p>
-                </li>
 
             </ul>
 
@@ -100,7 +91,7 @@
 
         <form action="/save_information" method="post">
             {% csrf_token %}
-            <div>
+            <div id = 'containerInfo'>
                 <div class='half'>
 
                     <div>
@@ -139,6 +130,7 @@
                 </div>
 
                 <div class='checkboxes'>
+                    <span class="together">
                     <div>
                         {% if user.private_pay %}
                         <input type="checkbox" name='private_pay' checked>
@@ -157,6 +149,7 @@
                         <p>Facility Pay</p>
 
                     </div>
+                    </span>
                 </div>
             </div>
             
@@ -164,13 +157,13 @@
 <!--            FIXME should flash a message at the top of welcome and say 'your information has been updated!'-->
            
             <a href="welcome page"></a>
-            <input type="submit" id = submit value = 'Save Information'>
+            <button type="submit" id = "submit" >Save Information</button>
 
         </form>
 
     </div>
 
-
+<script type="text/javascript" src="../static/js/info.js"></script>
 </body>
 
 </html>

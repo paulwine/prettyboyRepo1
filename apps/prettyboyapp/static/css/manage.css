@@ -1,5 +1,4 @@
 body {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
   @media (min-width: 700px) {
     body {
@@ -27,7 +26,6 @@ body {
       width: 95%; } }
   .body .rides .approved {
     height: auto;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box; }
     .body .rides .approved h2 {
       background-color: green; }
@@ -43,7 +41,6 @@ body {
     color: #e6e7e8;
     font-family: "Kohinoor Devangari Regular";
     padding: 0.3rem 0;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 1.4rem;
     text-align: center;
@@ -51,7 +48,6 @@ body {
   .body .rides div ul {
     background-color: whitesmoke;
     position: relative;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0;
     width: 100%;
@@ -59,89 +55,80 @@ body {
     .body .rides div ul li {
       position: relative;
       width: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -ms-flex-wrap: wrap;
       flex-wrap: wrap;
       padding: 15px;
-      -webkit-box-sizing: border-box;
       box-sizing: border-box;
       height: auto;
       font-size: 1rem; }
       .body .rides div ul li div {
         padding-top: 4px;
         padding-bottom: 4px;
-        -webkit-box-sizing: border-box;
         box-sizing: border-box; }
       .body .rides div ul li .visible {
         position: relative;
-        -webkit-box-sizing: border-box;
         box-sizing: border-box;
         display: block;
         width: 100%;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
         justify-content: space-between; }
+        .body .rides div ul li .visible .details {
+          color: #0b456d;
+          text-decoration: underline; }
       .body .rides div ul li .info-under {
         position: relative;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
         justify-content: space-between;
         width: 100%;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        height: auto;
+        overflow: hidden;
+        height: 0;
+        transition: all 0.2s ease-in-out 0s; }
         .body .rides div ul li .info-under div {
           display: block;
-          -webkit-box-sizing: border-box;
           box-sizing: border-box; }
           .body .rides div ul li .info-under div h3 {
             border-bottom: 0.5px solid #1963a2;
             padding-bottom: 3px;
-            -webkit-box-sizing: border-box;
             box-sizing: border-box;
             opacity: 0.8; }
           .body .rides div ul li .info-under div p {
             padding-top: 3px;
             padding-bottom: 8px;
-            -webkit-box-sizing: border-box;
             box-sizing: border-box; }
         .body .rides div ul li .info-under .one-way {
-          display: -webkit-box;
-          display: -ms-flexbox;
           display: flex;
-          -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
           justify-content: space-between;
           width: 60%; }
           .body .rides div ul li .info-under .one-way h3 {
             display: inline-block;
             border-bottom: none;
             padding-top: 0.6rem !important; }
-.body form {
-  width: 100%; }
-  .body form button {
-    background-color: #d63934;
-    color: #e6e7e8;
-    font-family: "Arial Rounded Bold";
-    font-size: 1rem;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 5px 15px;
-    position: relative;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 8px;
-    cursor: pointer; }
+      .body .rides div ul li form {
+        width: 100%;
+        height: auto;
+        position: relative;
+        bottom: 0; }
+        .body .rides div ul li form button {
+          background-color: #d63934;
+          color: #e6e7e8;
+          font-family: "Kohinoor Devangari Semibold";
+          font-size: 1rem;
+          box-sizing: border-box;
+          padding: 5px 15px;
+          position: relative;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 5px;
+          cursor: pointer;
+          border: none; }
+
+#reschedule {
+  margin-top: 2px;
+  background-color: green; }
 
 .no-rides {
   background-color: lightgray;
@@ -165,5 +152,30 @@ body {
     position: relative;
     margin: auto;
     top: 40%;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box; }
+
+div.arrow {
+  transform: rotate(180deg);
+  position: absolute;
+  right: 10px;
+  top: -4px;
+  color: #1963a2;
+  font-size: 1.3rem;
+  transition: 0.2s all ease-in-out 0s; }
+
+a#ride-spacing {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 10px; }
+
+h2#select-past-ride {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: green;
+  border-radius: 5px;
+  display: block;
+  position: relative; }
+
+/*# sourceMappingURL=manage.css.map */

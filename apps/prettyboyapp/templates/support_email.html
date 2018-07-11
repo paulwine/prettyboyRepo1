@@ -1,21 +1,33 @@
 <!DOCTYPE html>
+{% load inlinecss %}
+{% inlinecss "../static/css/default.css" %}
+{% inlinecss "../static/css/style.css" %}
+{% inlinecss "../static/css/basic.css" %}
+{% inlinecss "../static/css/email.css" %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+        {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}"> 
+    <link rel="stylesheet" href= "{% static 'css/reset.css' %}"> 
+    
     <link rel="stylesheet" href="../static/css/default.css">  
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/basic.css">
-    <link rel="stylesheet" href="../static/css/nav.css">
-    <link rel="stylesheet" href="../static/css/manage.css">
+    <link rel="stylesheet" href="../static/css/email.css">
 </head>
 <body>
+       <img src="../static/img/Icons/PapugaLogo.png" alt="">
         <h1>Support Request:</h1>
         <p><strong>Name: </strong>{{name}}</p>
         <p><strong>Email: </strong>{{email}}</p>
-        <h3>Message:</h3>
+        <h2>Message:</h2>
         <p>{{body}}</p>
 </body>
 </html>
+{% endinlinecss %}
