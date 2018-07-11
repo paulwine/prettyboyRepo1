@@ -4,6 +4,7 @@ let showDays = document.getElementById('repeat');
 let days = document.getElementById('days');
 let boxes = document.querySelector('.checkboxes').getElementsByTagName('input');
 
+
 function checkBoxes(current){
     let parent = current.closest('span.together');
     let children = parent.getElementsByTagName('input');
@@ -40,9 +41,10 @@ showDays.onclick = function(){
     dayDisplay();
 }
 
+
+
 for(i = 0; i < boxes.length; i++){
     boxes[i].onclick = function(){
         checkBoxes(this);
     }
-    console.log(boxes[i]);
 }

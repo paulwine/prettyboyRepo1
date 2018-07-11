@@ -7,12 +7,16 @@ function showDetails(detail) {
     let info = container.querySelector('.info-under');
     let arrow = detail.querySelector('.arrow');
 
+
+
     if (info.style.height === "200px") {
         info.style.height = "0px";
+        detail.innerHTML = 'See Details';
 
     } else {
 
         info.style.height = "200px";
+        detail.innerHTML = 'Hide Details';
     }
 }
 

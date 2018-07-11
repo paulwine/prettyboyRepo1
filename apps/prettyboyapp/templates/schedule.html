@@ -118,6 +118,7 @@
         <form action="/submit_ride" method="post" id="form1">
             {% csrf_token %}
             <h2>Pick-Up</h2>
+            <p id="advance">Rides must be scheduled at least 24 hours in advance.</p>
             <div>
                 <!-- Pick Up -->
 
@@ -134,7 +135,7 @@
                 </div>
                 <div>
                     <p>Address*</p>
-                    <input type="text" name="pickup_address" value='{{user.primary_address}}'>
+                    <input type="text" name="pickup_address" value='{{user.primary_facility_address}}'>
                 </div>
 
                 <div class='half'>

@@ -27,7 +27,9 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     resize: none;
-    font-family: "Kohinoor Devangari Regular";
+    font-family: "Kohinoor Devangari Light";
+    font-size: 1rem;
+    color: rgba(24, 24, 24, 0.7);
 }
 
 .body form textarea:focus {
