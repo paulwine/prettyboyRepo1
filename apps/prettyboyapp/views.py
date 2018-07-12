@@ -501,16 +501,13 @@ def submit_ride(request):
   return redirect("/manage_rides")
 
 def delete_all(request):
-  if 'current_user' not in request.session:
-    return redirect('/')
-  User.objects.all().delete() 
+  print("NOPE") 
   return redirect("/")
 def delete_all_rides(request):
   if 'current_user' not in request.session:
     return redirect('/')
-  Ride.objects.all().delete() 
-  PastRide.objects.all().delete() 
-
+  
+  print("SORRY")
   
   return redirect("/")
 
