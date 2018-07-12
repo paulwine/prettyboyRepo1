@@ -54,6 +54,7 @@ def task_number_one():
                 else:
                     ride.pending = False
                     trip_txt = ""
+                    
                     if ride.round_trip:
                         trip_txt = "Round Trip"
                     else:
@@ -62,7 +63,7 @@ def task_number_one():
                     current_user = ride.user
                     msg_html = render_to_string('denied_email.html', {
                         'rider_first': current_user.first_name,
-                    
+                        'reason_for_denial' : ride.reason_for_denial_OPTIONAL,
                         'date': ride.pickup_datetime,
                         'time' : ride.appointment_time,
                         'pickup' : ride.pickup_address,

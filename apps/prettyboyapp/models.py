@@ -48,6 +48,7 @@ class Ride(ChangesMixin, models.Model):
     accompany_number = models.CharField(max_length=255)
     accompany_name = models.CharField(max_length=255)
     approved = models.NullBooleanField(null=True)
+    reason_for_denial_OPTIONAL = models.CharField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
