@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django_model_changes import ChangesMixin
+
 
 
 
@@ -28,7 +28,7 @@ class User(models.Model):
     def __unicode__(self):
        return self.first_name + " " + self.last_name
 
-class Ride(ChangesMixin, models.Model):
+class Ride(models.Model):
     pickup_address = models.CharField(max_length=255)
     dropoff_address = models.CharField(max_length=255)
     dropoff_number = models.CharField(max_length=255)
