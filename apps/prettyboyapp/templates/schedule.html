@@ -10,15 +10,17 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
-    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" 
-    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" 
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}"> 
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}">
     <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" > 
 
+<!--
     <link rel="stylesheet" href="../static/css/default.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/basic.css">
     <link rel="stylesheet" href="../static/css/nav.css">
     <link rel="stylesheet" href="../static/css/schedule-ride.css">
+-->
 
 
     <title>My Rides</title>
@@ -34,7 +36,7 @@
 
             <div class='navbar-top parrot'><img class='navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div>
 
-            <div class='logout-small navbar-top'>Logout</div>
+            <div class='logout-small navbar-top'><a href="/logout">Logout</a></div>
         </div>
 
 
@@ -46,7 +48,7 @@
                 </li>
 
                 <div class='user'>
-                    <h2><span>{{user.first_name}}</span> {{user.last_name}}</h2>
+                    <a href="/welcome"><h2><span>{{user.first_name}}</span> {{user.last_name}}</h2></a>
                 </div>
 
                 <li tabindex="2" id='this-page'>
