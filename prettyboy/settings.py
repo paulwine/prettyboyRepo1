@@ -27,9 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(bpkt)=0ae)-x+mnot3jx7mb6bn54vm2!r4ps)z^1==ujma=qe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['18.218.234.45', 'papugatransportation.com', 'www.papugatransportation.com']
 
 EMAIL_HOST = 'smtp.gmail.com'  # since you are using a gmail account
 EMAIL_HOST_USER = 'papugatransportation@gmail.com'
@@ -43,7 +43,6 @@ EMAIL_USE_TLS = True
 INSTALLED_APPS = [
     'django_celery_beat',
     "django_cron",
-    'django_model_changes',
     'apps.prettyboyapp',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,10 +133,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 CELERY_IMPORTS = ('apps.prettyboyapp.tasks')
 
+CELERYD_TASK_SOFT_TIME_LIMIT = 60
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']

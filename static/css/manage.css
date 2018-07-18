@@ -1,0 +1,181 @@
+body {
+  box-sizing: border-box; }
+  @media (min-width: 700px) {
+    body {
+      min-width: 840px; } }
+
+.body header .container h1 {
+  position: relative;
+  font-size: 1.4rem;
+  width: 200px;
+  margin-top: 1.3rem;
+  left: 100px;
+  bottom: 45px; }
+  @media (max-width: 699px) {
+    .body header .container h1 {
+      left: 0;
+      bottom: 0; } }
+.body .rides {
+  position: static;
+  width: 65%;
+  display: block;
+  margin: auto;
+  font-family: "Kohinoor Devangari Regular"; }
+  @media (max-width: 699px) {
+    .body .rides {
+      width: 95%; } }
+  .body .rides .approved {
+    height: auto;
+    box-sizing: border-box; }
+    .body .rides .approved h2 {
+      background-color: green; }
+  .body .rides .pending {
+    margin-top: 50px; }
+    .body .rides .pending h2 {
+      background-color: #d5dc48; }
+  .body .rides .declined {
+    margin-top: 50px; }
+    .body .rides .declined h2 {
+      background-color: #d63934; }
+  .body .rides div h2 {
+    color: #e6e7e8;
+    font-family: "Kohinoor Devangari Regular";
+    padding: 0.3rem 0;
+    box-sizing: border-box;
+    font-size: 1.4rem;
+    text-align: center;
+    width: 100%; }
+  .body .rides div ul {
+    background-color: whitesmoke;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    width: 100%;
+    height: auto; }
+    .body .rides div ul li {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 15px;
+      box-sizing: border-box;
+      height: auto;
+      font-size: 1rem; }
+      .body .rides div ul li div {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        box-sizing: border-box; }
+      .body .rides div ul li .visible {
+        position: relative;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        display: flex;
+        justify-content: space-between; }
+        .body .rides div ul li .visible .details {
+          color: #0b456d;
+          text-decoration: underline; }
+      .body .rides div ul li .info-under {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box;
+        height: auto;
+        overflow: hidden;
+        height: 0;
+        transition: all 0.2s ease-in-out 0s; }
+        .body .rides div ul li .info-under div {
+          display: block;
+          box-sizing: border-box; }
+          .body .rides div ul li .info-under div h3 {
+            border-bottom: 0.5px solid #1963a2;
+            padding-bottom: 3px;
+            box-sizing: border-box;
+            opacity: 0.8; }
+          .body .rides div ul li .info-under div p {
+            padding-top: 3px;
+            padding-bottom: 8px;
+            box-sizing: border-box; }
+        .body .rides div ul li .info-under .one-way {
+          display: flex;
+          justify-content: space-between;
+          width: 60%; }
+          .body .rides div ul li .info-under .one-way h3 {
+            display: inline-block;
+            border-bottom: none;
+            padding-top: 0.6rem !important; }
+      .body .rides div ul li form {
+        width: 100%;
+        height: auto;
+        position: relative;
+        bottom: 0; }
+        .body .rides div ul li form button {
+          background-color: #d63934;
+          color: #e6e7e8;
+          font-family: "Kohinoor Devangari Semibold";
+          font-size: 1rem;
+          box-sizing: border-box;
+          padding: 5px 15px;
+          position: relative;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 5px;
+          cursor: pointer;
+          border: none; }
+
+#reschedule {
+  margin-top: 2px;
+  background-color: green; }
+
+.no-rides {
+  background-color: lightgray;
+  font-family: "Arial Rounded Bold";
+  color: #1963a2;
+  font-size: 1.3rem;
+  width: 70%;
+  height: 100px;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+  @media (max-width: 699px) {
+    .no-rides {
+      width: 95%; } }
+  .no-rides h2 {
+    border: rgba(0, 0, 0, 0) solid 1px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    position: relative;
+    margin: auto;
+    top: 40%;
+    box-sizing: border-box; }
+
+div.arrow {
+  transform: rotate(180deg);
+  position: absolute;
+  right: 10px;
+  top: -4px;
+  color: #1963a2;
+  font-size: 1.3rem;
+  transition: 0.2s all ease-in-out 0s; }
+
+a#ride-spacing {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 10px; }
+
+h2#select-past-ride {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: green;
+  border-radius: 5px;
+  display: block;
+  position: relative; }
+
+/*# sourceMappingURL=manage.css.map */

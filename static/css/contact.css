@@ -1,0 +1,64 @@
+.body form {
+    width: 61%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 699px) {
+    .body form {
+        width: 94%;
+    }
+}
+
+.body form textarea,
+.body form input {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    border: 0.5px #dee0e0 solid;
+    background-color: whitesmoke;
+    color: rgba(0, 0, 0, 0.9);
+    font-style: normal;
+    line-height: 1.4rem;
+    font-size: 1.3rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    resize: none;
+    font-family: "Kohinoor Devangari Light";
+    font-size: 1rem;
+    color: rgba(24, 24, 24, 0.7);
+}
+
+.body form textarea:focus {
+    outline: none;
+}
+
+.body form .subject {
+    margin-top: 0px;
+    height: 1.8rem;
+}
+
+.body form .message {
+    height: 300px;
+    margin-top: 5px;
+}
+
+.body form .submit-container {
+    position: relative;
+    width: 50%;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+.body form .submit-container .submit {
+    font-style: normal;
+    font-family: "Kohinoor Devangari Semibold";
+    color: #e6e7e8;
+    background-color: #155788;
+    border-radius: 4px;
+}
