@@ -201,6 +201,29 @@
                     <p>Doctor Office Number*</p>
                     <input type="text" name="doctor_number">
                 </div>
+                
+                <div>
+                    <p>Does this ride have more than one destination?</p>
+                    <input type="checkbox" name="additional_checkbox" id="additional_checkbox" onclick="dayDisplay()">
+                </div>
+                <div name="additional_destinations" id="additional_destinations" style="display:none" >
+                    <div>
+                        <p>Additional Destination #1</p>
+                        <input type="text" name="additional_destination_1">
+                    </div>
+                    <div>
+                        <p>Additional Appointment Time #1</p>
+                        <input type="time" name="additional_time_1">
+                    </div>
+                    <div>
+                        <p>Additional Destination #2</p>
+                        <input type="text" name="additional_destination_2">
+                    </div>
+                    <div>
+                        <p>Additional Appointment Time #2</p>
+                        <input type="time" name="additional_time_2">
+                    </div>
+                </div>
             </div>
             <!-- Person To Accompany -->
             <h2>Person to Accompany</h2>
