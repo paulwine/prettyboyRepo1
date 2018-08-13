@@ -365,7 +365,10 @@ def submit_ride(request):
   dropoff_room = request.POST['dropoff_room']
   dropoff_number = request.POST['dropoff_phone']
 
-  
+  additional_destination_1 = ""
+  additional_time_1 = ""
+  additional_destination_2 = ""
+  additional_time_2 = ""
 
   doctor_name =  request.POST['doctor_name']
   doctor_office_number =  request.POST['doctor_number']
@@ -457,11 +460,21 @@ def submit_ride(request):
   else:
     sunday = False
 
+  if 'additional_destination_1' in request.POST:
+    additional_destination_1 = request.POST['additional_destination_1']
+  if 'additional_time_1' in request.POST:
+    additional_time_1 = request.POST['additional_time_1']
+  if 'additional_destination_2' in request.POST:
+    additional_destination_2 = request.POST['additional_destination_2']
+  if 'additional_time_2' in request.POST:
+    additional_time_2 = request.POST['additional_time_2']
+  
+
 
   if error == True:
     return redirect("/schedule_ride")
   else:
-    ride = Ride.objects.create(dropoff_number = dropoff_number,doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_number, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday)
+    ride = Ride.objects.create(dropoff_number = dropoff_number,doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_number, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday, additional_destination_1=additional_destination_1, additional_destination_2=additional_destination_2, additional_time_1=additional_time_1, additional_time_2=additional_time_2)
     
     current_weekday = datetime.datetime.today().weekday()
     day_delta = 0

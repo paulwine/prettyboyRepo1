@@ -1,7 +1,7 @@
 let pay = document.querySelector('#private-pay');
 let payText = document.querySelector('#private-pay-text');
-let showDays = document.getElementById('repeat');
-let days = document.getElementById('days');
+let showDests = document.getElementById('additional_checkbox');
+let dests = document.getElementById('additional_destinations');
 let boxes = document.querySelector('.checkboxes').getElementsByTagName('input');
 
 
@@ -25,11 +25,11 @@ function privatePay() {
     }
 };
 
-function dayDisplay(){
-    if(showDays.checked ===true){
-        days.style.display = 'block';
+function destDisplay(){
+    if(showDests.checked ===true){
+        dests.style.display = 'block';
     }else{
-        days.style.display = 'none';
+        dests.style.display = 'none';
     }
 };
 
@@ -37,8 +37,8 @@ pay.onclick = function(){
     privatePay();
 };
 
-showDays.onclick = function(){
-    dayDisplay();
+showDests.onclick = function(){
+    destDisplay();
 }
 
 
