@@ -11,7 +11,15 @@
     <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/basic.css' %}" >
     <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
-    <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" >    
+    
+<!--
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/schedule-ride.css">
+-->
 
 
 </head>
@@ -104,12 +112,12 @@
                     </div>
                 </div>
                 <div>
-                    <p>Facility Name</p>
+                    <p>Facility Name (if applicable)</p>
                     <input type="text" name="facility_name" value = '{{user.primary_facility_name}}'>
                 </div>
 
                 <div>
-                    <p>Facility Address</p>
+                    <p>Address</p>
                     <input type="text" name='facility_address' value = '{{user.primary_facility_address}}'>
                 </div>
                 <div class='half'>
@@ -139,7 +147,19 @@
                         {% endif %}
                         <p>Private Pay</p>
                         
+                    </div>          
+                    
+<!--                CHECK LOG HERE PLS          -->
+                    <div>
+                        {% if user.insurance %}
+                        <input type="checkbox" name='insurance' checked>
+                        {% else %}
+                        <input type="checkbox" name='insurance'>
+                        {% endif %}
+                        <p>Insurance</p>
+                        
                     </div>
+<!--  //////////////////////////////////////////////////////////////////////////////-->
                     <div> 
                         {% if user.facility_pay %}
                         <input type="checkbox" name = 'facility_pay' checked>
