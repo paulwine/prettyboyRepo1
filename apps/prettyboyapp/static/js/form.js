@@ -27,7 +27,7 @@ function checkForms(button){
     }
     
     if(passed === true){
-        submit2.click()
+        submit2.click();
         
     }else{
         alert('One or more of the required (*) fields have been left unanswered, or the ride is not scheduled at least 24 hours in advance. Please fill in each section to request a ride!')
