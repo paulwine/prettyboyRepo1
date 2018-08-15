@@ -184,7 +184,7 @@ def submit_past_ride(request):
   current_user = User.objects.get(id= request.session['current_user'])
 
   ride = PastRide.objects.get(id=past_id)
-  new_ride = Ride.objects.create(dropoff_number = ride.dropoff_number,doctor_name = ride.doctor_name, doctor_suite_number = ride.doctor_suite_number, doctor_office_number = ride.doctor_office_number, pickup_address= ride.pickup_address, pickup_datetime= date, appointment_time= time, pickup_room= ride.pickup_room, dropoff_address= ride.dropoff_address, facility_number= ride.facility_number, dropoff_room= ride.dropoff_room, duration= ride.duration, accompany_name= ride.accompany_name, accompany_number= ride.accompany_number, ambulatory= ride.ambulatory, round_trip= ride.round_trip, comments= ride.comments, user=ride.user, repeat_ride=ride.repeat_ride, monday=ride.monday, tuesday=ride.tuesday, wednesday=ride.wednesday, thursday=ride.thursday, friday=ride.friday, saturday=ride.saturday, sunday=ride.sunday)
+  new_ride = Ride.objects.create(private_pay = ride.private_pay, facility_pay = ride.facility_pay, insurance=ride.insurance, dropoff_number = ride.dropoff_number,doctor_name = ride.doctor_name, doctor_suite_number = ride.doctor_suite_number, doctor_office_number = ride.doctor_office_number, pickup_address= ride.pickup_address, pickup_datetime= date, appointment_time= time, pickup_room= ride.pickup_room, dropoff_address= ride.dropoff_address, facility_number= ride.facility_number, dropoff_room= ride.dropoff_room, duration= ride.duration, accompany_name= ride.accompany_name, accompany_number= ride.accompany_number, ambulatory= ride.ambulatory, round_trip= ride.round_trip, comments= ride.comments, user=ride.user, repeat_ride=ride.repeat_ride, monday=ride.monday, tuesday=ride.tuesday, wednesday=ride.wednesday, thursday=ride.thursday, friday=ride.friday, saturday=ride.saturday, sunday=ride.sunday)
   
   trip_txt = ""
   amb_txt = ""
@@ -237,7 +237,8 @@ def submit_denied_ride(request):
   current_user = User.objects.get(id= request.session['current_user'])
 
   ride = Ride.objects.get(id=past_id)
-  new_ride = Ride.objects.create(dropoff_number = ride.dropoff_number,doctor_name = ride.doctor_name, doctor_suite_number = ride.doctor_suite_number, doctor_office_number = ride.doctor_office_number, pickup_address= ride.pickup_address, pickup_datetime= date, appointment_time= time, pickup_room= ride.pickup_room, dropoff_address= ride.dropoff_address, facility_number= ride.facility_number, dropoff_room= ride.dropoff_room, duration= ride.duration, accompany_name= ride.accompany_name, accompany_number= ride.accompany_number, ambulatory= ride.ambulatory, round_trip= ride.round_trip, comments= ride.comments, user=ride.user, repeat_ride=ride.repeat_ride, monday=ride.monday, tuesday=ride.tuesday, wednesday=ride.wednesday, thursday=ride.thursday, friday=ride.friday, saturday=ride.saturday, sunday=ride.sunday)
+  
+  new_ride = Ride.objects.create(private_pay = ride.private_pay, facility_pay = ride.facility_pay, insurance=ride.insurance, dropoff_number = ride.dropoff_number,doctor_name = ride.doctor_name, doctor_suite_number = ride.doctor_suite_number, doctor_office_number = ride.doctor_office_number, pickup_address= ride.pickup_address, pickup_datetime= date, appointment_time= time, pickup_room= ride.pickup_room, dropoff_address= ride.dropoff_address, facility_number= ride.facility_number, dropoff_room= ride.dropoff_room, duration= ride.duration, accompany_name= ride.accompany_name, accompany_number= ride.accompany_number, ambulatory= ride.ambulatory, round_trip= ride.round_trip, comments= ride.comments, user=ride.user, repeat_ride=ride.repeat_ride, monday=ride.monday, tuesday=ride.tuesday, wednesday=ride.wednesday, thursday=ride.thursday, friday=ride.friday, saturday=ride.saturday, sunday=ride.sunday)
   
   trip_txt = ""
   amb_txt = ""
@@ -468,13 +469,25 @@ def submit_ride(request):
     additional_destination_2 = request.POST['additional_destination_2']
   if 'additional_time_2' in request.POST:
     additional_time_2 = request.POST['additional_time_2']
+
+  private_pay = False
+  facility_pay = False
+  insurance = False
+  if 'private_pay' in request.POST:
+    private_pay = True
+  if 'facility_pay' in request.POST:
+    facility_pay = True
+  if 'insurance' in request.POST:
+    insurance = True
+
+  
   
 
 
   if error == True:
     return redirect("/schedule_ride")
   else:
-    ride = Ride.objects.create(dropoff_number = dropoff_number,doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_number, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday, additional_destination_1=additional_destination_1, additional_destination_2=additional_destination_2, additional_time_1=additional_time_1, additional_time_2=additional_time_2)
+    ride = Ride.objects.create(private_pay = private_pay, facility_pay = facility_pay, insurance=insurance, dropoff_number = dropoff_number,doctor_name = doctor_name, doctor_suite_number = doctor_suite_number, doctor_office_number = doctor_office_number, pickup_address=pickup_full_address, pickup_datetime=pickup_datetime, appointment_time= appointment_time,pickup_room=pickup_room, dropoff_address= dropoff_full_address, facility_number=dropoff_number, dropoff_room=dropoff_room, duration= duration, accompany_name= accompany_name, accompany_number=accompany_number, ambulatory= ambulatory, round_trip=round_trip, comments=notes, user=current_user, repeat_ride=repeat, monday=monday, tuesday=tuesday, wednesday=wednesday, thursday=thursday, friday=friday, saturday=saturday, sunday=sunday, additional_destination_1=additional_destination_1, additional_destination_2=additional_destination_2, additional_time_1=additional_time_1, additional_time_2=additional_time_2)
     
     current_weekday = datetime.datetime.today().weekday()
     day_delta = 0
