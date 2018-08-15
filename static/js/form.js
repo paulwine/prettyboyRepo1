@@ -1,12 +1,13 @@
 let btnSubmit = document.getElementById('submit');
 let textForms = document.querySelectorAll("input[type=text]");
-let submit2 = document.getElementById('submit2')
+let submit2 = document.getElementById('submit2');
 
 function checkForms(button){
     let passed = true;
     for(let each of textForms){
-        if(each.value === ''){
+        if(each.value === '' && !(each.classList.contains('optional'))){
             passed = false;
+            console.log(each);
         }
     }
     
@@ -17,8 +18,9 @@ function checkForms(button){
         }
     }
     
-    if(count < boxes.length / 2){
+    if(count < Math.floor(boxes.length / 2)){
         passed = false;
+        console.log(count)
     }    
 
 
@@ -27,7 +29,7 @@ function checkForms(button){
     }
     
     if(passed === true){
-        submit2.click()
+        submit2.click();
         
     }else{
         alert('One or more of the required (*) fields have been left unanswered, or the ride is not scheduled at least 24 hours in advance. Please fill in each section to request a ride!')
@@ -40,7 +42,6 @@ function validateDateTime(){
     let now = new Date();
     let yearMonthDay = date.value.split('-'); //returns array Year, Month, Day
 
-    console.log(yearMonthDay);
     let hourSeconds = time.value.split(':'); //returns array Hour, seconds
     let rideTime = new Date(parseInt(yearMonthDay[0], 10), (parseInt(yearMonthDay[1], 10) - 1), parseInt(yearMonthDay[2], 10), parseInt(hourSeconds[0], 10), parseInt(hourSeconds[1], 10), 0, 0);
 
@@ -52,7 +53,7 @@ function validateDateTime(){
     if(now.getTime() > (rideTime.getTime() - 86400000)){
         return false
     }else{
-
+        console.log('timepassed')
     }
 
 }

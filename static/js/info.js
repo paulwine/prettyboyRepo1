@@ -19,5 +19,5 @@ for(let each of boxes){
 }
 
 submit.onclick = function(){
-	alert('Your Information has been saved and can be reused!');
+	alert('Your information has been saved!');
 }

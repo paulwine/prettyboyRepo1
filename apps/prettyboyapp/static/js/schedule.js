@@ -33,9 +33,6 @@ function destDisplay(){
     }
 };
 
-pay.onclick = function(){
-    privatePay();
-};
 
 showDests.onclick = function(){
     destDisplay();

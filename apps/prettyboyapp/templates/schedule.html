@@ -111,7 +111,7 @@
         <form action="/submit_past_ride" method="post">
             {% csrf_token %}
             <a href="/select_past_ride">
-                <h2 class='past-ride'>- Select From Past Rides</h2>
+                <h2 class='past-ride'>See Past Rides</h2>
             </a>
 
         </form>
@@ -120,7 +120,8 @@
         <form action="/submit_ride" method="post" id="form1">
             {% csrf_token %}
             <h2>Pick-Up</h2>
-            <p id="advance">Rides must be scheduled at least 24 hours in advance.</p>
+            <p id="advance">Rides must be scheduled at least 24 hours in advance.
+            <br>Fields with an asterisk (*) are required.</p>
             <div>
                 <!-- Pick Up -->
 
@@ -147,18 +148,18 @@
                         <input type="text" name="pickup_city" value='{{user.primary_city}}'>
                     </div>
                     <div>
-                        <p>Room Number*</p>
-                        <input type="text" name="pickup_room" value='{{user.primary_room_number}}'>
+                        <p>Room Number</p>
+                        <input type="text" name="pickup_room" value='{{user.primary_room_number}}' class="optional" >
                     </div>
 
                 </div>
                 <div>
-                    <p>Facility Name*</p>
-                    <input type="text" name="pickup_facility" value='{{user.primary_facility_name}}'>
+                    <p>Facility Name</p>
+                    <input type="text" name="pickup_facility" class="optional" value='{{user.primary_facility_name}}'>
                 </div>
                 <div>
-                    <p>Facility Contact Number*</p>
-                    <input type="text" name="pickup_number" value='{{user.primary_facility_number}}'>
+                    <p>Facility Contact Number</p>
+                    <input type="text" name="pickup_number" class="optional" value='{{user.primary_facility_number}}'>
                 </div>
             </div>
             <!-- Drop Off -->
@@ -176,15 +177,15 @@
                         <input type="text" name="dropoff_city">
                     </div>
                     <div>
-                        <p>Room Number*</p>
-                        <input type="text" name="dropoff_room">
+                        <p>Room Number</p>
+                        <input class="optional"  type="text" name="dropoff_room">
                     </div>
 
                 </div>
 
                 <div>
-                    <p>Facility Contact Number*</p>
-                    <input type="text" name="dropoff_phone">
+                    <p>Facility Contact Number</p>
+                    <input class="optional"  type="text" name="dropoff_phone">
                 </div>
 
                 <div>
@@ -193,35 +194,35 @@
                 </div>
 
                 <div>
-                    <p>Doctor Suite Number*</p>
-                    <input type="text" name="doctor_room">
+                    <p>Doctor Suite Number</p>
+                    <input class="optional"  type="text" name="doctor_room">
                 </div>
 
                 <div>
-                    <p>Doctor Office Number*</p>
-                    <input type="text" name="doctor_number">
+                    <p>Doctor Office Number</p>
+                    <input class="optional"  type="text" name="doctor_number">
                 </div>
                 
                 <div>
-                    <p>Does this ride have more than one destination?</p>
+                    <p style = 'text-align: center; padding-top: 20px;>'>Multiple destinations (check this if you have multiple appointments scheduled back-to-back)</p>
                     <input type="checkbox" name="additional_checkbox" id="additional_checkbox" onclick="dayDisplay()">
                 </div>
                 <div name="additional_destinations" id="additional_destinations" style="display:none" >
                     <div>
-                        <p>Additional Destination #1</p>
-                        <input type="text" name="additional_destination_1">
+                        <p>Additional Destination Address #1</p>
+                        <input type="text" name="additional_destination_1" class="optional" >
                     </div>
                     <div>
                         <p>Additional Appointment Time #1</p>
-                        <input type="time" name="additional_time_1">
+                        <input type="time" name="additional_time_1" class="optional" >
                     </div>
                     <div>
-                        <p>Additional Destination #2</p>
-                        <input type="text" name="additional_destination_2">
+                        <p>Additional Destination Address #2 (Optional)</p>
+                        <input type="text" name="additional_destination_2" class="optional" >
                     </div>
                     <div>
-                        <p>Additional Appointment Time #2</p>
-                        <input type="time" name="additional_time_2">
+                        <p>Additional Appointment Time #2 (Optional)</p>
+                        <input type="time" name="additional_time_2" class="optional" >
                     </div>
                 </div>
             </div>
@@ -229,12 +230,12 @@
             <h2>Person to Accompany</h2>
             <div>
                 <div>
-                    <p>Name*</p>
-                    <input type="text" name="accompany_name">
+                    <p>Name</p>
+                    <input class="optional"  type="text" name="accompany_name">
                 </div>
                 <div>
-                    <p>Contact Number*</p>
-                    <input type="text" name="accompany_number">
+                    <p>Contact Number</p>
+                    <input class="optional"  type="text" name="accompany_number">
                 </div>
             </div>
             <!-- Trip Details -->
@@ -267,17 +268,22 @@
                             <p>Round-Trip</p>
                         </div>
 </span>
-                        <span class='together'>
+                    <h3 style="padding-top: 30px; color: #155788; font-family: Kohinoor Devangari Light;">Payment Option*</h3>
+                        <span class='together payment' style="display: flex; justify-content: space-between;">
                         <div>
-                            <input id = 'private-pay' type="checkbox" name='private-pay'>
-                            <p>Private Pay</p>
-                            <div id = 'private-pay-text'>
-                                <p>Private Pay is due at the time of pickup.</p>
-                            </div>
+                            <input id = 'private-pay' type="checkbox" name='private_pay' value = 'Private-Pay'>
+                            <p>Private Pay <br>(due at pickup)</p>
                         </div>
-                        <div><input type="checkbox" onclick="privatePay()">
+                        
+                        <div><input type="checkbox" name = 'facility_pay' value = 'Facility-Pay' >
                             <p>Facility Pay</p>
+                        </div>                        
+                           
+<!--                           ALSO MAKE THIS POSSIBLE PLEASE-->
+                        <div><input type="checkbox" name = 'insurance' value = 'Insurance'>
+                            <p>Insurance</p>
                         </div>
+<!--                        HI PAU////////////////////////////////////L-->
 </span>
                     </div>
                     <div>
@@ -285,9 +291,9 @@
                         <input type="text" name="duration">
                     </div>
                     <div>
-                        <p>Is this a weekly appointment? <small>(If so, we will automatically reschedule it for you every week.)</small></p>
-                        <div class='weekly'>Yes, make this appointment weekly.</div>
-                        <input type="checkbox" name="repeat" id="repeat" value="0">
+                        <p style = 'text-align: center; padding-top: 20px;'>Check the box if this is a weekly appointment (We will automatically reschedule it for you every week)</p>
+
+                        <input style = 'padding: 0; margin: 0; position: relative; top: 10px;' type="checkbox" name="repeat" id="repeat" value="0">
 
 
 

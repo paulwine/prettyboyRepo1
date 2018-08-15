@@ -59,6 +59,10 @@ class Ride(models.Model):
     additional_destination_2 = models.CharField(max_length=255, null=True, blank=True)
     additional_time_2 = models.TimeField(null=True, blank=True)
 
+    private_pay = models.BooleanField(default=False)
+    facility_pay = models.BooleanField(default=False)
+    insurance = models.BooleanField(default=False)
+
     monday = models.BooleanField()
     tuesday = models.BooleanField()
     wednesday = models.BooleanField()
@@ -96,6 +100,11 @@ class PastRide(models.Model):
 
     repeat_ride = models.BooleanField()
 
+    additional_destination_1 = models.CharField(max_length=255, null=True, blank=True)
+    additional_time_1 = models.TimeField(null=True, blank=True)
+    additional_destination_2 = models.CharField(max_length=255, null=True, blank=True)
+    additional_time_2 = models.TimeField(null=True, blank=True)
+
     monday = models.BooleanField()
     tuesday = models.BooleanField()
     wednesday = models.BooleanField()
@@ -103,6 +112,10 @@ class PastRide(models.Model):
     friday = models.BooleanField()
     saturday = models.BooleanField()
     sunday = models.BooleanField()
+
+    private_pay = models.BooleanField(default=False)
+    facility_pay = models.BooleanField(default=False)
+    insurance = models.BooleanField(default=False)
 
 
 
