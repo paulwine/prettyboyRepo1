@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/schedule-ride.css' %}" >
+
+
+</head>
+
+<body>
+    <nav>
+
+        <div class='gradient'></div>
+
+        <div class='navbar-small'>
+            <div class='navbar-top open-nav' onclick="navOut()"><img class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
+
+            <div class='navbar-top parrot'><img class='navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div>
+
+            <div class='logout-small navbar-top'><a href="/logout">Logout</a></div>
+        </div>
+
+
+        <div class='side-nav hidden' id='side-nav'>
+
+            <ul>
+                <li tab-index='1' class="exit">
+                    <div class='navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div>
+                </li>
+
+                <div class='user'>
+                    <a href="/welcome"><h2><span>{{user.first_name}}</span> {{user.last_name}}</h2></a>
+                </div>
+
+                <li tabindex="2" onclick="location.href='/schedule_ride';">
+                    <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
+                    <p>Schedule Ride</p>
+                </li>
+
+
+                <li id='this-page' tabindex="3">
+                    <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
+                    <p>My Information</p>
+                </li>
+
+                <li tabindex="4" onclick="location.href='/contact';">
+                    <div class='navimg'> <img class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+                    <p>Contact</p>
+                </li>
+
+                <li tabindex="5" onclick="location.href='/manage_rides';">
+                    <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
+                    <p>Manage Rides</p>
+                </li>
+
+
+            </ul>
+
+            <footer>
+
+                    <a href="/logout"><div tabindex="7" class='logout'>Logout</div></a>
+                <div class='phone-number'>Phone: <span>248.547.7859</span></div>
+
+                <div class='copyright'>&copy;2018 Papuga Transportation</div>
+
+            </footer>
+            <script src='../static/js/nav.js'>
+
+
+            </script>
+        </div>
+    </nav>
+    <div class='body'>
+        <header>
+            <div class='container'>
+
+                <img src="../static/img/Icons/PapugaLogo.png" alt="">
+                <h1>My Information</h1>
+
+            </div>
+        </header>
+
+        <form action="/save_information" method="post">
+            {% csrf_token %}
+            <div id = 'containerInfo'>
+                <div class='half'>
+
+                    <div>
+                        <p>First Name</p>
+                        <input type="text" name="first_name" value = '{{user.first_name}}'>
+                    </div>
+                    <div>
+                        <p>Last Name</p>
+                        <input type="text" name="last_name" value = '{{user.last_name}}'>
+                    </div>
+                </div>
+                <div>
+                    <p>Facility Name</p>
+                    <input type="text" name="facility_name" value = '{{user.primary_facility_name}}'>
+                </div>
+
+                <div>
+                    <p>Facility Address</p>
+                    <input type="text" name='facility_address' value = '{{user.primary_facility_address}}'>
+                </div>
+                <div class='half'>
+
+                    <div>
+                        <p>City</p>
+                        <input type="text" name="primary_city" value = '{{user.primary_city}}'>
+                    </div>
+                    <div>
+                        <p>Room Number</p>
+                        <input type="text" name="primary_room" value = '{{user.primary_room_number}}'>
+                    </div>
+
+                </div>
+                <div>
+                    <p>Facility Contact Number</p>
+                    <input type="text" name="facility_number" value = '{{user.primary_facility_number}}'>
+                </div>
+
+                <div class='checkboxes'>
+                    <span class="together">
+                    <div>
+                        {% if user.private_pay %}
+                        <input type="checkbox" name='private_pay' checked>
+                        {% else %}
+                        <input type="checkbox" name='private_pay'>
+                        {% endif %}
+                        <p>Private Pay</p>
+                        
+                    </div>
+                    <div> 
+                        {% if user.facility_pay %}
+                        <input type="checkbox" name = 'facility_pay' checked>
+                        {% else %}
+                        <input type="checkbox" name = 'facility_pay'>
+                        {% endif %}
+                        <p>Facility Pay</p>
+
+                    </div>
+                    </span>
+                </div>
+            </div>
+            
+<!--            FIXME link to welcome page-->
+<!--            FIXME should flash a message at the top of welcome and say 'your information has been updated!'-->
+           
+            <a href="welcome page"></a>
+            <button type="submit" id = "submit" >Save Information</button>
+
+        </form>
+
+    </div>
+
+<script type="text/javascript" src="../static/js/info.js"></script>
+</body>
+
+</html>

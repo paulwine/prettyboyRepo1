@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}"> 
+    <link rel="stylesheet" href= "{% static 'css/email.css' %}"> 
+    
+    <!-- <link rel="stylesheet" href="../static/css/default.css">  
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
+    <link rel="stylesheet" href="../static/css/email.css"> -->
+</head>
+<body>
+       <img src="../static/img/Icons/PapugaLogo.png" alt="">
+        <h2>We're Sorry, {{rider_first}}</h2>
+        <h1>Unfortunately, your recent ride request has been denied. </h1>
+        
+        <div>
+        <p><strong>Date: </strong>{{date}}</p>
+        <p><strong>Pick-Up Location:</strong> {{pickup}}</p>
+        <p><strong>Drop-Off Location: </strong>{{dropoff}}</p>
+        <p><strong>Round-Trip/One-Way: </strong>{{round_trip}}</p>
+        <p><strong>Reason For Denial: </strong>{{reason_for_denial}}</p>
+        
+        
+        </div>
+        
+        <p>Thank you for your understanding.  Please visit your Manage Rides portal on our website or call us at 248-547-7859 for more information and the opportunity to reschedule.</p>
+</body>
+</html>

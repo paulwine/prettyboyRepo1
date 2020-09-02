@@ -1,33 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">  
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <div>
-        <h1>hello</h1>
-        <p class='bruh'>What'sup familamily </p>
-        <div id="formdiv">
-            <form>
-                <p>Name:<input type="text"></p>
-                <p>Handicap:<input type="text"></p>
-                <p>Shoe Size:<input type="text"></p>
-                <p>Cup Size:<input type="text"></p>
-                <p>Ass Size:<input type="text"></p>
-                <p>Favorite Animal:<input type="text"></p>
-                <p>Least Favorite Animal:<input type="text"></p>
-                <p>Are you a smoker?:<input type="text"></p>
-                <p>If answered "NO" to question above... What are you a pussy?:<input type="text"></p>
-                <p>Nickname:<input type="text"></p>
-                <input type="submit">
-            </form>
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+ 
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link rel="stylesheet" href="../static/css/landing.css"> 
+
+    <title>Papuga Transportation</title>
+
+
+    <body>
+        <div class='view-one'>
+            <div class="container">
+
+                <img src="../static/img/Icons/PapugaLogo.png" alt="Papuga Logo">
+                <h1>Papuga Transportation</h1>
+                <div class='about-text'>
+                    <p>From here to there, with pride and care</p>
+                </div>
+                <div>
+                    <div><a href="/registerpage">Sign-Up</a></div>
+                    <div class='pointer' onclick="goToBottom()">Login</div>
+                </div>
+                <div> 
+
+                    <div> <img class='pointer' src="../static/img/Icons/Down%20Arrow.png" alt="down-arrow" onclick="goToAbout()"> </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-</body>
+
+           <img class = "wave top" src="../static/img/Top%20Wave%201.svg" alt="">
+        <div class="view-two">
+            <h2>Our Story</h2>
+            <p>We are a family owned, non-emergency medical transportation service. Kevin Papuga, owner and founder, started Papuga Transportation in 2007 after needing medical transportation when temporarily wheelchair bound in 2006. After having a full recovery, Kevin was very grateful for the services provided for him. Moving forward, he understood the necessity of handicapped accessible transportation and wanted to help as many people as he could. Specializing in non-emergency medical transportation, we have 10 wheelchair accessible vans located throughout Southeast Michigan; mainly residing within Oakland County. We provided services for: Doctors’ appointments, dialysis, hospital discharges, facility transfers, airport runs, family events, and much more. We accept most insurance companies; workman’s comp cases, auto/accident cases, etc. and are willing to negotiate any out of pocket financing. Please give us a call or sign up to request a run today!
+            </p>
+
+            <h3>Our Mission</h3>
+            <p>Our mission is not only to provide safe, reliable and affordable transportation from point A to point B, but it is to care for each individual as if they are our family members.</p>
+
+
+            <div class="grid-box ">
+                <h4>Hours of Operation</h4>
+                <ul>
+                    <li>Office: <span>Monday through Friday 9am – 5pm</span></li>
+                    <li>Drivers: <span>Monday through Saturday 6am-6pm</span></li>
+                </ul>
+
+                <div class="border"></div>
+
+                <h4>Call us</h4>
+                <ul>
+                    <li>Line 1: <span>248.714.5547</span></li>
+                    <li>Line 2: <span>248.978.2717</span> </li>
+                    <li>Fax: <span>248.328.5029</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            <img class = "wave bottom" src="../static/img/Bottom%20Wave%201.svg" alt="">
+
+        <div class="view-three">
+
+            <div class='main-content'>
+                <div class='main content-left'>
+                    <img src="../static/img/Icons/PapugaLogo.png" alt="papuga logo">
+                    <h1>Papuga Transportation</h1>
+
+                    <div class='about-text'>
+                        <p>From here to there, with pride and care</p>
+                    </div>
+                </div>
+
+
+
+<!--                 login 
+ -->                <div class="main register">
+                    <form action="/login" method="post">
+                        {% csrf_token %}
+                        <ul class="register-form">
+
+                            <li><img class = 'login-icon' src="../static/img/Icons/Loginman.png" alt=""><input type="text" name="email_log" placeholder="Email"></li>
+                            <li><img class = 'login-icon' src="../static/img/Icons/PasswordIcon.png" alt=""><input type="password" name="password_log" id="myInput" placeholder="Password">
+                            </li>
+
+                            <li class='show-password'><input type="checkbox" onclick="myFunction()">Show Password
+
+                            </li>
+                            <li class='forgot-password'><a class='forgot-password' href="/password_reset">Forgot Password?</a></li>
+                            <li class="submit">
+                                <input class='pointer' type="submit" value="Login">
+
+                            </li>
+                            <li><a class='register' href="/registerpage">Sign Up</a></li>
+
+                            <li class="yelp"><a href="https://www.yelp.com/biz/papuga-transportation-white-lake"><img src="../static/img/Icons/yelp.png" alt="yelp icon"></a></li>
+                        </ul>
+                    </form>
+                    <div class='errors'>
+                                {% if messages %}
+                        <ul class="messages">
+                                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                        {% endfor %}
+                        </ul>
+                                                {% endif %}
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <footer>
+
+                <div>
+                    <p>Phone: 248-547-7859</p>
+                </div>
+
+                <div>
+                    <p>&copy;2018 Papuga Transportation</p>
+                </div>
+            </footer>
+        </div>
+
+    </body>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+    <script src="../static/js/landing.js"></script>
+
 </html>

@@ -1,0 +1,233 @@
+body {
+  background-color: #e6e7e8; }
+  body > div {
+    min-height: 90%;
+    box-sizing: border-box; }
+
+.view-one {
+  height: 100%;
+  min-height: 480px;
+  width: 100%; }
+  .view-one .container {
+    width: 90%;
+    height: 90%;
+    display: block;
+    position: relative;
+    margin: auto;
+    top: 10%;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: "Kohinoor Devangari Light"; }
+    .view-one .container img {
+      max-width: 30%;
+      display: block;
+      position: relative;
+      margin: auto; }
+    .view-one .container h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      position: relative;
+      top: 40px;
+      font-family: "Kohinoor Devangari Semibold"; }
+    .view-one .container > div {
+      top: 60px;
+      width: auto;
+      position: relative;
+      box-sizing: border-box;
+      display: block;
+      position: relative;
+      margin: auto;
+      text-align: center; }
+      .view-one .container > div:nth-of-type(2) div {
+        position: relative;
+        margin-top: 5%;
+        display: inline-block;
+        font-size: 1rem;
+        box-sizing: border-box;
+        padding-left: 0.3rem;
+        padding-right: 0.5rem; }
+        .view-one .container > div:nth-of-type(2) div:nth-of-type(1) {
+          border-right: lightgray 1px solid; }
+      .view-one .container > div:nth-of-type(3) {
+        top: 20%;
+        width: 20%;
+        font-family: "Kohinoor Devangari Regular"; }
+        .view-one .container > div:nth-of-type(3) div {
+          margin-bottom: 20px; }
+
+.view-two {
+  background-color: #1963a2;
+  padding: 10% 7%;
+  box-sizing: border-box; }
+  .view-two h2 {
+    font-size: 3rem;
+    font-family: "Kohinoor Devangari Semibold";
+    color: whitesmoke;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px; }
+  .view-two p {
+    font-family: "Kohinoor Devangari Regular";
+    font-size: 1rem;
+    color: whitesmoke;
+    line-height: 1.2rem;
+    text-align: center; }
+    .view-two p:nth-of-type(2) {
+      width: 90%;
+      display: block;
+      position: relative;
+      margin: auto;
+      text-align: center; }
+  .view-two h3 {
+    font-size: 3rem;
+    color: whitesmoke;
+    font-family: "Kohinoor Devangari Semibold";
+    width: 100%;
+    text-align: center;
+    margin: 100px 0 40px 0; }
+  .view-two .grid-box {
+    margin-top: 100px;
+    display: grid;
+    grid-template-rows: 40px 1px 160px;
+    grid-template-columns: 49.9% 1px 49.9%; }
+    @media (max-width: 699px) {
+      .view-two .grid-box {
+        grid-template-rows: 150px 1px 150px; } }
+    .view-two .grid-box .border {
+      grid-row: 1/span 3;
+      grid-column: 2;
+      box-sizing: border-box;
+      background-color: whitesmoke; }
+      @media (max-width: 699px) {
+        .view-two .grid-box .border {
+          grid-row: 2;
+          grid-column: 1/span 3; } }
+    .view-two .grid-box h4 {
+      font-size: 1.5rem;
+      font-family: "Kohinoor Devangari Light";
+      color: whitesmoke;
+      width: 100%;
+      text-align: center; }
+      .view-two .grid-box h4:nth-of-type(1) {
+        grid-row: 1;
+        grid-column: 1; }
+        @media (max-width: 699px) {
+          .view-two .grid-box h4:nth-of-type(1) {
+            grid-column: 1/span 3; } }
+      .view-two .grid-box h4:nth-of-type(2) {
+        grid-row: 1;
+        grid-column: 3; }
+        @media (max-width: 699px) {
+          .view-two .grid-box h4:nth-of-type(2) {
+            grid-column: 1/span 3;
+            grid-row: 3;
+            margin-top: 40px; } }
+    .view-two .grid-box ul {
+      width: 80%;
+      display: block;
+      position: relative;
+      margin: auto; }
+      .view-two .grid-box ul:nth-of-type(1) {
+        grid-row: 3;
+        grid-column: 1; }
+        @media (max-width: 699px) {
+          .view-two .grid-box ul:nth-of-type(1) {
+            grid-column: 1/span 3;
+            grid-row: 1; } }
+        .view-two .grid-box ul:nth-of-type(1) li {
+          margin-top: 0; }
+          .view-two .grid-box ul:nth-of-type(1) li span {
+            width: 9rem; }
+      .view-two .grid-box ul:nth-of-type(2) {
+        grid-row: 3;
+        grid-column: 3; }
+        @media (max-width: 699px) {
+          .view-two .grid-box ul:nth-of-type(2) {
+            grid-row: 3;
+            grid-column: 1/span 3;
+            margin-top: 60px; } }
+      .view-two .grid-box ul li {
+        width: 100%;
+        text-align: left;
+        margin: 20px 0;
+        font-family: "Kohinoor Devangari Light";
+        color: whitesmoke; }
+        .view-two .grid-box ul li span {
+          position: relative;
+          float: right;
+          width: 5.5rem; }
+
+.view-three {
+  position: relative;
+  top: 10%; }
+  .view-three .register-form {
+    height: 500px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    box-sizing: border-box;
+    min-width: 300px; }
+    .view-three .register-form li {
+      position: relative; }
+      .view-three .register-form li .login-icon {
+        width: 1rem;
+        height: auto;
+        position: absolute;
+        left: 7.25px;
+        bottom: 0.6rem; }
+      .view-three .register-form li input {
+        padding-left: 30px;
+        box-sizing: border-box;
+        height: 2rem;
+        font-family: "Kohinoor Devangari Light"; }
+      .view-three .register-form li:nth-of-type(2) .login-icon {
+        bottom: 0.5rem; }
+    .view-three .register-form .show-password {
+      height: 30px;
+      margin-top: 30px;
+      font-family: "Kohinoor Devangari Light"; }
+      .view-three .register-form .show-password input {
+        height: 30px;
+        width: 30px;
+        display: block;
+        position: relative;
+        bottom: 10px;
+        cursor: pointer; }
+    .view-three .register-form .submit input {
+      height: 40px; }
+  .view-three .yelp {
+    height: 60px;
+    position: relative;
+    top: -30px; }
+    .view-three .yelp img {
+      display: block;
+      position: relative;
+      margin: auto;
+      max-height: 100%; }
+  .view-three li.forgot-password {
+    height: 1rem; }
+    .view-three li.forgot-password a.forgot-password {
+      text-align: center;
+      width: 200px;
+      display: block;
+      position: relative;
+      margin: auto;
+      font-family: "Kohinoor Devangari Light";
+      font-size: 0.8rem;
+      text-decoration: underline; }
+  .view-three a.register {
+    width: 250px;
+    display: block;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    opacity: 0.6;
+    font-family: "Kohinoor Devangari Light";
+    font-size: 1rem;
+    top: -30px; }
+  .view-three footer {
+    height: 60px; }
+
+.pointer {
+  cursor: pointer; }
+
+/*# sourceMappingURL=landing.css.map */

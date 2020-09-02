@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/basic.css' %}"> 
+    <link rel="stylesheet" href= "{% static 'css/nav.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/contact.css' %}" >
+
+
+    <!-- <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/contact.css"> -->
+
+    <title>Contact Us</title>
+</head>
+
+<body>
+
+    <nav>
+
+        <div class='gradient'></div>
+
+        <div class='navbar-small'>
+            <div class='navbar-top open-nav' onclick="navOut()"><img class="navbar-img lines" src="../static/img/Icons/navbarthing.png" alt="enter navigation"></div>
+
+            <div class='navbar-top parrot'><img class='navbar-img page-title' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></div>
+
+            <div class='logout-small navbar-top'><a href="/logout">Logout</a></div>
+        </div>
+
+
+        <div class='side-nav hidden' id='side-nav'>
+
+            <ul>
+                <li tab-index='1' class="exit">
+                    <div class='navimg' onclick="navOut()"><img src="../static/img/Icons/navX.png" alt="exit navigation"></div>
+                </li>
+
+                <div class='user'>
+                    <a href="/welcome"><h2><span>{{user.first_name}}</span> {{user.last_name}}</h2></a>
+                </div>
+
+                <li tabindex="2" onclick="location.href='/schedule_ride';">
+                    <div class='navimg'><img class='icon scheduleimg' src="../static/img/Icons/ScheduleIconWhite.png" alt="schedule ride"></div>
+                    <p>Schedule Ride</p>
+                </li>
+
+
+                <li tabindex="3" onclick="location.href='/info';">
+                    <div class='navimg'><img class='icon' src="../static/img/Icons/Infowhite.png" alt="my info"></div>
+                    <p>My Information</p>
+                </li>
+
+                <li tabindex="4" id='this-page'>
+                    <div class='navimg'> <img class='icon' src="../static/img/Icons/ContactIconWhite.png" alt="contact icon"></div>
+                    <p>Contact</p>
+                </li>
+
+                <li tabindex="5" onclick="location.href='/manage_rides';">
+                    <div class='navimg'><img id='manage-rides' class='icon' src="../static/img/Icons/RidesIconWhite.png" alt="Manage Rides"></div>
+                    <p>Manage Rides</p>
+                </li>
+
+            </ul>
+
+            <footer>
+
+                    <a href="/logout"><div tabindex = "7" class='logout'>Logout</div></a>
+                <div class='phone-number'>Phone: <span>248.547.7859</span></div>
+
+                <div class='copyright'>&copy;2018 Papuga Transportation</div>
+
+            </footer>
+            <script src='../static/js/nav.js'>
+            </script>
+        </div>
+    </nav>
+
+
+    <div class='body'>
+
+        <header>
+            <div class='container'>
+
+                <img src="../static/img/Icons/PapugaLogo.png" alt="">
+                <h1>Contact</h1>
+
+            </div>
+        </header>
+        <form action="/send_email" method="post">
+            {% csrf_token %}
+
+            <div class='subject'>
+
+                <textarea type="text" name="email_subject" placeholder="Subject"></textarea>
+
+            </div>
+            <div class='message'>
+
+                <textarea type="text" name="email_body" placeholder="How can we help you?"></textarea>
+
+            </div>
+
+
+            <div class='submit-container'>
+
+                <input class='submit' type="submit" value="Send Email">
+
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

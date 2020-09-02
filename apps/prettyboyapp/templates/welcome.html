@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/welcome.css' %}" >
+
+    
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/welcome.css">
+    
+    
+    <title>Document</title>
+</head>
+<body>
+    
+    <header class = 'header-large'><img src="../static/img/Icons/PapugaLogo.png" alt="Papuga Logo"></header>
+
+    <header class = 'header-small'>
+        <h1>Home</h1>
+        <h2><span>Welcome, </span>{{user.first_name}}</h2> 
+    </header>
+
+    <div class = 'content'>
+       
+        <h1>Welcome, <span>{{user.first_name}}</span></h1>
+        
+        
+        <div class = 'flex-box'>
+            <div onclick="location.href = '/info'">
+                <img src="../static/img/Icons/InformationIcon.png" alt="My information"><br> 
+                
+                <p>
+                    <a href="/info">My Information</a>
+                </p>
+                <div class='bottom-border'></div>
+                 
+            </div>
+            <div onclick="location.href = '/schedule_ride'">
+                <img src="../static/img/Icons/ScheduleIcon.png" alt="Schedule a ride"><br> 
+                
+                <p>
+                    <a href="/schedule_ride">Schedule Ride</a>
+                </p>
+                <div class='bottom-border'></div>
+                
+            </div>
+            <div onclick="location.href = '/manage_rides'">
+                <img src="../static/img/Icons/RidesIcon.png" alt="Manage Rides"><br> 
+                
+                <p>
+                    <a href="/manage_rides">Manage Rides</a>
+                </p>
+                <div class='bottom-border'></div>
+                
+            </div>
+            <div onclick="location.href = '/contact'">
+                <img src="../static/img/Icons/ContactIcon.png" alt="Contact"><br> 
+                
+                <p>
+                    <a href="/contact">Contact</a>
+                </p>
+                <div class='bottom-border'></div>
+                
+            </div> 
+        </div>
+        
+    </div>
+
+
+<footer>
+    <div class = 'left'>
+        <p><a href="/logout">Logout</a>| Phone: 248-547-7859</p>
+    </div>
+
+    <div class = 'right'>
+        <p>&copy; 2018 Papuga Transport</p>
+    </div>     
+
+</footer>
+    
+</body>
+</html>

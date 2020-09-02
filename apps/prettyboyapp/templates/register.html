@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'css/register.css' %}" >
+
+<!-- 
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/register.css"> -->
+
+    <title>Register</title>
+</head>
+
+<body>
+
+    <img class='img-small' src="../static/img/Icons/PapugaLogo.png" alt="papuga logo">
+
+    <div class='main-content'>
+        <div class='main content-left'>
+            <a href="/"><img src="../static/img/Icons/PapugaLogo.png" alt="papuga logo"></a>
+            <h1>Papuga transportation</h1>
+
+            <div class='about-text'>
+                <p>From here to there, with pride and care</p>
+            </div>
+        </div>
+
+
+        <!-- Registration Form -->
+        <div class='main register' id="registerdiv">
+            <form action="/register" method="post">
+                {% csrf_token %}
+
+                <ul class='register-form'>
+
+                    <li class='title'>
+                        <h1>Sign Up</h1>
+                    </li>
+
+                    <li class='name'>
+                        <p>First Name <br><input type="text" name="first_name"></p>
+                    </li>
+
+                    <li class='name'>
+                        <p>Last Name <br><input type="text" name="last_name"></p>
+                    </li>
+
+                    <li>
+                        <p>Email <br><input type="text" name="email"></p>
+                    </li>
+
+                    <li>
+                        <p>Confirm Email <br><input type="text" name='confirmEmail'></p>
+                    </li>
+
+
+                    <!--
+                        <p>Phone Number: <input type="text" name ="phone"></p>
+                        <p>Primary Address: <input type="text" name ="address"></p>
+                        <p>Tell us about yourself: <input type="text" name ="info"></p>
+        -->
+
+                    <li>
+                        <p>Password <br><input type="password" name="password" id="myInput"></p>
+                    </li>
+
+                    <li>
+                        <p>Confirm Password <br><input type="password" name="confirm_password" id="myInput2"></p>
+                    </li>
+
+                    <li class='show-password'>
+                        <p>Show Password</p><input type="checkbox" onclick="myFunction()">
+                    </li>
+
+                    <li class='submit'>
+                        <input type="submit" value="Sign Up">
+                    </li>
+
+                </ul>
+            </form>
+
+
+
+            <div class='errors'>
+                <!-- Validation Errors -->
+                       {% if messages %}
+                <ul class="messages">
+                               {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                               {% endfor %}
+                </ul>
+                       {% endif %}
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+<footer>
+    <div class = 'left'>
+        <p>Phone: 248-547-7859</p>
+    </div>
+
+    <div class = 'right'>
+        <p>&copy; 2018 Papuga Transport</p>
+    </div>     
+
+</footer>
+</body>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        var y = document.getElementById("myInput2");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        if (y.type === "password") {
+            y.type = "text";
+        } else {
+            y.type = "password";
+        }
+    }
+</script>
+ 
+</html>
